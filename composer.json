@@ -1,0 +1,10 @@
+{
+    "name": "paula/behind-the-thread",
+    "description": "Workspace for the Behind the Thread application.",
+    "type": "project",
+    "license": "proprietary",
+    "require": {},
+    "scripts": {
+        "backend": "composer --working-dir=backend"
+    }
+}
