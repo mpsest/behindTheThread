@@ -33,7 +33,68 @@ main {
   background-color: transparent;
 }
 
+.site-footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
 .navbar div,
 .navbar h4 {
   font-family: "Slibinas";
+}
+
+.dropdown-menu {
+  width: 100%;
+  text-align: center;
+  background-color: var(--bg);
+  border: none;
+}
+
+h1 {
+  font-size: 44px;
+  /*TODO: VERIFICAR FONT SIZE; se for este, é necessárion fazer media queries para ajustar o tamanho da letra em ecrãs menores.*/
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  font-size: 33px;
+}
+
+li a {
+  font-size: 44px;
+}
+
+li a:hover {
+  text-decoration: underline; /*TODO: confirmar se querem este underline no hover; coloquei por falta de informação no figma*/
+  transition: 0.3s;
+  background-color: none;
+}
+
+.dropdown-item:hover {
+  background-color: transparent;
+}
+
+footer {
+  border-top: 2px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+footer img {
+  max-height: 66px;
+}
+
+@media (max-width: 768px) {
+  .site-footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer-content {
+    grid-template-columns: 1fr;
+  }
 }
