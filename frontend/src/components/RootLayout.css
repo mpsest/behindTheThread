@@ -1,0 +1,39 @@
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+#root,
+#root > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#root > div {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.navbar {
+  background-color: transparent;
+  height: 131px;
+  border-bottom: 2px solid black;
+}
+
+.site-footer {
+  background-color: transparent;
+}
+
+.navbar div,
+.navbar h4 {
+  font-family: "Slibinas";
+}
