@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import RootLayout from "./components/RootLayout.jsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom"; //npm install react-router-dom
+import { createBrowserRouter, RouterProvider } from "../node_modules/react-router-dom"; //npm install react-router-dom
 
 function App() {
   const router = createBrowserRouter([
