@@ -77,6 +77,13 @@ li a:hover {
   background-color: transparent;
 }
 
+/* Footer styles */
+
+.footer-headings {
+  font-family: "Lexend Deca";
+  font-weight: 900;
+}
+
 footer {
   border-top: 2px solid black;
   padding-top: 20px;
@@ -84,7 +91,39 @@ footer {
 }
 
 footer img {
-  max-height: 66px;
+  max-height: 50px;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-headings ul,
+.footer-headings p {
+  margin-top: 16px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  font-family: "Lexend Deca";
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+footer ul li a:hover {
+  color: var(--text-color);
+}
+
+footer div p {
+  font-family: "Lexend Deca";
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: underline;
+  /*TODO: underline é mais longo do que a largura do p */
 }
 
 @media (max-width: 768px) {
