@@ -42,6 +42,6 @@ class SpaceController extends Controller
     public function destroy(int $id): JsonResponse
     {
         Space::findOrFail($id)->delete();
-        return response()->json(['message' => 'Space deleted successfully.']);
+        return response()->json(['message' => 'Espaço apagado com sucesso.']);
     }
 }
