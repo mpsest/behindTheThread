@@ -37,6 +37,6 @@ class ContentController extends Controller
     public function destroy(int $id): JsonResponse
     {
         Content::findOrFail($id)->delete();
-        return response()->json(['message' => 'Content deleted successfully.']);
+        return response()->json(['message' => 'Conteúdo apagado com sucesso.']);
     }
 }

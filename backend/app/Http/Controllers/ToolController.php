@@ -18,7 +18,7 @@ class ToolController extends Controller
             'name' => ['required', 'string', 'max:150'],
             'url' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'opensource' => ['sometimes', 'boolean'],
+            'opensource' => ['required', 'boolean'],
         ]);
         return response()->json(Tool::create($data), 201);
     }
@@ -30,7 +30,7 @@ class ToolController extends Controller
             'name' => ['required', 'string', 'max:150'],
             'url' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'opensource' => ['sometimes', 'boolean'],
+            'opensource' => ['required', 'boolean'],
         ]);
         $tool->update($data);
         return response()->json($tool);
@@ -39,6 +39,6 @@ class ToolController extends Controller
     public function destroy(int $id): JsonResponse
     {
         Tool::findOrFail($id)->delete();
-        return response()->json(['message' => 'Tool deleted successfully.']);
+        return response()->json(['message' => 'Ferramenta apagada com sucesso.']);
     }
 }

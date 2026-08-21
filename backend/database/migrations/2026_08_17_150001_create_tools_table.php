@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('name', 150);
             $table->string('url', 255)->nullable();
             $table->text('description')->nullable();
-            $table->boolean('opensource')->default(false);
+            $table->boolean('opensource')->default(true);
         });
     }
     public function down(): void { Schema::dropIfExists('tools'); }
