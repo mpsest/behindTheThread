@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('espacos', function (Blueprint $table) {
+        Schema::create('spaces', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 150);
-            $table->string('site', 255)->nullable();
+            $table->string('name', 150);
+            $table->string('url', 255)->nullable();
             $table->string('email', 150)->nullable();
-            $table->string('localidade', 150)->nullable();
+            $table->string('location', 150)->nullable();
         });
     }
-    public function down(): void { Schema::dropIfExists('espacos'); }
+    public function down(): void { Schema::dropIfExists('spaces'); }
 };

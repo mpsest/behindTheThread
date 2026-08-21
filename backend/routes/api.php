@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\ConteudoController;
-use App\Http\Controllers\EspacoController;
-use App\Http\Controllers\FerramentaController;
-use App\Http\Controllers\UtilizadorController;
+use App\Http\Controllers\ContentController;
+use App\Http\Controllers\SpaceController;
+use App\Http\Controllers\ToolController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('espacos', EspacoController::class);
-Route::apiResource('ferramentas', FerramentaController::class);
-Route::apiResource('conteudos', ConteudoController::class);
-Route::apiResource('utilizadores', UtilizadorController::class);
+Route::apiResource('spaces', SpaceController::class);
+Route::apiResource('tools', ToolController::class);
+Route::apiResource('contents', ContentController::class);
+Route::apiResource('users', UserController::class);

@@ -7,7 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UtilizadorController extends Controller
+class UserController extends Controller
 {
     public function index(): JsonResponse
     {
@@ -35,7 +35,7 @@ class UtilizadorController extends Controller
             'user_type' => User::TYPE_USER,
         ]);
 
-        return response()->json($user, 201);
+        return response()->json($user, 201); //201 - Código para criado com sucesso, ex. 404
     }
 
     public function update(Request $request, int $id): JsonResponse
@@ -53,6 +53,7 @@ class UtilizadorController extends Controller
         if (!empty($data['password'])) {
             $user->password = Hash::make($data['password']);
         }
+
         $user->user_type = User::TYPE_USER;
         $user->save();
 
@@ -63,6 +64,6 @@ class UtilizadorController extends Controller
     {
         $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
         $user->delete();
-        return response()->json(['message' => 'Utilizador tipo 2 apagado com sucesso.']);
+        return response()->json(['message' => 'Utilizador apagado com sucesso.']);
     }
 }
