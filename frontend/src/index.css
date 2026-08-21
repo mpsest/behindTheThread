@@ -1,3 +1,158 @@
+
+
+/* Fonts para a página Sortudos */
+
+@font-face {
+  font-family: "Basteleur";
+  src: url("/typography/Basteleur-Bold.woff2") format("woff2"),
+       url("/typography/Basteleur-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Basteleur";
+  src: url("/typography/Basteleur-Moonlight.woff2") format("woff2"),
+       url("/typography/Basteleur-Moonlight.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avara";
+  src: url("/typography/Avara-Bold.woff2") format("woff2"),
+       url("/typography/Avara-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avara";
+  src: url("/typography/Avara-Black.woff2") format("woff2"),
+       url("/typography/Avara-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avara";
+  src: url("/typography/Avara-BoldItalic.woff2") format("woff2"),
+       url("/typography/Avara-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Terminal Grotesque";
+  src: url("/typography/terminal-grotesque.ttf") format("truetype"),
+       url("/typography/terminal-grotesque.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Terminal Grotesque Open";
+  src: url("/typography/terminal-grotesque_open.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fungal";
+  src: url("/typography/Fungal-VF.woff2") format("woff2-variations"),
+       url("/typography/Fungal-VF.ttf") format("truetype-variations");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Goozette";
+  src: url("/typography/Goozette.woff2") format("woff2"),
+       url("/typography/Goozette.ttf") format("truetype"),
+       url("/typography/Goozette.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jacquard 24";
+  src: url("/typography/Jacquard24-Regular.woff2") format("woff2"),
+       url("/typography/Jacquard24-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  src: url("/typography/InknutAntiqua-Regular.woff2") format("woff2"),
+       url("/typography/InknutAntiqua-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  src: url("/typography/InknutAntiqua-Light.woff2") format("woff2"),
+       url("/typography/InknutAntiqua-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  src: url("/typography/InknutAntiqua-Medium.woff2") format("woff2"),
+       url("/typography/InknutAntiqua-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  src: url("/typography/InknutAntiqua-SemiBold.woff2") format("woff2"),
+       url("/typography/InknutAntiqua-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  src: url("/typography/InknutAntiqua-Bold.woff2") format("woff2"),
+       url("/typography/InknutAntiqua-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  src: url("/typography/InknutAntiqua-ExtraBold.woff2") format("woff2"),
+       url("/typography/InknutAntiqua-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  src: url("/typography/InknutAntiqua-Black.woff2") format("woff2"),
+       url("/typography/InknutAntiqua-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 @font-face {
   font-family: "Lexend";
   src: url("/typography/Lexend-Thin.ttf") format("truetype");
