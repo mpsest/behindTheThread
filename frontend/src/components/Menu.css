@@ -1,0 +1,36 @@
+body.dropdown-open {
+  overflow: hidden;
+}
+
+.navbar .dropdown-menu {
+  /* TODO: corrigir scroll no menu. Confirmar dropdown (bootstrap). */
+  position: fixed;
+  top: var(--header-height);
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: var(--bg);
+  border: none;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navbar .dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-menu li a {
+  font-size: 44px;
+}
+
+.dropdown-menu li a:hover {
+  text-decoration: underline; /*TODO: confirmar se querem este underline no hover; coloquei por falta de informação no figma*/
+  transition: 0.3s;
+  background-color: transparent;
+}
+
+.dropdown-item:hover {
+  background-color: transparent;
+}
