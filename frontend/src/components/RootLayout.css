@@ -122,8 +122,11 @@ footer div p {
   font-size: 16px;
   font-weight: 600;
   color: var(--text-color);
-  text-decoration: underline;
-  /*TODO: underline é mais longo do que a largura do p */
+  margin-bottom: 0;
+}
+footer div hr {
+  border-top: 1px solid var(--text-color);
+  /*TODO: add styles*/
 }
 
 @media (max-width: 768px) {

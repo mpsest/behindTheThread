@@ -5,7 +5,7 @@ export default function RootLayout() {
     <div>
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <div class="dropdown-center">
+          <div className="dropdown-center">
             <button
               type="button"
               data-bs-toggle="dropdown"
@@ -13,39 +13,39 @@ export default function RootLayout() {
             >
               Menu
             </button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   DIRTY TALKS
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   ARTIGOS
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   DESIGNERS
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   BASE DE DADOS
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   MISTURAS
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   SORTUDOS
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   CONTACTOS
                 </a>
               </li>
@@ -108,6 +108,7 @@ export default function RootLayout() {
           <div className="footer-headings">
             Newsletter
             <p>Coloca aqui o teu email</p>
+            <hr></hr>
           </div>
         </div>
       </footer>
