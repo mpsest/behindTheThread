@@ -25,7 +25,7 @@ main {
 
 .navbar {
   background-color: transparent;
-  height: 131px;
+  height: var(--header-height);
   border-bottom: 2px solid black;
 }
 
@@ -45,7 +45,11 @@ main {
   font-family: "Slibinas";
 }
 
-.dropdown-menu {
+.navbar .dropdown-menu {
+  /* TODO: corrigir scroll no menu. Confirmar dropdown (bootstrap). Criar 3 elementos para rootlayout: menu, header e footer para ficar mais organizado.*/
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0px;
   width: 100%;
   text-align: center;
   background-color: var(--bg);

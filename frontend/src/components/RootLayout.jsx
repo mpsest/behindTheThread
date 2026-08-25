@@ -1,11 +1,12 @@
 import "./RootLayout.css";
+import { Outlet } from "react-router-dom";
 
 export default function RootLayout() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <div className="dropdown-center">
+          <div className="dropdown">
             <button
               type="button"
               data-bs-toggle="dropdown"
@@ -35,7 +36,7 @@ export default function RootLayout() {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="/misturas">
                   MISTURAS
                 </a>
               </li>
@@ -55,7 +56,9 @@ export default function RootLayout() {
           <button>Contactos</button>
         </div>
       </nav>
-      <main></main>
+      <main>
+        <Outlet></Outlet>
+      </main>
       <footer className="site-footer">
         <div className="container site-footer-content">
           <img
