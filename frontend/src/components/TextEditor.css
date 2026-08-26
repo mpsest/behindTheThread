@@ -1,0 +1,14 @@
+.image-left {
+  float: left;
+  margin: 0 16px 16px 0;
+}
+
+.image-center {
+  display: block;
+  margin: 16px auto;
+}
+
+.image-right {
+  float: right;
+  margin: 0 0 16px 16px;
+}

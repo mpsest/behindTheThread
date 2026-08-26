@@ -2,6 +2,7 @@ html,
 body,
 #root {
   min-height: 100vh;
+  font-family: "Lexend", system-ui, sans-serif;
 }
 
 body {
