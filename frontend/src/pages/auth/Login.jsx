@@ -18,7 +18,7 @@ export default function LoginForm() {
         let success = await login(data);
    
         if(success){
-          navigate('/');
+          navigate('/dashboard');
         }else{
           alert('Login failed. Please check your credentials and try again.');
         }
@@ -42,6 +42,7 @@ export default function LoginForm() {
       </div>
 
       <p className="form-actions">
+
         <button className="button" type="submit">
           Login
         </button>
