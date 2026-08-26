@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import "./RootLayout.css";
 
 export default function RootLayout() {
@@ -55,7 +56,9 @@ export default function RootLayout() {
           <button>Contactos</button>
         </div>
       </nav>
-      <main></main>
+      <main>
+        <Outlet />
+      </main>
       <footer className="site-footer">
         <div className="container site-footer-content">
           <img
