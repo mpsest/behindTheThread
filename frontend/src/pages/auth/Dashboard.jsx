@@ -4,6 +4,10 @@ export default function Dashboard() {
         <div>
             <h1>Dashboard</h1>
             <p>Welcome to the dashboard!</p>
+
+           <Link to="/signup">Criar administrador</Link> 
+
+
         </div>
     )
 };
