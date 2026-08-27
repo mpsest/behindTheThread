@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Menu.css";
 import { useEffect } from "react";
 
@@ -42,9 +43,9 @@ export default function Menu() {
           </a>
         </li>
         <li>
-          <a className="dropdown-item" href="/misturas">
+          <Link to="/misturas" className="dropdown-item">
             MISTURAS
-          </a>
+          </Link>
         </li>
         <li>
           <a className="dropdown-item" href="#">
