@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SpaceController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\UserController;
@@ -10,3 +11,4 @@ Route::apiResource('spaces', SpaceController::class);
 Route::apiResource('tools', ToolController::class);
 Route::apiResource('contents', ContentController::class);
 Route::apiResource('users', UserController::class);
+Route::apiResource('newsletter', NewsletterController::class);
