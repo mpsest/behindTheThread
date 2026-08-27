@@ -1,10 +1,8 @@
-
-import {SquareButton} from './SquareButton.jsx';
+import { SquareButton } from "./SquareButton.jsx";
 
 export default function Login() {
-
   function printHello(name) {
-    alert("hi! "+name);
+    alert("hi! " + name);
   }
 
   return (
@@ -23,7 +21,9 @@ export default function Login() {
       </div>
 
       <p className="form-actions">
-        <ComponentButton functionForClick={()=>printHello('bla')}>Login</ComponentButton>
+        <ComponentButton functionForClick={() => printHello("bla")}>
+          Login
+        </ComponentButton>
       </p>
     </form>
   );

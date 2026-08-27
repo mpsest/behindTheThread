@@ -26,7 +26,6 @@ import "tinymce/plugins/wordcount";
 
 import "tinymce/skins/ui/oxide/skin.min.css";
 import "tinymce/skins/ui/oxide/content.min.css";
-import "tinymce/skins/content/default/content.min.css";
 
 export default function TextEditor({ initialValue, value, onChange }) {
   const editorRef = useRef(null);
@@ -100,7 +99,7 @@ export default function TextEditor({ initialValue, value, onChange }) {
             { title: "Right", value: "image-right" },
           ],
           content_style:
-            "body { font-family: Lexend, Helvetica, Arial, sans-serif; font-size:14px } " +
+            "body { font-family: Lexend, Helvetica, Arial, sans-serif; font-size:14px; margin: 0; } " +
             ".image-left { float: left; margin: 0 16px 16px 0; } " +
             ".image-center { display: block; margin: 16px auto; } " +
             ".image-right { float: right; margin: 0 0 16px 16px; }",

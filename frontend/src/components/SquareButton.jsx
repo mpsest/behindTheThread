@@ -1,12 +1,10 @@
-import React from 'react'; 
-import './SquareButton.css';
+import React from "react";
+import "./SquareButton.css";
 
-function SquareButton({ onClick, children }) {
+export default function SquareButton({ children, onClick, variant = "light" }) {
   return (
-    <button className="SquareButton" onClick={onClick}>
+    <button className={`square-btn square-btn--${variant}`} onClick={onClick}>
       {children}
     </button>
   );
 }
-
-export default SquareButton;
