@@ -2,15 +2,11 @@
   background-color: transparent;
   height: var(--header-height);
   border-bottom: 2px solid black;
-}
-
-.navbar div,
-.navbar h4 {
   font-family: "Slibinas";
 }
 
 .navbar h1 {
-  font-size: 44px;
+  font-size: 40px;
   /*TODO: VERIFICAR FONT SIZE; se for este, é necessárion fazer media queries para ajustar o tamanho da letra em ecrãs menores.*/
 }
 
