@@ -8,6 +8,7 @@ import Misturas from "./pages/Misturas.jsx";
 import Signup from "./pages/auth/signup.jsx";
 import Login from "./pages/auth/login.jsx";
 import Error from "./pages/Error.jsx";
+import Contacts from "./pages/Contacts.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,7 @@ function App() {
         { path: "/misturas", element: <Misturas /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
+        { path: "/contacts", element: <Contacts /> },
       ],
     },
   ]);
