@@ -5,6 +5,13 @@
   padding-bottom: 20px;
 }
 
+/*footer-headings' :focus state*/
+.site-footer .btn-check:focus + .btn,
+.btn:focus {
+  outline: 0;
+  box-shadow: unset;
+}
+
 .site-footer-content {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
