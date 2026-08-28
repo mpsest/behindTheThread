@@ -10,11 +10,19 @@ body.dropdown-open {
   bottom: 0px;
   width: 100%;
   text-align: center;
-  background-color: var(--bg);
   border: none;
   overflow-y: auto;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--bg);
+  /*Gradientes*/
+  background-image:
+    url(/gradients/menu_right-top.svg), url(/gradients/menu_left_bottom.svg);
+  background-size: 60%, 20%;
+  background-repeat: no-repeat;
+  background-position:
+    right top,
+    left bottom;
 }
 
 .navbar .dropdown-menu.show {

@@ -96,12 +96,19 @@
   font-family: "Lexend";
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-black);
   margin-bottom: 0;
   background-color: transparent;
   border: 0 none transparent;
   border-bottom: 2px solid black;
   padding: 4px 0;
+}
+
+.site-footer input::placeholder {
+  font-weight: 400;
+}
+
+.site-footer input:focus {
+  outline: none;
 }
 
 .site-footer div hr {

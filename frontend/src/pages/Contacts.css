@@ -1,3 +1,15 @@
+.page-contactos {
+  background-image: url(/gradients/contactos_top.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+/* Removes Contacts' background gradient (fixed on navbar) when opening Menu component */
+.dropdown-open .page-contactos {
+  background-image: none;
+}
+
 .contact-page {
   display: flex;
   justify-content: space-between;

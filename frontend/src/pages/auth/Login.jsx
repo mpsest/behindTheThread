@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import SquareButton from "../../components/SquareButton";
+import "./Login.css";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -26,25 +28,27 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Login</h2>
-      <div className="control-row">
-        <div className="control no-margin">
-          <label htmlFor="email">Email</label>
-          <input name="email" type="email" />
+    <section className="login-page">
+      <form className="login-modal" onSubmit={handleLogin}>
+        <h2>LOGIN</h2>
+        <div className="control-row">
+          <div className="control no-margin">
+            <label htmlFor="email">Email</label>
+            <input id="email" name="email" type="email" />
+          </div>
+
+          <div className="control no-margin">
+            <label htmlFor="password">Password</label>
+            <input id="password" type="password" name="password" />
+          </div>
         </div>
 
-        <div className="control no-margin">
-          <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" />
-        </div>
-      </div>
-
-      <p className="form-actions">
-        <button className="button" type="submit">
-          Login
-        </button>
-      </p>
-    </form>
+        <p className="form-actions">
+          <SquareButton type="submit" variant="light">
+            Login
+          </SquareButton>
+        </p>
+      </form>
+    </section>
   );
 }

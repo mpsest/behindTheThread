@@ -1,25 +1,33 @@
-import ContactForm from '../components/ContactForm';
-import './Contacts.css';
+import ContactForm from "../components/ContactForm";
+import "./Contacts.css";
 
 const EQUIPA = [
-  { nome: 'Bárbara Cruz', papel: 'Developer', email: 'cruzbarba95@gmail.com' },
-  { nome: 'Beatriz Miranda', papel: 'Designer', email: 'beatrizmiranda2901@gmail.com' },
-  { nome: 'Filipe Cruz', papel: 'Developer', email: 'inf.fcruz@gmail.com' },
-  { nome: 'Francisco Brito', papel: 'Designer', email: 'franciscobritofb8@gmail.com' },
-  { nome: 'Paula Esteves', papel: 'Developer', email: 'mpsest6@gmail.com' },
+  { nome: "Bárbara Cruz", papel: "Developer", email: "cruzbarba95@gmail.com" },
+  {
+    nome: "Beatriz Miranda",
+    papel: "Designer",
+    email: "beatrizmiranda2901@gmail.com",
+  },
+  { nome: "Filipe Cruz", papel: "Developer", email: "inf.fcruz@gmail.com" },
+  {
+    nome: "Francisco Brito",
+    papel: "Designer",
+    email: "franciscobritofb8@gmail.com",
+  },
+  { nome: "Paula Esteves", papel: "Developer", email: "mpsest6@gmail.com" },
 ];
 
 const TIPOGRAFIAS = [
-  'Basteleur desenvolvida por Keussel',
-  'Avara desenvolvida por Raphaël Bastide, com contribuição de Wei Huang, Lucas Le Bihan, Walid Bouchouchi, Jérémy Landes',
-  'Terminal Grotesque desenvolvida por Raphaël Bastide, com contribuição de Jérémy Landes',
-  'Fungal desenvolvida por Raphaël Bastide e Jérémy Landes',
+  "Basteleur desenvolvida por Keussel",
+  "Avara desenvolvida por Raphaël Bastide, com contribuição de Wei Huang, Lucas Le Bihan, Walid Bouchouchi, Jérémy Landes",
+  "Terminal Grotesque desenvolvida por Raphaël Bastide, com contribuição de Jérémy Landes",
+  "Fungal desenvolvida por Raphaël Bastide e Jérémy Landes",
 ];
 
 const REDES = [
-  { nome: 'Instagram', url: 'https://instagram.com' },
-  { nome: 'TikTok', url: 'https://tiktok.com' },
-  { nome: 'YouTube', url: 'https://youtube.com' },
+  { nome: "Instagram", url: "https://instagram.com" },
+  { nome: "TikTok", url: "https://tiktok.com" },
+  { nome: "YouTube", url: "https://youtube.com" },
 ];
 
 export default function ContactPage() {
@@ -35,7 +43,9 @@ export default function ContactPage() {
           <span className="contact-page__label">Contactos</span>
           <div className="contact-page__contacts">
             <a href="tel:+351917817418">+351 917 817 418</a>
-            <a href="mailto:behindthethread@gmail.com">behindthethread@gmail.com</a>
+            <a href="mailto:behindthethread@gmail.com">
+              behindthethread@gmail.com
+            </a>
           </div>
         </div>
 
@@ -70,7 +80,12 @@ export default function ContactPage() {
           <span className="contact-page__label">Redes sociais</span>
           <div className="contact-page__socials">
             {REDES.map((rede) => (
-              <a key={rede.nome} href={rede.url} target="_blank" rel="noreferrer">
+              <a
+                key={rede.nome}
+                href={rede.url}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {rede.nome}
               </a>
             ))}

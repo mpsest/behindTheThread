@@ -10,12 +10,12 @@ body {
 }
 
 #root,
-#root > div {
+.root-layout {
   display: flex;
   flex-direction: column;
 }
 
-#root > div {
+.root-layout {
   background: var(--bg);
   min-height: 100vh;
 }
