@@ -3,7 +3,7 @@ import "./RootLayout.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function RootLayout() {
+export default function RootLayout({ children }) {
   const location = useLocation();
 
   return (
@@ -11,6 +11,7 @@ export default function RootLayout() {
       <Header />
       <main>
         <Outlet />
+        {children}
       </main>
       <Footer />
     </div>

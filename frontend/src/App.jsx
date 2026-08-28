@@ -14,8 +14,12 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <RootLayout></RootLayout>,
-      errorElement: <Error></Error>,
+      element: <RootLayout />,
+      errorElement: (
+        <RootLayout>
+          <Error />
+        </RootLayout>
+      ),
       children: [
         { path: "/dashboard", element: <Dashboard /> },
         { path: "/misturas", element: <Misturas /> },
