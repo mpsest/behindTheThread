@@ -16,17 +16,16 @@ class NewsletterController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email', 'max:150', 'unique:newsletter,email'],
-            'subscribed' => ['sometimes', 'boolean'],
+            'subscribed' => ['required', 'boolean'],
         ]);
         return response()->json(Newsletter::create($data), 201);
     }
 
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, int $email): JsonResponse
     {
-        $newsletter = Newsletter::findOrFail($id);
+        $newsletter = Newsletter::where('email', $email)->firstOrFail();
         $data = $request->validate([
-            'email' => ['required', 'email', 'max:150', 'unique:newsletter,email,' . $newsletter->id],
-            'subscribed' => ['sometimes', 'boolean'],
+            'subscribed' => ['required', 'boolean'],
         ]);
         $newsletter->update($data);
         return response()->json($newsletter);
