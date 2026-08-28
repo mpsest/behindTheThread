@@ -1,6 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
+
+const API = "http://localhost:8000";
+
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -9,8 +16,54 @@ export const AuthProvider = ({ children }) => {
       : null;
   });
 
-  const login = async (authData) => {
-    const response = await fetch("http://localhost:3000/login", {
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  async function fetchUser() {
+    const user = await fetch(`${API}/api/user`, {
+      credentials: "include",
+      headers: { Accept: "application/json" },
+    }).then((r) => r.json());
+
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    return user;
+  }
+
+  async function login({ email, password }) {
+    // 1. Get the CSRF cookie (sets XSRF-TOKEN + laravel_session)
+    await fetch(`${API}/sanctum/csrf-cookie`, {
+      credentials: "include",
+    });
+
+    // 2. Post credentials with the token echoed back as a header
+    const res = await fetch(`${API}/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "X-XSRF-TOKEN": getCookie("XSRF-TOKEN") ?? "",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (!res.ok) {
+      // 422 → { message, errors: { email: [...] } }
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.message ?? `Login failed (${res.status})`);
+    }
+
+    // 3. Session cookie is now set; fetch the user
+    await fetchUser();
+
+    return true;
+  }
+
+  const login2 = async (authData) => {
+    const response = await fetch("http://localhost:8000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +72,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to authenticate");
+      throw new Error("Credenciais erradas.");
     }
 
     const data = await response.json();
