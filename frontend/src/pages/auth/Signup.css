@@ -1,0 +1,117 @@
+.signup-page {
+  min-height: calc(100vh - var(--header-height, 90px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  box-sizing: border-box;
+  background-image: url(/gradients/signup_right-bottom.svg);
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
+.signup-modal {
+  width: min(100%, 520px);
+  padding: 40px;
+  box-sizing: border-box;
+  background: var(--bg);
+  border: 2px solid var(--text-black);
+  box-shadow: 10px 10px 0 var(--text-black);
+}
+
+.signup-modal h2 {
+  margin: 0 0 28px;
+  color: var(--text-black);
+  font-family: "Lexend", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+.signup-modal .control-row {
+  display: grid;
+  gap: 18px;
+}
+
+.signup-modal .control {
+  display: grid;
+  gap: 8px;
+}
+
+.signup-modal label {
+  color: var(--text-black);
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.signup-modal input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  color: var(--text-black);
+  background: transparent;
+  border: 2px solid var(--text-black);
+  border-radius: 0;
+  font: inherit;
+}
+
+.signup-modal input:focus {
+  background-color: rgba(26, 26, 26, 0.05);
+  outline: none;
+}
+
+.signup-modal input::placeholder {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.signup-error {
+  margin: 16px 0 0;
+  color: #b3261e;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.signup-modal .form-actions {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 0;
+}
+
+.signup-modal button {
+  min-height: 46px;
+  padding: 10px 24px;
+  color: var(--bg);
+  background: var(--text-black);
+  border: 2px solid var(--text-black);
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.signup-modal button:hover,
+.signup-modal button:focus-visible {
+  color: var(--text-black);
+  background: transparent;
+}
+
+@media (max-width: 520px) {
+  .signup-page {
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+
+  .signup-modal {
+    padding: 28px 20px;
+    box-shadow: 6px 6px 0 var(--text-black);
+  }
+
+  .signup-modal h2 {
+    font-size: 28px;
+  }
+}

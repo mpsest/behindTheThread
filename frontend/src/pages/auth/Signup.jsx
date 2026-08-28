@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css";
 
 export default function Signup() {
   const [passMatch, setPassMatch] = useState(true);
@@ -30,79 +31,58 @@ export default function Signup() {
       });
 
       //reencaminhar para a homepage
-      navigate("/", { state: { message: "Admin account created successfully!" } });
+      navigate("/", {
+        state: { message: "Admin account created successfully!" },
+      });
     }
   }
 
   return (
-    <div>
-      <h6>Create Admin Account</h6>
+    <section className="signup-page">
+      <form className="signup-modal" onSubmit={registUser}>
+        <h2>Criar conta de administrador</h2>
 
-      <form onSubmit={registUser}>
-        <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">
-            Name
-          </label>
-          <input
-            name="name"
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-          <label for="exampleInputEmail1" className="form-label">
-            Email
-          </label>
-          <input
-            name="email"
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
+        <div className="control-row">
+          <div className="control">
+            <label htmlFor="name">Nome</label>
+            <input id="name" name="name" type="text" />
+          </div>
+
+          <div className="control">
+            <label htmlFor="email">Email</label>
+            <input id="email" name="email" type="email" />
+          </div>
+
+          <div className="control">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="A password deve ser alterada depois"
+            />
+          </div>
+
+          <div className="control">
+            <label htmlFor="passwordConfirmation">Confirma a password</label>
+            <input
+              id="passwordConfirmation"
+              name="passwordConfirmation"
+              type="password"
+            />
+          </div>
         </div>
-        <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
-            Password
-          </label>
-          <input
-            name="password"
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
-        <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
-            Confirm Password
-          </label>
-          <input
-            name="passwordConfirmation"
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
+
         {!passMatch && (
-          <p className="text-danger text-start">
-            Passwords don't match. Please try again.
+          <p className="signup-error">
+            As passwords não correspondem. Tenta novamente.
           </p>
         )}
-        <div className="mb-3 form-check">
-          <input
-            required
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label" for="exampleCheck1">
-            I agree to the terms and conditions
-          </label>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+
+        <p className="form-actions">
+          <button type="submit">Submit</button>
+        </p>
       </form>
-    </div>
+    </section>
   );
 }

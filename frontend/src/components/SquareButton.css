@@ -7,28 +7,27 @@
   cursor: pointer;
   transition:
     transform 0.1s ease,
-    background-color 0.15s ease;
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
+/* TODO: confirmar esta animação */
 .square-btn:active {
   transform: translate(2px, 2px);
 }
 
-/* transparente */
-.square-btn--light {
-  background-color: transparent;
-  color: #1a1a1a;
-}
-.square-btn--light:hover {
-  background-color: rgba(26, 26, 26, 0.05);
+/* variant light e dark:hover */
+.square-btn--light,
+.square-btn--dark:hover {
+  color: var(--text-black);
+  background: var(--bg);
 }
 
-/* preta */
+/* variant dark e light:hover */
+.square-btn--light:hover,
 .square-btn--dark {
-  background-color: #1a1a1a;
-  color: #f5e6c8;
-  border-color: #1a1a1a;
-}
-.square-btn--dark:hover {
-  background-color: #333333;
+  color: var(--bg);
+  background: var(--text-black);
+  border-color: var(--text-black);
 }
