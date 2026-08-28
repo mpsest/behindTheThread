@@ -6,10 +6,12 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container site-footer-content">
-        <img
-          src="/btt-footer.svg"
-          alt="imagem com o título Behind the Thread"
-        ></img>
+        <Link to="/">
+          <img
+            src="/btt-footer.svg"
+            alt="imagem com o título Behind the Thread"
+          ></img>
+        </Link>
         <div className="footer-menu">
           <button
             className="btn collapse-button"
@@ -45,7 +47,7 @@ export default function Footer() {
             <Link className="dropdown-item" to="#">
               Sortudos
             </Link>
-            <Link className="dropdown-item" to="#">
+            <Link className="dropdown-item" to="/contactos">
               Contactos
             </Link>
           </div>

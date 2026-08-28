@@ -5,13 +5,39 @@
   font-family: "Slibinas";
 }
 
+/* Title Behind the Thread */
 .navbar h1 {
-  font-size: 40px;
-  /*TODO: VERIFICAR FONT SIZE; se for este, é necessárion fazer media queries para ajustar o tamanho da letra em ecrãs menores.*/
+  color: var(--text-black);
+  font-size: 35px;
+  margin-bottom: 0;
 }
 
-.navbar button {
+.navbar h1 a {
+  text-decoration: none;
+  color: var(--text-black);
+}
+
+/* Menu and Contacts */
+.navbar button,
+.header-contact-link {
   border: none;
   background-color: transparent;
-  font-size: 33px;
+  color: var(--text-black);
+  font-size: 25px;
+}
+
+.header-contact-link {
+  color: var(--text-black);
+  text-decoration: none;
+}
+
+.header-contact-link:hover {
+  color: var(--text-black);
+  text-decoration: underline;
+}
+
+.navbar button:hover,
+.navbar button:focus,
+.header-contact-link:focus {
+  color: var(--text-black);
 }

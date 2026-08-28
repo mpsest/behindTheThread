@@ -247,7 +247,7 @@
 }
 
 :root {
-  --text-black: #110b08;
+  --text-black: #1e1e1e;
   --bg: #fef0cf;
-  --header-height: 130px;
+  --header-height: 90px;
 }

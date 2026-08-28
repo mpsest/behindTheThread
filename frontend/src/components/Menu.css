@@ -21,6 +21,10 @@ body.dropdown-open {
   display: flex;
 }
 
+.dropdown > button:hover {
+  text-decoration: underline;
+}
+
 .dropdown-menu li a {
   font-size: 44px;
 }

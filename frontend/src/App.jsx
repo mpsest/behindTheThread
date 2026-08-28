@@ -21,7 +21,7 @@ function App() {
         { path: "/misturas", element: <Misturas /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
-        { path: "/contacts", element: <Contacts /> },
+        { path: "/contactos", element: <Contacts /> },
       ],
     },
   ]);
