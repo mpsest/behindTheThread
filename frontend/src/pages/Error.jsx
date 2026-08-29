@@ -12,5 +12,3 @@ export default function Error() {
     </section>
   );
 }
-
-// TODO: Add a more user-friendly error page with navigation options and possibly a search bar to help users find what they're looking for.

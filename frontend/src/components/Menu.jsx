@@ -38,9 +38,9 @@ export default function Menu() {
           </a>
         </li>
         <li>
-          <a className="dropdown-item" href="#">
+          <Link to="/basededados" className="dropdown-item">
             BASE DE DADOS
-          </a>
+          </Link>
         </li>
         <li>
           <Link to="/misturas" className="dropdown-item">

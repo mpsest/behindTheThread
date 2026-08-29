@@ -1,0 +1,9 @@
+.page-title {
+  font-family: "Slibinas";
+  text-align: center;
+  margin: 30px auto;
+  font-size: 55px;
+  border-bottom: 2px solid var(--text-black);
+  padding-bottom: 15px;
+  width: 100%;
+}

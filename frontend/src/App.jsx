@@ -9,6 +9,9 @@ import Signup from "./pages/auth/signup.jsx";
 import Login from "./pages/auth/login.jsx";
 import Error from "./pages/Error.jsx";
 import Contacts from "./pages/Contacts.jsx";
+import BaseDados from "./pages/BaseDados/BaseDados.jsx";
+import FornecedoresDetail from "./pages/BaseDados/FornecedoresDetail.jsx";
+import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,13 +29,20 @@ function App() {
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
         { path: "/contactos", element: <Contacts /> },
+        { path: "/basededados", element: <BaseDados /> },
+        {
+          path: "/basededados/fornecedores/:type",
+          element: <FornecedoresDetail />,
+        },
       ],
     },
   ]);
 
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <BaseDadosProvider>
+        <RouterProvider router={router} />
+      </BaseDadosProvider>
     </AuthProvider>
   );
 }

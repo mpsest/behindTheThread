@@ -1,5 +1,6 @@
 import ContactForm from "../components/ContactForm";
 import "./Contacts.css";
+import PageTitle from "../components/PageTitle";
 
 const EQUIPA = [
   { nome: "Bárbara Cruz", papel: "Developer", email: "cruzbarba95@gmail.com" },
@@ -37,65 +38,68 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="contact-page">
-      <div className="contact-page__info">
-        <div className="contact-page__row">
-          <span className="contact-page__label">Contactos</span>
-          <div className="contact-page__contacts">
-            <a href="tel:+351917817418">+351 917 817 418</a>
-            <a href="mailto:behindthethread@gmail.com">
-              behindthethread@gmail.com
-            </a>
-          </div>
-        </div>
-
-        <div className="contact-page__row">
-          <span className="contact-page__label">Créditos</span>
-          <div className="contact-page__credits">
-            <div className="contact-page__credits-col">
-              <h4>Designers e developers</h4>
-              <ul>
-                {EQUIPA.map((pessoa) => (
-                  <li key={pessoa.email}>
-                    {pessoa.nome}, {pessoa.papel}
-                    <br />
-                    <a href={`mailto:${pessoa.email}`}>{pessoa.email}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="contact-page__credits-col">
-              <h4>Tipografias</h4>
-              <ul className="contact-page__typefaces">
-                {TIPOGRAFIAS.map((linha) => (
-                  <li key={linha}>{linha}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="contact-page__row">
-          <span className="contact-page__label">Redes sociais</span>
-          <div className="contact-page__socials">
-            {REDES.map((rede) => (
-              <a
-                key={rede.nome}
-                href={rede.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {rede.nome}
+    <>
+      <PageTitle>CONTACTOS</PageTitle>
+      <main className="contact-page">
+        <div className="contact-page__info">
+          <div className="contact-page__row">
+            <span className="contact-page__label">Contactos</span>
+            <div className="contact-page__contacts">
+              <a href="tel:+351917817418">+351 917 817 418</a>
+              <a href="mailto:behindthethread@gmail.com">
+                behindthethread@gmail.com
               </a>
-            ))}
+            </div>
+          </div>
+
+          <div className="contact-page__row">
+            <span className="contact-page__label">Créditos</span>
+            <div className="contact-page__credits">
+              <div className="contact-page__credits-col">
+                <h4>Designers e developers</h4>
+                <ul>
+                  {EQUIPA.map((pessoa) => (
+                    <li key={pessoa.email}>
+                      {pessoa.nome}, {pessoa.papel}
+                      <br />
+                      <a href={`mailto:${pessoa.email}`}>{pessoa.email}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="contact-page__credits-col">
+                <h4>Tipografias</h4>
+                <ul className="contact-page__typefaces">
+                  {TIPOGRAFIAS.map((linha) => (
+                    <li key={linha}>{linha}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="contact-page__row">
+            <span className="contact-page__label">Redes sociais</span>
+            <div className="contact-page__socials">
+              {REDES.map((rede) => (
+                <a
+                  key={rede.nome}
+                  href={rede.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {rede.nome}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="contact-page__form">
-        <ContactForm onSubmit={handleSubmit} />
-      </div>
-    </main>
+        <div className="contact-page__form">
+          <ContactForm onSubmit={handleSubmit} />
+        </div>
+      </main>
+    </>
   );
 }
