@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { BaseDadosContext } from "../../contexts/BaseDadosContext";
 import { useParams, Link } from "react-router-dom";
 import SquareButton from "../../components/SquareButton";
+import "./FornecedoresDetail.css";
 
 export default function FornecedoresDetail() {
   const { type } = useParams();
@@ -10,18 +11,20 @@ export default function FornecedoresDetail() {
 
   return (
     <div>
-      <SquareButton>
-        <Link to="/basededados">Voltar atrás</Link>
-      </SquareButton>
-      <table>
+      <div className="align-button">
+        <Link to="/basededados">
+          <SquareButton>Voltar atrás</SquareButton>
+        </Link>
+      </div>
+      <table className="fornecedores-detail-table">
         <thead>
           <tr>
-            <th>{type}</th>
+            <th colSpan={3}>{type}</th>
           </tr>
         </thead>
         <tbody>
           {fornecedores.map((fornecedor) => (
-            <tr key={fornecedor.name}>
+            <tr key={fornecedor.name} className="fornecedores-detail-row">
               <td>
                 <a href={fornecedor.url}>{fornecedor.name}</a>
               </td>

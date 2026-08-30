@@ -1,0 +1,47 @@
+.fornecedores-detail-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-image: url(/gradients/baseDados-fornecedores_center.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.align-button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 10px 20px 0;
+}
+
+.align-button a {
+  text-decoration: none;
+}
+
+.fornecedores-detail-table th {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 15px 0 15px 0;
+  border: 2px solid var(--text-black);
+}
+
+.fornecedores-detail-table td {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 20px;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.fornecedores-detail-table td a {
+  text-decoration: none;
+  color: var(--text-black);
+  font-weight: 500;
+}
+
+.fornecedores-detail-table td a:hover {
+  text-decoration: underline;
+  color: var(--text-black);
+  font-weight: 700;
+}
