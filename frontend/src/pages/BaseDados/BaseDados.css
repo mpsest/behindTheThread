@@ -1,1 +1,37 @@
+.page-basededados {
+  /* Gradientes */
+  background-image: url(/gradients/baseDados_center-top.svg);
+  background-size: 45%;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
 
+.base-dados-page p {
+  text-align: center;
+  padding: 0 10% 0 10%;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.base-dados-page .second-p {
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--text-black);
+}
+
+.base-dados-page .last-p {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 50px 30% 0 30%;
+}
+
+.base-dados-page .center-button {
+  text-align: center;
+  padding: 10px 0 40px 0;
+}
+
+/* .section-fornecedores {
+  background-image: url(/gradients/baseDados-fornecedores_center.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+} */

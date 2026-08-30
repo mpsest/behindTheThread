@@ -1,0 +1,60 @@
+.base-dados-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-image: url(/gradients/baseDados-fornecedores_center.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.base-dados-table thead,
+.base-dados-table tbody,
+.base-dados-table tr {
+  display: block;
+}
+
+/* Título */
+.base-dados-table th {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0 0 15px 0;
+}
+
+.base-dados-table tbody {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  border-top: 2px solid var(--text-black);
+  border-left: 2px solid var(--text-black);
+}
+
+.base-dados-table .table-basedados-row {
+  display: contents;
+}
+
+/* Tipos */
+.base-dados-table td {
+  border-right: 2px solid var(--text-black);
+  border-bottom: 2px solid var(--text-black);
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Página de detalhes de cada tipo*/
+.base-dados-table td a {
+  text-decoration: none;
+  color: var(--text-black);
+  font-weight: 500;
+}
+
+.base-dados-table td a:hover {
+  text-decoration: underline;
+  color: var(--text-black);
+  font-weight: 700;
+}

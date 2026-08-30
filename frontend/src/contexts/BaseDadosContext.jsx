@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const BaseDadosContext = createContext();
 
+/* TODO: Apagar objetos e ligar à base de dados*/
 const BASE_DADOS = {
   Fornecedores: {
     Confeção: [

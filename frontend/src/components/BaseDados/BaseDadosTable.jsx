@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./BaseDadosTable.css";
 
 export default function BaseDadosTable({ title, items }) {
   const rows = [];
@@ -8,7 +9,7 @@ export default function BaseDadosTable({ title, items }) {
   }
 
   return (
-    <table>
+    <table className="base-dados-table">
       <thead>
         <tr>
           <th>{title}</th>
