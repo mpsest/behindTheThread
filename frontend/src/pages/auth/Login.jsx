@@ -23,7 +23,7 @@ export default function LoginForm() {
       }
     } catch (error) {
       console.error(error);
-      alert("Login failed. Please check your credentials and try again.");
+      alert("Ocorreu um erro. Tenta novamente.");
     }
   }
 
