@@ -7,4 +7,13 @@
 
 .plus-icon {
   display: block;
+  transition: transform 0.2s ease;
+}
+
+.plus-button:hover .plus-icon {
+  transform: rotate(90deg);
+}
+
+.plus-button.open .plus-icon {
+  transform: rotate(0deg) translateY(30px);
 }

@@ -16,8 +16,12 @@ export default function PlusButton({ children, to }) {
 
   return (
     <div>
-      <button className="plus-button" onClick={handleClick}>
+      <button
+        className={`plus-button ${isOpen ? "open" : ""}`}
+        onClick={handleClick}
+      >
         <img
+          width="100px"
           className="plus-icon"
           src={isOpen ? "/minus.png" : "/plus.png"}
           alt={isOpen ? "Close" : "Open"}
