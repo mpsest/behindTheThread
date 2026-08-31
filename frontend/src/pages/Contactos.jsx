@@ -2,7 +2,7 @@ import ContactForm from '../components/ContactForm';
 import './Contactos.css';
 
 const TEAM = [
-  { name: 'Bárbara Cruz', role: 'Developer', email: 'cruzbarba95@gmail.com' },
+  { name: 'Bárbara Cruz', role: 'Developer', email: 'cruzbarbara95@gmail.com' },
   { name: 'Beatriz Miranda', role: 'Designer', email: 'beatrizmiranda2901@gmail.com' },
   { name: 'Filipe Cruz', role: 'Developer', email: 'inf.fcruz@gmail.com' },
   { name: 'Francisco Brito', role: 'Designer', email: 'franciscobritofb8@gmail.com' },
@@ -55,7 +55,16 @@ export default function ContactPage() {
               </ul>
             </div>
 
-  
+            <div className="contact-page__credits-col">
+              <h4>Tipografias</h4>
+              <ul className="contact-page__typefaces">
+                {TYPOGRAPHY.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <div className="contact-page__row">
           <span className="contact-page__label">Redes sociais</span>
@@ -64,16 +73,14 @@ export default function ContactPage() {
               <a key={social.name} href={social.url} target="_blank" rel="noreferrer">
                 {social.name}
               </a>
-            </div>
+            ))}
           </div>
-
-         
- 
-
-        <div className="contact-page__form">
-          <ContactForm onSubmit={handleSubmit} />
         </div>
-      </main>
-    </>
+      </div>
+
+      <div className="contact-page__form">
+        <ContactForm onSubmit={handleSubmit} />
+      </div>
+    </main>
   );
 }
