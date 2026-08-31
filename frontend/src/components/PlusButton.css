@@ -1,13 +1,21 @@
+.button-center {
+  padding: 30px 0 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
 .plus-button {
   border: none;
   background-color: transparent;
   padding: 0;
   cursor: pointer;
+  transform-origin: center;
 }
 
 .plus-icon {
   display: block;
   transition: transform 0.2s ease;
+  transform-origin: center;
 }
 
 .plus-button:hover .plus-icon {
