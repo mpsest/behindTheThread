@@ -1,0 +1,37 @@
+.misturas-page {
+}
+
+.misturas-page__hero {
+  padding: 48px 40px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.misturas-page__title {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+  -webkit-text-stroke: 1.5px #1a1a1a;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  margin: 0 0 20px;
+}
+
+.misturas-page__intro {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+.misturas-page__form-section {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.misturas-page__form-section .collab-form {
+  width: 100%;
+  max-width: 520px;
+}

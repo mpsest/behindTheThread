@@ -7,11 +7,12 @@ import Dashboard from "./pages/auth/dashboard.jsx";
 import Misturas from "./pages/Misturas.jsx";
 import Signup from "./pages/auth/signup.jsx";
 import Login from "./pages/auth/login.jsx";
-import Error from "./pages/Error.jsx";
-import Contacts from "./pages/Contacts.jsx";
 import BaseDados from "./pages/BaseDados/BaseDados.jsx";
 import FornecedoresDetail from "./pages/BaseDados/FornecedoresDetail.jsx";
 import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
+import Error from "./pages/Erro.jsx";
+import Contactos from "./pages/Contactos.jsx";
+import NovaMistura from "./pages/NovaMistura.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,9 +27,10 @@ function App() {
       children: [
         { path: "/dashboard", element: <Dashboard /> },
         { path: "/misturas", element: <Misturas /> },
+        { path: "/novamistura", element: <NovaMistura /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
-        { path: "/contactos", element: <Contacts /> },
+        { path: "/contactos", element: <Contactos /> },
         { path: "/basededados", element: <BaseDados /> },
         {
           path: "/basededados/fornecedores/:type",

@@ -7,11 +7,9 @@ export default function Misturas() {
   return (
     <div>
       <h1>Misturas</h1>
+
       <p>Welcome to the Misturas page!</p>
-      <PlusButton>
-        <h2>Additional Content</h2>
-        <p>This content is revealed when the plus button is clicked.</p>
-      </PlusButton>
+      <PlusButton to="/novamistura" />
       <TextEditor value={editorContent} onChange={setEditorContent} />
       <div>
         <h2>Preview:</h2>
