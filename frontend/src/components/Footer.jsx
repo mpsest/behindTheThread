@@ -44,12 +44,23 @@ export default function Footer() {
             <Link className="dropdown-item" to="/misturas">
               Misturas
             </Link>
-            <Link className="dropdown-item" to="#">
-              Sortudos
-            </Link>
             <Link className="dropdown-item" to="/contactos">
               Contactos
             </Link>
+            <div className="circle-container">
+              <Link className="dropdown-item" to="/login">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <circle cx="8" cy="8" r="8" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -72,7 +83,7 @@ export default function Footer() {
           >
             <Link
               className="dropdown-item"
-              to="mailto:behindthethread@gmail.com"
+              to="mailto:behindthethreadd@gmail.com"
               target="_blank"
             >
               Email
@@ -86,12 +97,16 @@ export default function Footer() {
             </Link>
             <Link
               className="dropdown-item"
-              to="https://www.tiktok.com/@behindthethread"
+              to="https://www.tiktok.com/@behind.the.thread8?_r=1&_t=ZN-99JfMe4wKQA"
               target="_blank"
             >
               TikTok
             </Link>
-            <Link className="dropdown-item" to="#" target="_blank">
+            <Link
+              className="dropdown-item"
+              to="https://www.youtube.com/@behindthethread-k4c"
+              target="_blank"
+            >
               Youtube
             </Link>
           </div>
@@ -128,8 +143,6 @@ export default function Footer() {
     </footer>
   );
 }
-
-//TODO: Falta link para Youtube. @Francisco
 
 //TODO: Falta rota no Laravel para a newsletter @FILIPE
 

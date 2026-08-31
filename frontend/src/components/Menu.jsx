@@ -49,11 +49,6 @@ export default function Menu() {
         </li>
         <li>
           <a className="dropdown-item" href="#">
-            SORTUDOS
-          </a>
-        </li>
-        <li>
-          <a className="dropdown-item" href="#">
             CONTACTOS
           </a>
         </li>
