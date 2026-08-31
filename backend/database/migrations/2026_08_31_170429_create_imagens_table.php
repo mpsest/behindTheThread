@@ -7,11 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('newsletter', function (Blueprint $table) {
+        Schema::create('imagens', function (Blueprint $table) {
             $table->id();
-            $table->string('email', 150)->unique();
-            $table->boolean('subscrito')->default(true);
+            $table->string('url', 255);
         });
     }
-    public function down(): void { Schema::dropIfExists('newsletter'); }
+    public function down(): void { Schema::dropIfExists('imagens'); }
 };

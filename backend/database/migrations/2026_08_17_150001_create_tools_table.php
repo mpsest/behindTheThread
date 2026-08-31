@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tools', function (Blueprint $table) {
+        Schema::create('ferramentas', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 150);
-            $table->string('url', 255)->nullable();
-            $table->text('description')->nullable();
-            $table->boolean('opensource')->default(true);
+            $table->string('nome', 150);
+            $table->string('site', 255)->nullable();
+            $table->text('descricao')->nullable();
+            $table->text('opensource')->nullable();
         });
     }
-    public function down(): void { Schema::dropIfExists('tools'); }
+    public function down(): void { Schema::dropIfExists('ferramentas'); }
 };
