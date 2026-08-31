@@ -16,19 +16,25 @@ class NewsletterController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email', 'max:150', 'unique:newsletter,email'],
-            'subscribed' => ['required', 'boolean'],
+            'subscrito' => ['sometimes', 'boolean'],
         ]);
         return response()->json(Newsletter::create($data), 201);
     }
 
-    public function update(Request $request, int $email): JsonResponse
+    public function update(Request $request, int $id): JsonResponse
     {
-        $newsletter = Newsletter::where('email', $email)->firstOrFail();
+        $newsletter = Newsletter::findOrFail($id);
         $data = $request->validate([
-            'subscribed' => ['required', 'boolean'],
+            'email' => ['required', 'email', 'max:150', 'unique:newsletter,email,' . $newsletter->id],
+            'subscrito' => ['sometimes', 'boolean'],
         ]);
         $newsletter->update($data);
         return response()->json($newsletter);
     }
 
+    public function destroy(int $id): JsonResponse
+    {
+        Newsletter::findOrFail($id)->delete();
+        return response()->json(['message' => 'Registo de newsletter apagado com sucesso.']);
+    }
 }
