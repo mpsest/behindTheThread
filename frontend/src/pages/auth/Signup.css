@@ -1,30 +1,26 @@
 .signup-page {
   min-height: calc(100vh - var(--header-height, 90px));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 20px;
   box-sizing: border-box;
   background-image: url(/gradients/signup_right-bottom.svg);
-  background-size: 40%;
+  background-size: clamp(40%, 45vw, 90%);
   background-repeat: no-repeat;
   background-position: right bottom;
 }
 
 .signup-modal {
   width: min(100%, 520px);
-  padding: 40px;
   box-sizing: border-box;
   background: var(--bg);
   border: 2px solid var(--text-black);
-  box-shadow: 10px 10px 0 var(--text-black);
+  box-shadow: clamp(6px, 1.4vw, 10px) clamp(6px, 1.4vw, 10px) 0
+    var(--text-black);
 }
 
 .signup-modal h2 {
   margin: 0 0 28px;
   color: var(--text-black);
   font-family: "Lexend", sans-serif;
-  font-size: 28px;
+  font-size: clamp(24px, 4vw, 28px);
   font-weight: 600;
   line-height: 1;
   text-align: center;
@@ -98,20 +94,4 @@
 .signup-modal button:focus-visible {
   color: var(--text-black);
   background: transparent;
-}
-
-@media (max-width: 520px) {
-  .signup-page {
-    align-items: flex-start;
-    padding-top: 32px;
-  }
-
-  .signup-modal {
-    padding: 28px 20px;
-    box-shadow: 6px 6px 0 var(--text-black);
-  }
-
-  .signup-modal h2 {
-    font-size: 28px;
-  }
 }

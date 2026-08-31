@@ -15,11 +15,11 @@ export default function BaseDadosTable({ title, items }) {
           <th>{title}</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="row g-0">
         {rows.map((types, index) => (
           <tr key={index} className="table-basedados-row">
             {types.map((type) => (
-              <td key={type}>
+              <td key={type} className="col-12 col-sm-6 col-md-4">
                 <Link to={`/basededados/${title.toLowerCase()}/${type}`}>
                   {type}
                 </Link>

@@ -1,9 +1,10 @@
 .fornecedores-detail-table {
   width: 100%;
+  min-width: 640px;
   table-layout: fixed;
   border-collapse: collapse;
   background-image: url(/gradients/baseDados-fornecedores_center.svg);
-  background-size: 100%;
+  background-size: clamp(100%, 90vw, 190%);
   background-repeat: no-repeat;
   background-position: center center;
 }

@@ -15,13 +15,12 @@ export default function PlusButton({ children, to }) {
   }
 
   return (
-    <div class="button-center">
+    <div className="button-center d-flex justify-content-center py-4 py-sm-5">
       <button
         className={`plus-button ${isOpen ? "open" : ""}`}
         onClick={handleClick}
       >
         <img
-          width="100px"
           className="plus-icon"
           src={isOpen ? "/minus.svg" : "/plus.svg"}
           alt={isOpen ? "Close" : "Open"}

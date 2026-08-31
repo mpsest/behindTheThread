@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SquareButton from './SquareButton.jsx';
+import SquareButton from "../SquareButton.jsx";
 import './MisturasForm.css';
 
 const AREAS = [
@@ -58,10 +58,10 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form__field">
         <label>Regime</label>
-        <div className="collab-form__pills">
-          <button type="button" className={`pill ${formData.regime === 'presencial' ? 'pill--selected' : ''}`}
+        <div className="collab-form__pills row g-2">
+          <button type="button" className={`pill col-6 col-sm-auto ${formData.regime === 'presencial' ? 'pill--selected' : ''}`}
             onClick={() => toggleRegime('presencial')}>Presencial</button>
-          <button type="button" className={`pill ${formData.regime === 'remoto' ? 'pill--selected' : ''}`}
+          <button type="button" className={`pill col-6 col-sm-auto ${formData.regime === 'remoto' ? 'pill--selected' : ''}`}
             onClick={() => toggleRegime('remoto')}>Remoto</button>
         </div>
       </div>
@@ -74,10 +74,10 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form__field">
         <label>Área</label>
-        <div className="collab-form__pills">
+        <div className="collab-form__pills row g-2">
           {AREAS.map((area) => (
             <button key={area} type="button"
-              className={`pill ${formData.area.includes(area) ? 'pill--selected' : ''}`}
+              className={`pill col-6 col-sm-auto ${formData.area.includes(area) ? 'pill--selected' : ''}`}
               onClick={() => toggleArea(area)}>
               {area}
             </button>

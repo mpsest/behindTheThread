@@ -2,7 +2,7 @@
   width: 100%;
   border-collapse: collapse;
   background-image: url(/gradients/baseDados-fornecedores_center.svg);
-  background-size: 100%;
+  background-size: clamp(100%, 90vw, 190%);
   background-repeat: no-repeat;
   background-position: center top;
 }
@@ -25,8 +25,8 @@
 }
 
 .base-dados-table tbody {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   border-top: 2px solid var(--text-black);
   border-left: 2px solid var(--text-black);
@@ -42,7 +42,6 @@
   border-bottom: 2px solid var(--text-black);
   text-align: center;
   box-sizing: border-box;
-  width: 100%;
   padding: 20px;
 }
 

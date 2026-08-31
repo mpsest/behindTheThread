@@ -1,7 +1,7 @@
 .page-basededados {
   /* Gradientes */
   background-image: url(/gradients/baseDados_center-top.svg);
-  background-size: 45%;
+  background-size: clamp(65%, 55vw, 120%);
   background-repeat: no-repeat;
   background-position: center top;
 }
@@ -10,23 +10,23 @@
   text-align: center;
   padding: 0 10% 0 10%;
   font-weight: 600;
-  font-size: 14px;
+  font-size: clamp(14px, 2vw, 16px);
 }
 
 .base-dados-page .second-p {
-  padding-bottom: 30px;
   border-bottom: 2px solid var(--text-black);
+  padding-bottom: 50px;
 }
 
 .base-dados-page .last-p {
-  font-size: 20px;
+  font-size: clamp(16px, 2.4vw, 20px);
   font-weight: 700;
   padding: 50px 30% 0 30%;
 }
 
 .base-dados-page .center-button {
   text-align: center;
-  padding: 10px 0 40px 0;
+  padding: 0px 0 40px 0;
 }
 
 /* .section-fornecedores {

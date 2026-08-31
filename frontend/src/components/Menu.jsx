@@ -21,7 +21,7 @@ export default function Menu() {
       <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Menu
       </button>
-      <ul className="dropdown-menu">
+      <ul className="dropdown-menu justify-content-start justify-content-md-center pt-5 pt-md-0">
         <li>
           <a className="dropdown-item" href="#">
             DIRTY TALKS

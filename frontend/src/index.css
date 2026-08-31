@@ -249,5 +249,22 @@
 :root {
   --text-black: #1e1e1e;
   --bg: #fef0cf;
-  --header-height: 90px;
+  --header-height: clamp(68px, 8vw, 90px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  max-width: 100%;
 }

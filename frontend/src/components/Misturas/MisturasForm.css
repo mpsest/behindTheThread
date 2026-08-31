@@ -42,7 +42,6 @@
 .collab-form__pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
 .pill {
@@ -53,7 +52,9 @@
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .pill:hover {

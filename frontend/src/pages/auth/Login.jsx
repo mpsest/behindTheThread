@@ -28,8 +28,8 @@ export default function LoginForm() {
   }
 
   return (
-    <section className="login-page">
-      <form className="login-modal" onSubmit={handleLogin}>
+    <section className="login-page d-flex align-items-start align-items-sm-center justify-content-center px-3 px-sm-4 py-4 py-sm-5">
+      <form className="login-modal p-4 p-sm-5" onSubmit={handleLogin}>
         <h2>LOGIN</h2>
         <div className="control-row">
           <div className="control no-margin">

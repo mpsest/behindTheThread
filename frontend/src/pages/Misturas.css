@@ -1,0 +1,16 @@
+.page-misturas {
+  /* Gradientes */
+  background-image: url(/gradients/misturas-center-top.svg);
+  background-size: clamp(100%, 90vw, 180%);
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.page-misturas p {
+  text-align: center;
+  padding: 0 10% 0 10%;
+  font-weight: 600;
+  font-size: clamp(14px, 2vw, 16px);
+  border-bottom: 2px solid var(--text-black);
+  padding-bottom: 50px;
+}

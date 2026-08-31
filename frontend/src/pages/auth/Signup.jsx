@@ -38,8 +38,8 @@ export default function Signup() {
   }
 
   return (
-    <section className="signup-page">
-      <form className="signup-modal" onSubmit={registUser}>
+    <section className="signup-page d-flex align-items-start align-items-sm-center justify-content-center px-3 px-sm-4 py-4 py-sm-5">
+      <form className="signup-modal p-4 p-sm-5" onSubmit={registUser}>
         <h2>Criar conta de administrador</h2>
 
         <div className="control-row">

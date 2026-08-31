@@ -1,9 +1,5 @@
 .error-page {
   min-height: calc(100vh - var(--header-height, 90px));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 20px;
   box-sizing: border-box;
   background-image: url(/gradients/menu_left_bottom.svg);
   background-size: 40%;
@@ -13,12 +9,12 @@
 
 .error-modal {
   width: min(100%, 460px);
-  padding: 40px;
   box-sizing: border-box;
   text-align: center;
   background: var(--bg);
   border: 2px solid var(--text-black);
-  box-shadow: 10px 10px 0 var(--text-black);
+  box-shadow: clamp(6px, 1.4vw, 10px) clamp(6px, 1.4vw, 10px) 0
+    var(--text-black);
 }
 
 .error-modal h2 {
@@ -56,20 +52,4 @@
 .error-modal a:focus-visible {
   color: var(--text-black);
   background: transparent;
-}
-
-@media (max-width: 520px) {
-  .error-page {
-    align-items: flex-start;
-    padding-top: 32px;
-  }
-
-  .error-modal {
-    padding: 28px 20px;
-    box-shadow: 6px 6px 0 var(--text-black);
-  }
-
-  .error-modal h2 {
-    font-size: 28px;
-  }
 }

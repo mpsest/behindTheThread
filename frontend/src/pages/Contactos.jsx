@@ -43,9 +43,9 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="contact-page">
-      <div className="contact-page__info">
-        <div className="contact-page__row">
+    <main className="contact-page d-flex flex-column flex-lg-row justify-content-lg-between gap-4 gap-lg-5 px-3 px-md-4 py-4 py-md-5">
+      <div className="contact-page__info d-flex flex-column gap-4">
+        <div className="contact-page__row d-flex flex-column flex-md-row gap-2 gap-md-4">
           <span className="contact-page__label">Contactos</span>
           <div className="contact-page__contacts">
             <a href="tel:+351917817418">+351 917 817 418</a>
@@ -55,9 +55,9 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="contact-page__row">
+        <div className="contact-page__row d-flex flex-column flex-md-row gap-2 gap-md-4">
           <span className="contact-page__label">Créditos</span>
-          <div className="contact-page__credits">
+          <div className="contact-page__credits d-flex flex-wrap gap-4">
             <div className="contact-page__credits-col">
               <h4>Designers e developers</h4>
               <ul>
@@ -73,9 +73,9 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="contact-page__row">
+        <div className="contact-page__row d-flex flex-column flex-md-row gap-2 gap-md-4">
           <span className="contact-page__label">Redes sociais</span>
-          <div className="contact-page__socials">
+          <div className="contact-page__socials d-flex flex-wrap gap-3 gap-md-4">
             {SOCIALS.map((social) => (
               <a
                 key={social.name}
@@ -90,7 +90,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div className="contact-page__form">
+      <div className="contact-page__form w-100">
         <ContactForm onSubmit={handleSubmit} />
       </div>
     </main>

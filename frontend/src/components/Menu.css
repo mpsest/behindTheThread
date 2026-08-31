@@ -18,7 +18,7 @@ body.dropdown-open {
   /*Gradientes*/
   background-image:
     url(/gradients/menu_right-top.svg), url(/gradients/menu_left_bottom.svg);
-  background-size: 60%, 20%;
+  background-size: min(120%, 85vw), min(45%, 25vw);
   background-repeat: no-repeat;
   background-position:
     right top,
@@ -34,7 +34,7 @@ body.dropdown-open {
 }
 
 .dropdown-menu li a {
-  font-size: 44px;
+  font-size: clamp(28px, 6vw, 44px);
 }
 
 .dropdown-menu li a:hover {

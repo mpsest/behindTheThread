@@ -7,8 +7,9 @@
   position: relative;
 }
 
+/* Corrigir para componente PageTitle*/
 .misturas-page__title {
-  font-size: 56px;
+  font-size: clamp(32px, 7vw, 56px);
   font-weight: 900;
   letter-spacing: 0.05em;
   color: #1a1a1a;

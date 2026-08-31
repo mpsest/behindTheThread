@@ -1,5 +1,5 @@
-import MisturasForm from '../components/MisturasForm.jsx';
-import './NovaMistura.css';
+import MisturasForm from "../components/Misturas/MisturasForm.jsx";
+import "./NovaMistura.css";
 
 export default function NewMisturasPage() {
   function handleSubmit(formData) {
@@ -9,11 +9,11 @@ export default function NewMisturasPage() {
 
   return (
     <main className="misturas-page">
-      <header className="misturas-page__hero">
+      <header className="misturas-page__hero px-3 px-md-4 py-4 py-md-5">
         <h1 className="misturas-page__title">MISTURAS</h1>
 
         <hr />
-        <p className="misturas-page__intro">
+        <p className="misturas-page__intro mx-auto">
           A página Misturas tem o intuito de ser um lugar onde os colaboradores florescem
           e ganham vida. Se tens um projeto em mente, uma ideia que gostarias de explorar
           e não tens a know-how necessária ou procuras simplesmente uma nova colaboração
@@ -31,7 +31,7 @@ export default function NewMisturasPage() {
 
       </header>
 
-      <section className="misturas-page__form-section">
+      <section className="misturas-page__form-section d-flex justify-content-center px-3 px-md-4 py-4 py-md-5">
         <MisturasForm onSubmit={handleSubmit} />
       </section>
     </main>
