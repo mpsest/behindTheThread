@@ -7,8 +7,9 @@ import Dashboard from "./pages/auth/dashboard.jsx";
 import Misturas from "./pages/Misturas.jsx";
 import Signup from "./pages/auth/signup.jsx";
 import Login from "./pages/auth/login.jsx";
-import Error from "./pages/Error.jsx";
-import Contacts from "./pages/Contacts.jsx";
+import Error from "./pages/Erro.jsx";
+import Contactos from "./pages/Contactos.jsx";
+import NovaMistura from "./pages/NovaMistura.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,9 +20,10 @@ function App() {
       children: [
         { path: "/dashboard", element: <Dashboard /> },
         { path: "/misturas", element: <Misturas /> },
+        { path: "/novamistura", element: <NovaMistura /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
-        { path: "/contacts", element: <Contacts /> },
+        { path: "/contactos", element: <Contactos /> },
       ],
     },
   ]);

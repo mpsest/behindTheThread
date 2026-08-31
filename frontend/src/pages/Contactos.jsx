@@ -1,30 +1,30 @@
 import ContactForm from '../components/ContactForm';
-import './Contacts.css';
+import './Contactos.css';
 
-const EQUIPA = [
-  { nome: 'Bárbara Cruz', papel: 'Developer', email: 'cruzbarba95@gmail.com' },
-  { nome: 'Beatriz Miranda', papel: 'Designer', email: 'beatrizmiranda2901@gmail.com' },
-  { nome: 'Filipe Cruz', papel: 'Developer', email: 'inf.fcruz@gmail.com' },
-  { nome: 'Francisco Brito', papel: 'Designer', email: 'franciscobritofb8@gmail.com' },
-  { nome: 'Paula Esteves', papel: 'Developer', email: 'mpsest6@gmail.com' },
+const TEAM = [
+  { name: 'Bárbara Cruz', role: 'Developer', email: 'cruzbarba95@gmail.com' },
+  { name: 'Beatriz Miranda', role: 'Designer', email: 'beatrizmiranda2901@gmail.com' },
+  { name: 'Filipe Cruz', role: 'Developer', email: 'inf.fcruz@gmail.com' },
+  { name: 'Francisco Brito', role: 'Designer', email: 'franciscobritofb8@gmail.com' },
+  { name: 'Paula Esteves', role: 'Developer', email: 'mpsest6@gmail.com' },
 ];
 
-const TIPOGRAFIAS = [
+const TYPOGRAPHY = [
   'Basteleur desenvolvida por Keussel',
   'Avara desenvolvida por Raphaël Bastide, com contribuição de Wei Huang, Lucas Le Bihan, Walid Bouchouchi, Jérémy Landes',
   'Terminal Grotesque desenvolvida por Raphaël Bastide, com contribuição de Jérémy Landes',
   'Fungal desenvolvida por Raphaël Bastide e Jérémy Landes',
 ];
 
-const REDES = [
-  { nome: 'Instagram', url: 'https://instagram.com' },
-  { nome: 'TikTok', url: 'https://tiktok.com' },
-  { nome: 'YouTube', url: 'https://youtube.com' },
+const SOCIALS = [
+  { name: 'Instagram', url: 'https://instagram.com' },
+  { name: 'TikTok', url: 'https://tiktok.com' },
+  { name: 'YouTube', url: 'https://youtube.com' },
 ];
 
 export default function ContactPage() {
-  function handleSubmit(dados) {
-    console.log(dados);
+  function handleSubmit(data) {
+    console.log(data);
     // fetch/axios para a API Laravel aqui
   }
 
@@ -45,11 +45,11 @@ export default function ContactPage() {
             <div className="contact-page__credits-col">
               <h4>Designers e developers</h4>
               <ul>
-                {EQUIPA.map((pessoa) => (
-                  <li key={pessoa.email}>
-                    {pessoa.nome}, {pessoa.papel}
+                {TEAM.map((person) => (
+                  <li key={person.email}>
+                    {person.name}, {person.role}
                     <br />
-                    <a href={`mailto:${pessoa.email}`}>{pessoa.email}</a>
+                    <a href={`mailto:${person.email}`}>{person.email}</a>
                   </li>
                 ))}
               </ul>
@@ -58,8 +58,8 @@ export default function ContactPage() {
             <div className="contact-page__credits-col">
               <h4>Tipografias</h4>
               <ul className="contact-page__typefaces">
-                {TIPOGRAFIAS.map((linha) => (
-                  <li key={linha}>{linha}</li>
+                {TYPOGRAPHY.map((line) => (
+                  <li key={line}>{line}</li>
                 ))}
               </ul>
             </div>
@@ -69,9 +69,9 @@ export default function ContactPage() {
         <div className="contact-page__row">
           <span className="contact-page__label">Redes sociais</span>
           <div className="contact-page__socials">
-            {REDES.map((rede) => (
-              <a key={rede.nome} href={rede.url} target="_blank" rel="noreferrer">
-                {rede.nome}
+            {SOCIALS.map((social) => (
+              <a key={social.name} href={social.url} target="_blank" rel="noreferrer">
+                {social.name}
               </a>
             ))}
           </div>
