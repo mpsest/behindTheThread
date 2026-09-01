@@ -10,18 +10,19 @@ class ArtigoController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(Artigo::with(['imagens', 'keywords'])->get());
+        return response()->json(Artigo::with(['keywords'])->get());
     }
 
     public function show(int $id): JsonResponse
     {
-        return response()->json(Artigo::with(['imagens', 'keywords'])->findOrFail($id));
+        return response()->json(Artigo::with(['keywords'])->findOrFail($id));
     }
 
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
+            'imagem' => ['nullable', 'string', 'max:255'],
             'texto' => ['nullable', 'string'],
         ]);
         return response()->json(Artigo::create($data), 201);
@@ -32,6 +33,7 @@ class ArtigoController extends Controller
         $artigo = Artigo::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
+            'imagem' => ['nullable', 'string', 'max:255'],
             'texto' => ['nullable', 'string'],
         ]);
         $artigo->update($data);
@@ -42,14 +44,6 @@ class ArtigoController extends Controller
     {
         Artigo::findOrFail($id)->delete();
         return response()->json(['message' => 'Artigo apagado com sucesso.']);
-    }
-
-    public function syncImagens(Request $request, int $id): JsonResponse
-    {
-        $artigo = Artigo::findOrFail($id);
-        $data = $request->validate(['imagem_ids' => ['required', 'array'], 'imagem_ids.*' => ['integer', 'exists:imagens,id']]);
-        $artigo->imagens()->sync($data['imagem_ids']);
-        return response()->json($artigo->load('imagens'));
     }
 
     public function syncKeywords(Request $request, int $id): JsonResponse

@@ -10,18 +10,19 @@ class DesignerController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(Designer::with(['imagens', 'keywords'])->get());
+        return response()->json(Designer::with(['keywords'])->get());
     }
 
     public function show(int $id): JsonResponse
     {
-        return response()->json(Designer::with(['imagens', 'keywords'])->findOrFail($id));
+        return response()->json(Designer::with(['keywords'])->findOrFail($id));
     }
 
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
+            'imagem' => ['nullable', 'string', 'max:255'],
             'texto' => ['nullable', 'string'],
         ]);
         return response()->json(Designer::create($data), 201);
@@ -32,6 +33,7 @@ class DesignerController extends Controller
         $designer = Designer::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
+            'imagem' => ['nullable', 'string', 'max:255'],
             'texto' => ['nullable', 'string'],
         ]);
         $designer->update($data);
@@ -42,14 +44,6 @@ class DesignerController extends Controller
     {
         Designer::findOrFail($id)->delete();
         return response()->json(['message' => 'Designer apagado com sucesso.']);
-    }
-
-    public function syncImagens(Request $request, int $id): JsonResponse
-    {
-        $designer = Designer::findOrFail($id);
-        $data = $request->validate(['imagem_ids' => ['required', 'array'], 'imagem_ids.*' => ['integer', 'exists:imagens,id']]);
-        $designer->imagens()->sync($data['imagem_ids']);
-        return response()->json($designer->load('imagens'));
     }
 
     public function syncKeywords(Request $request, int $id): JsonResponse
