@@ -6,25 +6,14 @@
   background-position: center top;
 }
 
-.base-dados-page p {
-  text-align: center;
-  padding: 0 10% 0 10%;
-  font-weight: 600;
-  font-size: clamp(14px, 2vw, 16px);
-}
-
-.base-dados-page .second-p {
-  border-bottom: 2px solid var(--text-black);
-  padding-bottom: 50px;
-}
-
-.base-dados-page .last-p {
+.page-basededados .last-p {
   font-size: clamp(16px, 2.4vw, 20px);
   font-weight: 700;
   padding: 50px 30% 0 30%;
+  text-align: center;
 }
 
-.base-dados-page .center-button {
+.page-basededados .center-button {
   text-align: center;
   padding: 0px 0 40px 0;
 }

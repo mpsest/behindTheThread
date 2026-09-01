@@ -3,4 +3,12 @@
   text-align: center;
   font-size: clamp(32px, 7vw, 55px);
   width: 100%;
+  border-bottom: 2px solid var(--text-black);
+}
+.page-title p {
+  font-family: "Lexend";
+  text-align: center;
+  padding: 20px 50px 20px 30px;
+  font-weight: 600;
+  font-size: 16px;
 }

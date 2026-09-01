@@ -18,13 +18,6 @@ const TEAM = [
   { name: "Paula Esteves", role: "Developer", email: "mpsest6@gmail.com" },
 ];
 
-const TYPOGRAPHY = [
-  "Basteleur desenvolvida por Keussel",
-  "Avara desenvolvida por Raphaël Bastide, com contribuição de Wei Huang, Lucas Le Bihan, Walid Bouchouchi, Jérémy Landes",
-  "Terminal Grotesque desenvolvida por Raphaël Bastide, com contribuição de Jérémy Landes",
-  "Fungal desenvolvida por Raphaël Bastide e Jérémy Landes",
-];
-
 const SOCIALS = [
   { name: "Instagram", url: "https://www.instagram.com/behindthethread/" },
   {
@@ -33,7 +26,7 @@ const SOCIALS = [
   },
   {
     name: "YouTube",
-    url: " https://youtube.com/@behindthethread-k4c?si=_9ktsywN39_XD9hW",
+    url: "https://youtube.com/@behindthethread-k4c?si=_9ktsywN39_XD9hW",
   },
 ];
 
@@ -44,41 +37,42 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="contact-page px-3 px-md-4 py-4 py-md-5">
-      <PageTitle>CONTACTOS</PageTitle>
-      <div className="d-flex flex-column flex-lg-row justify-content-lg-between gap-4 gap-lg-5">
-        <div className="contact-page__info d-flex flex-column gap-4">
-          <div className="contact-page__row d-flex flex-column flex-md-row gap-2 gap-md-4">
-            <span className="contact-page__label">Contactos</span>
-            <div className="contact-page__contacts">
+    <div className="contactos-page container-fluid px-0">
+      <PageTitle>
+        CONTACTOS
+        <div className="mb-3"></div>
+      </PageTitle>
+      <div className="contactos-content px-3 px-md-5 py-4 py-md-5">
+        <div className="contactos-info">
+          <section className="contactos-section">
+            <h2>Contactos</h2>
+            <div className="contactos-links">
               <a href="tel:+351917817418">+351 917 817 418</a>
               <a href="mailto:behindthethreadd@gmail.com">
                 behindthethreadd@gmail.com
               </a>
             </div>
-          </div>
+          </section>
 
-          <div className="contact-page__row d-flex flex-column flex-md-row gap-2 gap-md-4">
-            <span className="contact-page__label">Créditos</span>
-            <div className="contact-page__credits d-flex flex-wrap gap-4">
-              <div className="contact-page__credits-col">
-                <h4>Designers e developers</h4>
-                <ul>
-                  {TEAM.map((person) => (
-                    <li key={person.email}>
-                      {person.name}, {person.role}
-                      <br />
-                      <a href={`mailto:${person.email}`}>{person.email}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+          <section className="contactos-section">
+            <h2>Créditos</h2>
+            <ul className="contactos-credits">
+              <li className="subtitle">
+                DESIGNERS E <br /> DEVELOPERS
+              </li>
+              {TEAM.map((person) => (
+                <li key={person.email}>
+                  {person.name}, {person.role}
+                  <br />
+                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-          <div className="contact-page__row d-flex flex-column flex-md-row gap-2 gap-md-4">
-            <span className="contact-page__label">Redes sociais</span>
-            <div className="contact-page__socials d-flex flex-wrap gap-3 gap-md-4">
+          <section className="contactos-section">
+            <h2>Redes sociais</h2>
+            <div className="contactos-socials">
               {SOCIALS.map((social) => (
                 <a
                   key={social.name}
@@ -90,13 +84,13 @@ export default function ContactPage() {
                 </a>
               ))}
             </div>
-          </div>
+          </section>
         </div>
 
-        <div className="contact-page__form">
+        <div className="contactos-form">
           <ContactForm onSubmit={handleSubmit} />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

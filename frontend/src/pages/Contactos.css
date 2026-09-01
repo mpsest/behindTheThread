@@ -10,58 +10,54 @@
   background-image: none;
 }
 
-.contact-page {
-  width: 100%;
+.contactos-content {
+  display: flex;
+  gap: clamp(32px, 6vw, 80px);
+  justify-content: space-between;
 }
 
-.contact-page__info {
+.contactos-info {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 32px;
-  flex: 1 1 auto;
   min-width: 0;
 }
 
-.contact-page__row {
-  display: flex;
+.contactos-section {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
   gap: 24px;
 }
 
-.contact-page__label {
-  width: 100px;
+.contactos-section h2 {
+  margin: 0;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-.contact-page__contacts {
+.contactos-links,
+.contactos-socials {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  text-transform: uppercase;
 }
 
-.contact-page__contacts a {
+.contactos-links {
+  flex-direction: column;
+}
+
+.contactos-links a {
   font-size: clamp(18px, 3vw, 28px);
   font-weight: 700;
-  color: #1a1a1a;
-  text-decoration: none;
   overflow-wrap: break-word;
+  line-height: 1.1;
 }
 
-.contact-page__credits {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.contact-page__credits-col h4 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.contact-page__credits-col ul {
+.contactos-credits {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -71,28 +67,47 @@
   font-size: 13px;
 }
 
-.contact-page__credits-col a {
-  color: #1a1a1a;
+.page-contactos .subtitle {
+  font-size: 30px;
+  font-weight: 500;
+  padding: 0 30px 0 0;
+  line-height: 1.1;
+}
+
+.contactos-socials a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-black);
+}
+
+.contactos-socials a:hover {
+  font-size: 13px;
+  color: var(--text-black);
   text-decoration: underline;
 }
 
-.contact-page__typefaces li {
-  margin-bottom: 10px;
-  max-width: 260px;
+.contactos-page a {
+  color: var(--text-black);
 }
 
-.contact-page__socials {
-  display: flex;
-  gap: 20px;
-}
-
-.contact-page__socials a {
-  font-size: 13px;
-  font-weight: 700;
-  color: #1a1a1a;
+.contactos-links a,
+.contactos-socials a {
   text-decoration: none;
 }
 
-.contact-page__form {
+.contactos-form {
   width: min(100%, 460px);
+}
+
+@media (max-width: 991.98px) {
+  .contactos-content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contactos-section {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }

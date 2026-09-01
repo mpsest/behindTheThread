@@ -2,6 +2,14 @@ import { useState } from "react";
 import "./ContactForm.css";
 import SquareButton from "./SquareButton.jsx";
 
+const FIELDS = [
+  { id: "name", label: "Nome", type: "text" },
+  { id: "email", label: "Email", type: "email" },
+  { id: "phone", label: "Telemóvel", type: "tel" },
+  { id: "subject", label: "Assunto", type: "text" },
+  { id: "message", label: "Mensagem", type: "text" },
+];
+
 export default function ContactForm({ onSubmit }) {
   const [form, setForm] = useState({
     name: "",
@@ -22,64 +30,20 @@ export default function ContactForm({ onSubmit }) {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="contact-form__field">
-        <label htmlFor="name">Nome</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value={form.name}
-          onChange={handleChange}
-        />
-      </div>
+      {FIELDS.map(({ id, label, type }) => (
+        <label key={id} htmlFor={id}>
+          {label}
+          <input
+            id={id}
+            name={id}
+            type={type}
+            value={form[id]}
+            onChange={handleChange}
+          />
+        </label>
+      ))}
 
-      <div className="contact-form__field">
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className="contact-form__field">
-        <label htmlFor="phone">Telemóvel</label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          value={form.phone}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className="contact-form__field">
-        <label htmlFor="subject">Assunto</label>
-        <input
-          id="subject"
-          name="subject"
-          type="text"
-          value={form.subject}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className="contact-form__field">
-        <label htmlFor="message">Mensagem</label>
-        <input
-          id="message"
-          name="message"
-          type="text"
-          value={form.message}
-          onChange={handleChange}
-        />
-      </div>
-
-      <SquareButton variant="dark" onClick={handleSubmit}>
-        Enviar
-      </SquareButton>
+      <SquareButton variant="dark">Enviar</SquareButton>
     </form>
   );
 }
