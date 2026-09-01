@@ -1,0 +1,93 @@
+.users-page {
+  padding: 40px;
+}
+
+.users-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.users-page__header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.users-page__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-page__table th,
+.users-page__table td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 2px solid #1a1a1a;
+  font-size: 14px;
+}
+
+.users-page__table th {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.users-page__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.users-page__modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.users-page__form {
+  background: #f5e6c8;
+  border: 3px solid #1a1a1a;
+  padding: 32px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.users-page__form h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.users-page__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.users-page__field label {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.users-page__field input {
+  border: none;
+  border-bottom: 2px solid #1a1a1a;
+  background: transparent;
+  padding: 4px 0 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.users-page__form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}

@@ -18,8 +18,8 @@ const TYPOGRAPHY = [
 
 const SOCIALS = [
   { name: 'Instagram', url: 'https://instagram.com' },
-  { name: 'TikTok', url: 'https://tiktok.com' },
-  { name: 'YouTube', url: 'https://youtube.com' },
+  { name: 'TikTok', url: 'https://https://www.tiktok.com/@behind.the.thread8?_r=1&_t=ZN-99JfMe4wKQA.com' },
+  { name: 'YouTube', url: 'https://https://youtube.com/@behindthethread-k4c?si=_9ktsywN39_XD9hW.com' },
 ];
 
 export default function ContactPage() {
@@ -35,7 +35,7 @@ export default function ContactPage() {
           <span className="contact-page__label">Contactos</span>
           <div className="contact-page__contacts">
             <a href="tel:+351917817418">+351 917 817 418</a>
-            <a href="mailto:behindthethread@gmail.com">behindthethread@gmail.com</a>
+            <a href="mailto:behindthethreadd@gmail.com">behindthethreadd@gmail.com</a>
           </div>
         </div>
 

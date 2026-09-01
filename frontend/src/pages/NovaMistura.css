@@ -1,13 +1,13 @@
-.misturas-page {
-}
+
 
 .misturas-page__hero {
   padding: 48px 40px 40px;
   text-align: center;
   position: relative;
+  border-bottom: 2px solid black;
 }
 
-.misturas-page__title {
+/* .misturas-page__title {
   font-size: 56px;
   font-weight: 900;
   letter-spacing: 0.05em;
@@ -15,7 +15,7 @@
   -webkit-text-stroke: 1.5px #1a1a1a;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
   margin: 0 0 20px;
-}
+} */
 
 .misturas-page__intro {
   max-width: 640px;
@@ -23,6 +23,13 @@
   font-size: 14px;
   line-height: 1.6;
   color: #1a1a1a;
+    font-family: "Lexend", system-ui, sans-serif;
+}
+
+.misturas-page__plus {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
 }
 
 .misturas-page__form-section {

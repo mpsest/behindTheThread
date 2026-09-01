@@ -246,6 +246,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Outfit";
+  src: url("/typography/Outfit-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --text-black: #1e1e1e;
   --bg: #fef0cf;

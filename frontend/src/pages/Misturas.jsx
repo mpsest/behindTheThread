@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import PlusButton from "../components/PlusButton.jsx";
 import TextEditor from "../components/TextEditor.jsx";
 
@@ -9,7 +10,11 @@ export default function Misturas() {
       <h1>Misturas</h1>
 
       <p>Welcome to the Misturas page!</p>
-      <PlusButton to="/novamistura" />
+
+      <Link to="/misturas/novo">
+        <PlusButton />
+      </Link>
+
       <TextEditor value={editorContent} onChange={setEditorContent} />
       <div>
         <h2>Preview:</h2>
