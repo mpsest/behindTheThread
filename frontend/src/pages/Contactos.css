@@ -11,11 +11,7 @@
 }
 
 .contact-page {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 60px 40px;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .contact-page__info {
@@ -98,5 +94,5 @@
 }
 
 .contact-page__form {
-  width: min(100%, 320px);
+  width: min(100%, 460px);
 }

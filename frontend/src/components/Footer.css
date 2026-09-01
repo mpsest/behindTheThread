@@ -1,6 +1,6 @@
 .site-footer {
   background-color: transparent;
-  border-top: 2px solid black;
+  border-top: 2px solid var(--text-black);
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -109,7 +109,7 @@
   margin-bottom: 0;
   background-color: transparent;
   border: 0 none transparent;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--text-black);
   padding: 4px 0;
 }
 

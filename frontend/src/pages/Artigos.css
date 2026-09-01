@@ -1,0 +1,7 @@
+.page-artigos {
+  /* Gradientes */
+  background-image: url(/gradients/artigos_center-top.svg);
+  background-size: clamp(50%, 50vw, 90%);
+  background-repeat: no-repeat;
+  background-position: center top;
+}

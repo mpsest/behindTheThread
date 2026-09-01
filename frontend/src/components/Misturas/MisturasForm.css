@@ -26,7 +26,7 @@
   box-shadow: none;
   padding: 4px 0 8px;
   font-size: 14px;
-  color: #1a1a1a;
+  color: var(--text-black);
   outline: none;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .pill {
-  border: 2px solid #1a1a1a;
+  border: 2px solid var(--text-black);
   background: transparent;
   color: #1a1a1a;
   padding: 8px 16px;
@@ -62,8 +62,8 @@
 }
 
 .pill--selected {
-  background-color: #1a1a1a;
-  color: #f5e6c8;
+  background-color: var(--text-black);
+  color: var(--bg);
 }
 
 .collab-form__submit {

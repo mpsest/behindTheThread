@@ -23,19 +23,19 @@ export default function Menu() {
       </button>
       <ul className="dropdown-menu justify-content-start justify-content-md-center pt-5 pt-md-0">
         <li>
-          <a className="dropdown-item" href="#">
+          <Link to="/dirtytalks" className="dropdown-item">
             DIRTY TALKS
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="dropdown-item" href="#">
+          <Link to="/artigos" className="dropdown-item">
             ARTIGOS
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="dropdown-item" href="#">
+          <Link to="/designers" className="dropdown-item">
             DESIGNERS
-          </a>
+          </Link>
         </li>
         <li>
           <Link to="/basededados" className="dropdown-item">
@@ -48,9 +48,9 @@ export default function Menu() {
           </Link>
         </li>
         <li>
-          <a className="dropdown-item" href="#">
+          <Link to="/contactos" className="dropdown-item">
             CONTACTOS
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

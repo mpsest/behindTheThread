@@ -4,7 +4,6 @@ import RootLayout from "./components/RootLayout.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import Dashboard from "./pages/auth/dashboard.jsx";
-import Misturas from "./pages/Misturas.jsx";
 import Signup from "./pages/auth/signup.jsx";
 import Login from "./pages/auth/login.jsx";
 import BaseDados from "./pages/BaseDados/BaseDados.jsx";
@@ -12,6 +11,10 @@ import FornecedoresDetail from "./pages/BaseDados/FornecedoresDetail.jsx";
 import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
 import Error from "./pages/Erro.jsx";
 import Contactos from "./pages/Contactos.jsx";
+import Artigos from "./pages/Artigos.jsx";
+import Designers from "./pages/Designers.jsx";
+import DirtyTalks from "./pages/DirtyTalks.jsx";
+import Misturas from "./pages/Misturas.jsx";
 import NovaMistura from "./pages/NovaMistura.jsx";
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
         { path: "/login", element: <Login /> },
         { path: "/contactos", element: <Contactos /> },
         { path: "/basededados", element: <BaseDados /> },
+        { path: "/artigos", element: <Artigos /> },
+        { path: "/dirtytalks", element: <DirtyTalks /> },
+        { path: "/designers", element: <Designers /> },
         {
           path: "/basededados/fornecedores/:type",
           element: <FornecedoresDetail />,

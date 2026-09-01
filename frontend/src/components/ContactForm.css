@@ -1,14 +1,14 @@
 .contact-form__field input {
   width: 100%;
   border: none;
-  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 2px solid var(--text-black);
   background: transparent;
   appearance: none;
   -webkit-appearance: none;
   box-shadow: none;
   padding: 4px 0 10px;
   font-size: 15px;
-  color: #1a1a1a;
+  color: var(--text-black);
   outline: none;
 }
 
@@ -22,6 +22,6 @@
 .contact-form__field input:-webkit-autofill:hover,
 .contact-form__field input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px transparent inset;
-  -webkit-text-fill-color: #1a1a1a;
+  -webkit-text-fill-color: var(--text-black);
   transition: background-color 9999s ease-in-out 0s;
 }

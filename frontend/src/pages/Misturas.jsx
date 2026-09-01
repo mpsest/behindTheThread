@@ -27,7 +27,7 @@ export default function Misturas() {
         <PlusButton />
       </Link>
 
-      {/* <TextEditor value={editorContent} onChange={setEditorContent} />
+      {/* NÃO APAGAR ISTO! <TextEditor value={editorContent} onChange={setEditorContent} />
       <div>
         <h2>Preview:</h2>
         <div dangerouslySetInnerHTML={{ __html: editorContent }} />

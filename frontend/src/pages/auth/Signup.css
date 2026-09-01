@@ -1,5 +1,9 @@
 .signup-page {
   min-height: calc(100vh - var(--header-height, 90px));
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   background-image: url(/gradients/signup_right-bottom.svg);
   background-size: clamp(40%, 45vw, 90%);

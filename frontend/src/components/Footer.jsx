@@ -5,7 +5,7 @@ import SquareButton from "./SquareButton.jsx";
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="container site-footer-content row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 align-items-start align-items-lg-center text-start text-lg-center mx-auto">
+      <div className="container site-footer-content row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 align-items-start align-items-lg-center text-start mx-auto">
         <Link to="/">
           <img
             src="/btt-footer.svg"

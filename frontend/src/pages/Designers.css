@@ -1,0 +1,7 @@
+.page-designers {
+  /* Gradientes */
+  background-image: url(/gradients/designers_left-top.svg);
+  background-size: clamp(30%, 70vw, 70%);
+  background-repeat: no-repeat;
+  background-position: left top;
+}

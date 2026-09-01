@@ -15,6 +15,7 @@ body.dropdown-open {
   flex-direction: column;
   justify-content: center;
   background-color: var(--bg);
+
   /*Gradientes*/
   background-image:
     url(/gradients/menu_right-top.svg), url(/gradients/menu_left_bottom.svg);
