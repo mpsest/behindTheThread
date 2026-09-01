@@ -8,13 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Designer extends Model
 {
     protected $table = 'designers';
-    protected $fillable = ['titulo', 'texto'];
+    protected $fillable = ['titulo', 'imagem', 'texto'];
     public $timestamps = false;
-
-    public function imagens(): BelongsToMany
-    {
-        return $this->belongsToMany(Imagem::class, 'designers_imagem', 'designer_id', 'imagem_id');
-    }
 
     public function keywords(): BelongsToMany
     {

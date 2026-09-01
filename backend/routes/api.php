@@ -20,15 +20,12 @@ Route::apiResource('utilizadores', UtilizadorController::class);
 Route::apiResource('newsletter', NewsletterController::class);
 
 Route::apiResource('dirty-talks', DirtyTalkController::class);
-Route::put('/dirty-talks/{id}/imagens', [DirtyTalkController::class, 'syncImagens']);
 Route::put('/dirty-talks/{id}/keywords', [DirtyTalkController::class, 'syncKeywords']);
 
 Route::apiResource('artigos', ArtigoController::class);
-Route::put('/artigos/{id}/imagens', [ArtigoController::class, 'syncImagens']);
 Route::put('/artigos/{id}/keywords', [ArtigoController::class, 'syncKeywords']);
 
 Route::apiResource('designers', DesignerController::class);
-Route::put('/designers/{id}/imagens', [DesignerController::class, 'syncImagens']);
 Route::put('/designers/{id}/keywords', [DesignerController::class, 'syncKeywords']);
 
 Route::apiResource('imagens', ImagemController::class);

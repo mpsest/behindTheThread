@@ -10,18 +10,19 @@ class DirtyTalkController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(DirtyTalk::with(['imagens', 'keywords'])->get());
+        return response()->json(DirtyTalk::with(['keywords'])->get());
     }
 
     public function show(int $id): JsonResponse
     {
-        return response()->json(DirtyTalk::with(['imagens', 'keywords'])->findOrFail($id));
+        return response()->json(DirtyTalk::with(['keywords'])->findOrFail($id));
     }
 
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
+            'imagem' => ['nullable', 'string', 'max:255'],
             'texto' => ['nullable', 'string'],
         ]);
         return response()->json(DirtyTalk::create($data), 201);
@@ -32,6 +33,7 @@ class DirtyTalkController extends Controller
         $dirtyTalk = DirtyTalk::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
+            'imagem' => ['nullable', 'string', 'max:255'],
             'texto' => ['nullable', 'string'],
         ]);
         $dirtyTalk->update($data);
@@ -42,14 +44,6 @@ class DirtyTalkController extends Controller
     {
         DirtyTalk::findOrFail($id)->delete();
         return response()->json(['message' => 'Dirty Talk apagado com sucesso.']);
-    }
-
-    public function syncImagens(Request $request, int $id): JsonResponse
-    {
-        $dirtyTalk = DirtyTalk::findOrFail($id);
-        $data = $request->validate(['imagem_ids' => ['required', 'array'], 'imagem_ids.*' => ['integer', 'exists:imagens,id']]);
-        $dirtyTalk->imagens()->sync($data['imagem_ids']);
-        return response()->json($dirtyTalk->load('imagens'));
     }
 
     public function syncKeywords(Request $request, int $id): JsonResponse
