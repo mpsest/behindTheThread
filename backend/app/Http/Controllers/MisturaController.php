@@ -15,6 +15,13 @@ class MisturaController extends Controller
         );
     }
 
+    public function indexLatest(): JsonResponse
+    {
+        return response()->json(
+            Mistura::latest()->limit(3)->get()
+        );
+    }
+
     public function show(int $id): JsonResponse
     {
         return response()->json(
