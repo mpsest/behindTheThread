@@ -9,7 +9,7 @@ import Login from "./pages/auth/login.jsx";
 import BaseDados from "./pages/BaseDados/BaseDados.jsx";
 import FornecedoresDetail from "./pages/BaseDados/FornecedoresDetail.jsx";
 import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
-import Error from "./pages/Erro.jsx";
+import Error from "./pages/Error.jsx";
 import Contactos from "./pages/Contactos.jsx";
 import Artigos from "./pages/Artigos/Artigos.jsx";
 import Designers from "./pages/Designers.jsx";
@@ -18,6 +18,7 @@ import Misturas from "./pages/Misturas/Misturas.jsx";
 import NovaMistura from "./pages/Misturas/NovaMistura.jsx";
 import MisturasDetail from "./pages/Misturas/MisturasDetail.jsx";
 import NovoArtigo from "./pages/Dashboard/NovoArtigo.jsx";
+import Users from "./pages/auth/Users.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +43,7 @@ function App() {
         { path: "/artigos/novo", element: <NovoArtigo /> },
         { path: "/dirtytalks", element: <DirtyTalks /> },
         { path: "/designers", element: <Designers /> },
+        { path: "/users", element: <Users /> },
         {
           path: "/basededados/fornecedores/:type",
           element: <FornecedoresDetail />,

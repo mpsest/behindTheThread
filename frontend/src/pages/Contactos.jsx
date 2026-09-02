@@ -37,12 +37,12 @@ export default function ContactPage() {
   }
 
   return (
+
     <div className="contactos-page container-fluid px-0">
       <PageTitle>
         CONTACTOS
         <div className="mb-3"></div>
       </PageTitle>
-      <div className="contactos-content px-3 px-md-5 py-4 py-md-5">
         <div className="contactos-info">
           <section className="contactos-section">
             <h2>Contactos</h2>
@@ -52,10 +52,12 @@ export default function ContactPage() {
                 behindthethreadd@gmail.com
               </a>
             </div>
-          </section>
 
-          <section className="contactos-section">
-            <h2>Créditos</h2>
+    <main className="contact-page">
+      <div className="contact-page__info">
+        <div className="contact-page__row">
+          <span className="contact-page__label">Contactos</span>
+          <div className="contact-page__contacts">
             <ul className="contactos-credits">
               <li className="subtitle">
                 DESIGNERS E <br /> DEVELOPERS

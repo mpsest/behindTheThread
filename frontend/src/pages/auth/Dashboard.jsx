@@ -7,7 +7,14 @@ export default function Dashboard() {
       <PageTitle>DASHBOARD</PageTitle>
       <h4>Olá, !</h4>
 
-      <Link to="/signup">Criar administrador</Link>
-    </div>
-  );
-}
+    return (
+        <div>
+            <h1>Dashboard</h1>
+            <p>Welcome to the dashboard!</p>
+
+           <Link to="/users">Gestão de Utilizadores</Link> 
+
+
+        </div>
+    )
+};

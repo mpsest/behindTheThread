@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PlusButton.css";
 
-export default function PlusButton({ children, to }) {
+export default function PlusButton({ children, to, active = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -13,6 +13,8 @@ export default function PlusButton({ children, to }) {
     }
     setIsOpen(!isOpen);
   }
+
+  const showMinus = active || isOpen;
 
   return (
     <div className="button-center d-flex justify-content-center py-4 py-sm-5">
