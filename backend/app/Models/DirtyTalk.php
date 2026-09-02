@@ -9,7 +9,6 @@ class DirtyTalk extends Model
 {
     protected $table = 'dirty_talks';
     protected $fillable = ['titulo', 'imagem', 'texto'];
-    public $timestamps = false;
 
     public function keywords(): BelongsToMany
     {

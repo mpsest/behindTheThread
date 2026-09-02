@@ -9,7 +9,6 @@ class Artigo extends Model
 {
     protected $table = 'artigos';
     protected $fillable = ['titulo', 'imagem', 'texto'];
-    public $timestamps = false;
 
     public function keywords(): BelongsToMany
     {
