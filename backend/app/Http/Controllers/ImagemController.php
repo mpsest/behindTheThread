@@ -15,7 +15,7 @@ class ImagemController extends Controller
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
-            'url' => ['required', 'string', 'max:255'],
+            'url' => ['required', 'url', 'max:255'],
         ]);
         return response()->json(Imagem::create($data), 201);
     }
@@ -24,7 +24,7 @@ class ImagemController extends Controller
     {
         $imagem = Imagem::findOrFail($id);
         $data = $request->validate([
-            'url' => ['required', 'string', 'max:255'],
+            'url' => ['required', 'url', 'max:255'],
         ]);
         $imagem->update($data);
         return response()->json($imagem);

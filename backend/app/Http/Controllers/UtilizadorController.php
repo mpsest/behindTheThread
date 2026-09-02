@@ -14,9 +14,14 @@ class UtilizadorController extends Controller
         return response()->json(User::where('user_type', User::TYPE_USER)->get());
     }
 
-    public function show(int $id): JsonResponse
+    public function show(Request $request, int $id): JsonResponse
     {
         $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
+
+        if ($request->user()->id !== $user->id) {
+            abort(403, 'Só pode ver os dados da sua própria conta.');
+        }
+
         return response()->json($user);
     }
 
@@ -35,12 +40,16 @@ class UtilizadorController extends Controller
             'user_type' => User::TYPE_USER,
         ]);
 
-        return response()->json($user, 201); //201 - Código para criado com sucesso, ex. 404
+        return response()->json($user, 201);
     }
 
     public function update(Request $request, int $id): JsonResponse
     {
         $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
+
+        if ($request->user()->id !== $user->id) {
+            abort(403, 'Só pode alterar os dados da sua própria conta.');
+        }
 
         $data = $request->validate([
             'name' => ['required', 'string', 'max:150'],

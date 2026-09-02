@@ -15,9 +15,9 @@ class ConteudoController extends Controller
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
-            'nome' => ['required', 'string', 'max:150'],
-            'descricao_breve' => ['nullable', 'string'],
-            'site' => ['nullable', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'max:255'],
+            'url' => ['nullable', 'url', 'max:255'],
+            'descricao' => ['nullable', 'string'],
         ]);
         return response()->json(Conteudo::create($data), 201);
     }
@@ -26,9 +26,9 @@ class ConteudoController extends Controller
     {
         $conteudo = Conteudo::findOrFail($id);
         $data = $request->validate([
-            'nome' => ['required', 'string', 'max:150'],
-            'descricao_breve' => ['nullable', 'string'],
-            'site' => ['nullable', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'max:255'],
+            'url' => ['nullable', 'url', 'max:255'],
+            'descricao' => ['nullable', 'string'],
         ]);
         $conteudo->update($data);
         return response()->json($conteudo);
