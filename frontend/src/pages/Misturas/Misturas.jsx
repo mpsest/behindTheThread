@@ -1,12 +1,9 @@
 import "./Misturas.css";
-import React, { useState } from "react";
-import PlusButton from "../components/PlusButton.jsx";
-import TextEditor from "../components/TextEditor.jsx";
+import PlusButton from "../../components/PlusButton.jsx";
 import { Link } from "react-router-dom";
-import PageTitle from "../components/PageTitle.jsx";
+import PageTitle from "../../components/PageTitle.jsx";
 
 export default function Misturas() {
-  const [editorContent, setEditorContent] = useState("");
   return (
     <div className="container-fluid px-0">
       <PageTitle>

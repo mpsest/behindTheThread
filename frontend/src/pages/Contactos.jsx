@@ -19,7 +19,7 @@ const TEAM = [
 ];
 
 const SOCIALS = [
-  { name: "Instagram", url: "https://www.instagram.com/behindthethread/" },
+  { name: "Instagram", url: "https://www.instagram.com/behindthe_thread/" },
   {
     name: "TikTok",
     url: "https://www.tiktok.com/@behind.the.thread8?_r=1&_t=ZN-99JfMe4wKQA",

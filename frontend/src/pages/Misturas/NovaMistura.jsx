@@ -1,4 +1,4 @@
-import MisturasForm from "../components/Misturas/MisturasForm.jsx";
+import MisturasForm from "../../components/Misturas/MisturasForm.jsx";
 import "./NovaMistura.css";
 
 export default function NewMisturasPage() {
@@ -14,11 +14,12 @@ export default function NewMisturasPage() {
 
         <hr />
         <p className="misturas-page__intro mx-auto">
-          A página Misturas tem o intuito de ser um lugar onde os colaboradores florescem
-          e ganham vida. Se tens um projeto em mente, uma ideia que gostarias de explorar
-          e não tens a know-how necessária ou procuras simplesmente uma nova colaboração
-          este é o lugar certo. Podes submeter a tua proposta de colaboração ao encontrar
-          uma proposta que faça sentido e embarcares num novo projeto.
+          A página Misturas tem o intuito de ser um lugar onde os colaboradores
+          florescem e ganham vida. Se tens um projeto em mente, uma ideia que
+          gostarias de explorar e não tens a know-how necessária ou procuras
+          simplesmente uma nova colaboração este é o lugar certo. Podes submeter
+          a tua proposta de colaboração ao encontrar uma proposta que faça
+          sentido e embarcares num novo projeto.
         </p>
 
         <hr />
@@ -28,7 +29,6 @@ export default function NewMisturasPage() {
         <hr />
 
         {/* TODO: botao plus */}
-
       </header>
 
       <section className="misturas-page__form-section d-flex justify-content-center px-3 px-md-4 py-4 py-md-5">

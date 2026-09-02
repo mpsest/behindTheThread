@@ -1,0 +1,205 @@
+.novo-artigo-page {
+  min-height: calc(100vh - var(--header-height, 90px));
+  color: var(--text-black);
+  background-image: url(/gradients/signup_right-bottom.svg);
+  background-size: clamp(40%, 45vw, 90%);
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+.novo-artigo-header {
+  width: 100%;
+}
+
+.novo-artigo-intro {
+  width: min(100% - 32px, 760px);
+  margin: 22px auto 0;
+  color: var(--text-black);
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.novo-artigo-fields {
+  width: min(100% - 32px, 760px);
+  margin: 30px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 28px);
+  align-items: start;
+}
+
+.novo-artigo-field {
+  display: grid;
+  gap: 8px;
+}
+
+.novo-artigo-field label {
+  color: var(--text-black);
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.novo-artigo-field select,
+.novo-artigo-field input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  color: var(--text-black);
+  background: var(--bg);
+  border: 2px solid var(--text-black);
+  border-radius: 0;
+  font: inherit;
+  font-family: "Lexend", system-ui, sans-serif;
+}
+
+.novo-artigo-field select:focus,
+.novo-artigo-field input:focus {
+  background-color: rgba(26, 26, 26, 0.05);
+  outline: none;
+}
+
+.novo-artigo-workspace {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 40px);
+  align-items: stretch;
+}
+
+.novo-artigo-editor,
+.novo-artigo-preview {
+  box-sizing: border-box;
+  background: var(--bg);
+  border: 2px solid var(--text-black);
+  box-shadow: clamp(6px, 1.4vw, 10px) clamp(6px, 1.4vw, 10px) 0
+    var(--text-black);
+  min-height: 620px;
+}
+
+.novo-artigo-editor {
+  padding: clamp(18px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+}
+
+.novo-artigo-preview {
+  padding: clamp(22px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+}
+
+.novo-artigo-preview h2 {
+  margin: 0 0 20px;
+  color: var(--text-black);
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+.novo-artigo-preview-content {
+  flex: 1;
+  min-height: 0;
+  padding: 16px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  color: var(--text-black);
+  background: transparent;
+  border: 2px solid var(--text-black);
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.novo-artigo-preview-content:empty::before {
+  content: "O conteúdo do artigo aparece aqui.";
+  color: rgba(30, 30, 30, 0.55);
+  font-style: italic;
+}
+
+.novo-artigo-preview-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.novo-artigo-actions {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 0;
+}
+
+.novo-artigo-editor .tox-tinymce {
+  border: 2px solid var(--text-black);
+  border-radius: 0;
+  flex: 1;
+}
+
+.novo-artigo-editor .tox .tox-editor-header,
+.novo-artigo-editor .tox .tox-toolbar,
+.novo-artigo-editor .tox .tox-toolbar__overflow,
+.novo-artigo-editor .tox .tox-toolbar__primary,
+.novo-artigo-editor .tox .tox-menubar {
+  background: var(--bg);
+}
+
+.novo-artigo-editor .tox .tox-menubar {
+  border-bottom: 2px solid var(--text-black);
+}
+
+.novo-artigo-editor .tox .tox-toolbar__primary {
+  border-bottom: 2px solid var(--text-black);
+}
+
+.novo-artigo-editor .tox .tox-edit-area::before {
+  border: 0;
+}
+
+.novo-artigo-editor .tox .tox-statusbar {
+  background: var(--bg);
+  border-top: 2px solid var(--text-black);
+}
+
+.novo-artigo-editor .tox .tox-tbtn,
+.novo-artigo-editor .tox .tox-mbtn {
+  border-radius: 0;
+  color: var(--text-black);
+}
+
+.novo-artigo-editor .tox .tox-tbtn:hover,
+.novo-artigo-editor .tox .tox-mbtn:hover,
+.novo-artigo-editor .tox .tox-tbtn--enabled {
+  background: rgba(26, 26, 26, 0.08);
+}
+
+@media (max-width: 900px) {
+  .novo-artigo-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .novo-artigo-intro {
+    width: min(100% - 24px, 760px);
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .novo-artigo-fields {
+    width: min(100% - 24px, 760px);
+    grid-template-columns: 1fr;
+  }
+
+  .novo-artigo-editor,
+  .novo-artigo-preview {
+    box-shadow: 6px 6px 0 var(--text-black);
+  }
+}

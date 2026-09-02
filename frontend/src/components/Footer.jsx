@@ -90,7 +90,7 @@ export default function Footer() {
             </Link>
             <Link
               className="dropdown-item"
-              to="https://www.instagram.com/behindthethread/"
+              to="https://www.instagram.com/behindthe_thread/"
               target="_blank"
             >
               Instagram
