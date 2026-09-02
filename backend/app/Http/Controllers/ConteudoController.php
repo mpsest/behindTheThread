@@ -16,7 +16,7 @@ class ConteudoController extends Controller
     {
         $data = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
-            'url' => ['nullable', 'url', 'max:255'],
+            'site' => ['nullable', 'url', 'max:255'],
             'descricao' => ['nullable', 'string'],
         ]);
         return response()->json(Conteudo::create($data), 201);
@@ -27,7 +27,7 @@ class ConteudoController extends Controller
         $conteudo = Conteudo::findOrFail($id);
         $data = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
-            'url' => ['nullable', 'url', 'max:255'],
+            'site' => ['nullable', 'url', 'max:255'],
             'descricao' => ['nullable', 'string'],
         ]);
         $conteudo->update($data);
