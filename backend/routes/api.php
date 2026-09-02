@@ -24,13 +24,13 @@ Route::apiResource('conteudos', ConteudoController::class)
     ->only(['index', 'show']);
 
 Route::apiResource('dirty-talks', DirtyTalkController::class)
-    ->only(['index', 'show', 'indexLatest', 'store']);
+    ->only(['index', 'show', 'indexLatest']);
 
 Route::apiResource('artigos', ArtigoController::class)
-    ->only(['index', 'show', 'indexLatest', 'store']);
+    ->only(['index', 'show', 'indexLatest']);
 
 Route::apiResource('designers', DesignerController::class)
-    ->only(['index', 'show', 'indexLatest', 'store']);
+    ->only(['index', 'show', 'indexLatest']);
 
 Route::apiResource('keywords', KeywordController::class)
     ->only(['index', 'show']);
@@ -97,6 +97,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('misturas', MisturaController::class)
     ->except(['index', 'show', 'indexLatest']);
 
+
+    Route::get(
+        '/utilizadores',
+        [UtilizadorController::class, 'index']
+    );
 
     Route::get(
         '/utilizadores/{id}',

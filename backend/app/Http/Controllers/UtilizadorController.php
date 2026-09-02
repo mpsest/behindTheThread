@@ -47,7 +47,10 @@ class UtilizadorController extends Controller
     {
         $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
 
-        if ($request->user()->id !== $user->id) {
+        if (
+            $request->user()->user_type !== User::TYPE_ADMIN
+            && $request->user()->id !== $user->id
+        ) {
             abort(403, 'Só pode alterar os dados da sua própria conta.');
         }
 
@@ -69,8 +72,12 @@ class UtilizadorController extends Controller
         return response()->json($user);
     }
 
-    public function destroy(int $id): JsonResponse
+    public function destroy(Request $request, int $id): JsonResponse
     {
+        if ($request->user()->user_type !== User::TYPE_ADMIN) {
+            abort(403, 'Apenas o administrador pode apagar utilizadores.');
+        }
+
         $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
         $user->delete();
         return response()->json(['message' => 'Utilizador apagado com sucesso.']);

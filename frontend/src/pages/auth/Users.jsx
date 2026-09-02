@@ -1,35 +1,41 @@
-import { useEffect, useState } from 'react';
-import SquareButton from '../../components/SquareButton';
-import './Users.css';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
+import SquareButton from "../../components/SquareButton";
+import "./Users.css";
+import { Link } from "react-router-dom";
 
-const API_URL = 'http://localhost:8000/api/users';
+const API_URL = "api/utilizadores";
 
 export default function Users() {
+  const { makeRequest } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
     loadUsers();
   }, []);
 
-async function loadUsers() {
-  setLoading(true);
-  try {
-    const res = await fetch(API_URL);
-    if (!res.ok) throw new Error(`Erro ${res.status}`);
-    const data = await res.json();
-    setUsers(Array.isArray(data) ? data : []);
-  } catch (err) {
-    console.error('Erro ao carregar utilizadores:', err);
-    setUsers([]);
-  } finally {
-    setLoading(false);
+  async function loadUsers() {
+    setLoading(true);
+    try {
+      const res = await makeRequest(API_URL);
+      if (!res.ok) throw new Error(`Erro ${res.status}`);
+      const data = await res.json();
+      setUsers(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error("Erro ao carregar utilizadores:", err);
+      setUsers([]);
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,13 +43,13 @@ async function loadUsers() {
 
   function startCreate() {
     setEditingId(null);
-    setFormData({ name: '', email: '', password: '' });
+    setFormData({ name: "", email: "", password: "" });
     setShowForm(true);
   }
 
   function startEdit(user) {
     setEditingId(user.id);
-    setFormData({ name: user.name, email: user.email, password: '' });
+    setFormData({ name: user.name, email: user.email, password: "" });
     setShowForm(true);
   }
 
@@ -51,7 +57,7 @@ async function loadUsers() {
     e.preventDefault();
     const isEditing = editingId !== null;
     const url = isEditing ? `${API_URL}/${editingId}` : API_URL;
-    const method = isEditing ? 'PUT' : 'POST';
+    const method = isEditing ? "PUT" : "POST";
 
     const payload = { ...formData };
     if (isEditing && !payload.password) {
@@ -59,33 +65,34 @@ async function loadUsers() {
     }
 
     try {
-      const res = await fetch(url, {
+      const res = await makeRequest(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error('Falha ao guardar utilizador');
+      if (!res.ok) throw new Error("Falha ao guardar utilizador");
 
       setShowForm(false);
-      setFormData({ name: '', email: '', password: '' });
+      setFormData({ name: "", email: "", password: "" });
       setEditingId(null);
       loadUsers();
     } catch (err) {
       console.error(err);
-      alert('Não foi possível guardar o utilizador.');
+      alert("Não foi possível guardar o utilizador.");
     }
   }
 
   async function handleDelete(id) {
-    const confirmDelete = window.confirm('Tens a certeza que queres remover este utilizador?');
+    const confirmDelete = window.confirm(
+      "Tens a certeza que queres remover este utilizador?",
+    );
     if (!confirmDelete) return;
 
     try {
-      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      await makeRequest(`${API_URL}/${id}`, { method: "DELETE" });
       loadUsers();
     } catch (err) {
       console.error(err);
-      alert('Não foi possível remover o utilizador.');
+      alert("Não foi possível remover o utilizador.");
     }
   }
 
@@ -115,8 +122,12 @@ async function loadUsers() {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td className="users-page__actions">
-                  <SquareButton onClick={() => startEdit(user)}>Editar</SquareButton>
-                  <SquareButton onClick={() => handleDelete(user.id)}>Remover</SquareButton>
+                  <SquareButton onClick={() => startEdit(user)}>
+                    Editar
+                  </SquareButton>
+                  <SquareButton onClick={() => handleDelete(user.id)}>
+                    Remover
+                  </SquareButton>
                 </td>
               </tr>
             ))}
@@ -130,13 +141,16 @@ async function loadUsers() {
       )}
 
       {showForm && (
-        <div className="users-page__modal-overlay" onClick={() => setShowForm(false)}>
+        <div
+          className="users-page__modal-overlay"
+          onClick={() => setShowForm(false)}
+        >
           <form
             className="users-page__form"
             onClick={(e) => e.stopPropagation()}
             onSubmit={handleSubmit}
           >
-            <h2>{editingId ? 'Editar Utilizador' : 'Novo Utilizador'}</h2>
+            <h2>{editingId ? "Editar Utilizador" : "Novo Utilizador"}</h2>
 
             <div className="users-page__field">
               <label htmlFor="name">Nome</label>
@@ -166,7 +180,7 @@ async function loadUsers() {
 
             <div className="users-page__field">
               <label htmlFor="password">
-                {editingId ? 'Nova password (opcional)' : 'Password'}
+                {editingId ? "Nova password (opcional)" : "Password"}
               </label>
               <input
                 id="password"
@@ -183,7 +197,9 @@ async function loadUsers() {
               <SquareButton variant="dark" onClick={handleSubmit}>
                 Guardar
               </SquareButton>
-              <SquareButton onClick={() => setShowForm(false)}>Cancelar</SquareButton>
+              <SquareButton onClick={() => setShowForm(false)}>
+                Cancelar
+              </SquareButton>
             </div>
           </form>
         </div>
