@@ -12,6 +12,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\UtilizadorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MisturaController;
 
 Route::apiResource('espacos', EspacoController::class)
     ->only(['index', 'show']);
@@ -33,6 +34,9 @@ Route::apiResource('designers', DesignerController::class)
 
 Route::apiResource('keywords', KeywordController::class)
     ->only(['index', 'show']);
+    
+Route::apiResource('misturas', MisturaController::class)
+    ->only(['index', 'show']);
 
 Route::post('/newsletter', [NewsletterController::class, 'store']);
 
@@ -41,6 +45,9 @@ Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])
 
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])
     ->name('password.update');
+
+// Route::post('/login', [AuthController::class, 'login']);
+// Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -86,6 +93,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('newsletter', NewsletterController::class)
         ->except(['store']);
+
+    Route::apiResource('misturas', MisturaController::class)
+    ->except(['index', 'show']);
+
 
     Route::get(
         '/utilizadores/{id}',
