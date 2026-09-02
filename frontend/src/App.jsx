@@ -15,7 +15,6 @@ import Artigos from "./pages/Artigos/Artigos.jsx";
 import Designers from "./pages/Designers.jsx";
 import DirtyTalks from "./pages/DirtyTalks.jsx";
 import Misturas from "./pages/Misturas/Misturas.jsx";
-import NovaMistura from "./pages/Misturas/NovaMistura.jsx";
 import MisturasDetail from "./pages/Misturas/MisturasDetail.jsx";
 import NovoArtigo from "./pages/Dashboard/NovoArtigo.jsx";
 import Users from "./pages/auth/Users.jsx";
@@ -33,7 +32,6 @@ function App() {
       children: [
         { path: "/dashboard", element: <Dashboard /> },
         { path: "/misturas", element: <Misturas /> },
-        { path: "/novamistura", element: <NovaMistura /> },
         { path: "/misturas/:id", element: <MisturasDetail /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },

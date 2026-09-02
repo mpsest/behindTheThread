@@ -3,19 +3,19 @@ import PageTitle from "../components/PageTitle";
 import "./Contactos.css";
 
 const TEAM = [
-  { name: "Bárbara Cruz", role: "Developer", email: "cruzbarbara95@gmail.com" },
+  { name: "Bárbara Cruz", role: "Developer", linkedin: "www.linkedin.com/in/barbara-cunha-cruz" },
   {
     name: "Beatriz Miranda",
     role: "Designer",
-    email: "beatrizmiranda2901@gmail.com",
+    linkedin: "beatrizmiranda2901@gmail.com",
   },
-  { name: "Filipe Cruz", role: "Developer", email: "inf.fcruz@gmail.com" },
+  { name: "Filipe Cruz", role: "Developer", linkedin: "https://www.linkedin.com/in/infcruz/" },
   {
     name: "Francisco Brito",
     role: "Designer",
-    email: "franciscobritofb8@gmail.com",
+    linkedin: "franciscobritofb8@gmail.com",
   },
-  { name: "Paula Esteves", role: "Developer", email: "mpsest6@gmail.com" },
+  { name: "Paula Esteves", role: "Developer", linkedin: "https://www.linkedin.com/in/paulasesteves/" },
 ];
 
 const SOCIALS = [
@@ -37,12 +37,12 @@ export default function ContactPage() {
   }
 
   return (
-
     <div className="contactos-page container-fluid px-0">
       <PageTitle>
         CONTACTOS
         <div className="mb-3"></div>
       </PageTitle>
+      <div className="contactos-content px-3 px-md-5 py-4 py-md-5">
         <div className="contactos-info">
           <section className="contactos-section">
             <h2>Contactos</h2>
@@ -52,12 +52,10 @@ export default function ContactPage() {
                 behindthethreadd@gmail.com
               </a>
             </div>
+          </section>
 
-    <main className="contact-page">
-      <div className="contact-page__info">
-        <div className="contact-page__row">
-          <span className="contact-page__label">Contactos</span>
-          <div className="contact-page__contacts">
+          <section className="contactos-section">
+            <h2>Créditos</h2>
             <ul className="contactos-credits">
               <li className="subtitle">
                 DESIGNERS E <br /> DEVELOPERS
@@ -66,7 +64,9 @@ export default function ContactPage() {
                 <li key={person.email}>
                   {person.name}, {person.role}
                   <br />
-                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                  <a href={person.linkedIn} target="_blank" rel="noreferrer">
+                    {person.linkedIn}
+                  </a>
                 </li>
               ))}
             </ul>

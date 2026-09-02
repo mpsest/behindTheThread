@@ -59,10 +59,12 @@ export default function MisturasForm({ onSubmit }) {
       <div className="collab-form__field">
         <label>Regime</label>
         <div className="collab-form__pills row g-2">
-          <button type="button" className={`pill col-6 col-sm-auto ${formData.regime === 'presencial' ? 'pill--selected' : ''}`}
-            onClick={() => toggleRegime('presencial')}>Presencial</button>
-          <button type="button" className={`pill col-6 col-sm-auto ${formData.regime === 'remoto' ? 'pill--selected' : ''}`}
-            onClick={() => toggleRegime('remoto')}>Remoto</button>
+          <SquareButton className="col-6 col-sm-auto"
+            variant={formData.regime === 'presencial' ? 'dark' : 'light'}
+            onClick={() => toggleRegime('presencial')}>Presencial</SquareButton>
+          <SquareButton className="col-6 col-sm-auto"
+            variant={formData.regime === 'remoto' ? 'dark' : 'light'}
+            onClick={() => toggleRegime('remoto')}>Remoto</SquareButton>
         </div>
       </div>
 
@@ -76,11 +78,11 @@ export default function MisturasForm({ onSubmit }) {
         <label>Área</label>
         <div className="collab-form__pills row g-2">
           {AREAS.map((area) => (
-            <button key={area} type="button"
-              className={`pill col-6 col-sm-auto ${formData.area.includes(area) ? 'pill--selected' : ''}`}
+            <SquareButton key={area} className="col-6 col-sm-auto"
+              variant={formData.area.includes(area) ? 'dark' : 'light'}
               onClick={() => toggleArea(area)}>
               {area}
-            </button>
+            </SquareButton>
           ))}
         </div>
       </div>
@@ -122,7 +124,7 @@ export default function MisturasForm({ onSubmit }) {
       </div>
 
       <div className="collab-form__submit">
-        <SquareButton variant="dark">Submeter</SquareButton>
+        <SquareButton type="submit" variant="dark">Submeter</SquareButton>
       </div>
     </form>
   );

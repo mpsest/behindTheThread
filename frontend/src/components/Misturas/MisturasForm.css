@@ -42,6 +42,7 @@
 .collab-form__pills {
   display: flex;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .pill {
@@ -68,4 +69,6 @@
 
 .collab-form__submit {
   margin-top: 12px;
+  display: flex;
+  justify-content: center;
 }

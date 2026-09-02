@@ -1,7 +1,7 @@
 import "./Misturas.css";
 import PlusButton from "../../components/PlusButton.jsx";
-import { Link } from "react-router-dom";
 import PageTitle from "../../components/PageTitle.jsx";
+import MisturasForm from "../../components/Misturas/MisturasForm.jsx";
 
 export default function Misturas() {
   return (
@@ -21,9 +21,11 @@ export default function Misturas() {
         </p>
       </PageTitle>
 
-      <Link to="/misturas">
-        <PlusButton />
-      </Link>
+      <PlusButton collapseTarget="misturas-form" />
+
+      <div className="collapse" id="misturas-form">
+        <MisturasForm />
+      </div>
 
       {/* NÃO APAGAR ISTO! <TextEditor value={editorContent} onChange={setEditorContent} />
       <div>

@@ -5,3 +5,19 @@
   background-repeat: no-repeat;
   background-position: center top;
 }
+
+
+#misturas-form {
+  padding: 0 20px 64px;
+}
+
+#misturas-form .collab-form {
+  width: 80vw;
+  max-width: 80vw;
+  margin-inline: auto;
+  text-align: left;
+}
+
+#misturas-form .collab-form__field input {
+  width: 100%;
+}
