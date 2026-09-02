@@ -16,18 +16,20 @@ export default function Users() {
     loadUsers();
   }, []);
 
-  async function loadUsers() {
-    setLoading(true);
-    try {
-      const res = await fetch(API_URL);
-      const data = await res.json();
-      setUsers(data);
-    } catch (err) {
-      console.error('Erro ao carregar utilizadores:', err);
-    } finally {
-      setLoading(false);
-    }
+async function loadUsers() {
+  setLoading(true);
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error(`Erro ${res.status}`);
+    const data = await res.json();
+    setUsers(Array.isArray(data) ? data : []);
+  } catch (err) {
+    console.error('Erro ao carregar utilizadores:', err);
+    setUsers([]);
+  } finally {
+    setLoading(false);
   }
+}
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
