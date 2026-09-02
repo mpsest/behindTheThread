@@ -10,6 +10,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Laravel Sanctum
+
 Route::post('/login', function (Request $request) {
       $credentials = $request->validate([
           'email' => ['required', 'email'],
