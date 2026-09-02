@@ -9,7 +9,6 @@ class Designer extends Model
 {
     protected $table = 'designers';
     protected $fillable = ['titulo', 'imagem', 'texto'];
-    public $timestamps = false;
 
     public function keywords(): BelongsToMany
     {

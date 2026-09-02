@@ -13,6 +13,11 @@ class ArtigoController extends Controller
         return response()->json(Artigo::with(['keywords'])->get());
     }
 
+    public function indexLatest(): JsonResponse
+    {
+        return response()->json(Artigo::with(['keywords'])->latest()->get());
+    }
+
     public function show(int $id): JsonResponse
     {
         return response()->json(Artigo::with(['keywords'])->findOrFail($id));
@@ -22,8 +27,8 @@ class ArtigoController extends Controller
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
-            'imagem' => ['nullable', 'string', 'max:255'],
-            'texto' => ['nullable', 'string'],
+            'imagem' => ['required', 'string', 'max:255'],
+            'texto' => ['required', 'string'],
         ]);
         return response()->json(Artigo::create($data), 201);
     }
@@ -33,8 +38,8 @@ class ArtigoController extends Controller
         $artigo = Artigo::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
-            'imagem' => ['nullable', 'string', 'max:255'],
-            'texto' => ['nullable', 'string'],
+            'imagem' => ['required', 'string', 'max:255'],
+            'texto' => ['required', 'string'],
         ]);
         $artigo->update($data);
         return response()->json($artigo);

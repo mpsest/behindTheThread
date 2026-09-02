@@ -11,7 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('titulo', 150);
             $table->string('imagem', 255);
-            $table->text('texto')->nullable();
+            $table->text('texto');
+            $table->timestamps();
         });
     }
     public function down(): void { Schema::dropIfExists('artigos'); }

@@ -13,6 +13,11 @@ class DesignerController extends Controller
         return response()->json(Designer::with(['keywords'])->get());
     }
 
+    public function indexLatest(): JsonResponse
+    {
+        return response()->json(Designer::with(['keywords'])->latest()->get());
+    }
+
     public function show(int $id): JsonResponse
     {
         return response()->json(Designer::with(['keywords'])->findOrFail($id));
@@ -22,8 +27,8 @@ class DesignerController extends Controller
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
-            'imagem' => ['nullable', 'string', 'max:255'],
-            'texto' => ['nullable', 'string'],
+            'imagem' => ['required', 'string', 'max:255'],
+            'texto' => ['required', 'string'],
         ]);
         return response()->json(Designer::create($data), 201);
     }
@@ -33,8 +38,8 @@ class DesignerController extends Controller
         $designer = Designer::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
-            'imagem' => ['nullable', 'string', 'max:255'],
-            'texto' => ['nullable', 'string'],
+            'imagem' => ['required', 'string', 'max:255'],
+            'texto' => ['required', 'string'],
         ]);
         $designer->update($data);
         return response()->json($designer);

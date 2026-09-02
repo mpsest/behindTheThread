@@ -13,6 +13,11 @@ class DirtyTalkController extends Controller
         return response()->json(DirtyTalk::with(['keywords'])->get());
     }
 
+    public function indexLatest(): JsonResponse
+    {
+        return response()->json(DirtyTalk::with(['keywords'])->latest()->get());
+    }
+
     public function show(int $id): JsonResponse
     {
         return response()->json(DirtyTalk::with(['keywords'])->findOrFail($id));
@@ -22,8 +27,8 @@ class DirtyTalkController extends Controller
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
-            'imagem' => ['nullable', 'string', 'max:255'],
-            'texto' => ['nullable', 'string'],
+            'imagem' => ['required', 'string', 'max:255'],
+            'texto' => ['required', 'string'],
         ]);
         return response()->json(DirtyTalk::create($data), 201);
     }
@@ -33,8 +38,8 @@ class DirtyTalkController extends Controller
         $dirtyTalk = DirtyTalk::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:150'],
-            'imagem' => ['nullable', 'string', 'max:255'],
-            'texto' => ['nullable', 'string'],
+            'imagem' => ['required', 'string', 'max:255'],
+            'texto' => ['required', 'string'],
         ]);
         $dirtyTalk->update($data);
         return response()->json($dirtyTalk);
