@@ -2,6 +2,18 @@ body.dropdown-open {
   overflow: hidden;
 }
 
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-toggle__icon {
+  display: none;
+  width: 28px;
+  height: 28px;
+}
+
 .navbar .dropdown-menu {
   /* TODO: corrigir scroll no menu. Confirmar dropdown (bootstrap). */
   position: fixed;
@@ -46,4 +58,22 @@ body.dropdown-open {
 
 .dropdown-item:hover {
   background-color: transparent;
+}
+
+@media (max-width: 767.98px) {
+  .menu-toggle span {
+    display: none;
+  }
+
+  .menu-toggle__icon--open {
+    display: block;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle__icon--open {
+    display: none;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle__icon--close {
+    display: block;
+  }
 }

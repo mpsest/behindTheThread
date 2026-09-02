@@ -18,8 +18,26 @@ export default function Menu() {
 
   return (
     <div className="dropdown">
-      <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Menu
+      <button
+        className="menu-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <span>Menu</span>
+        <img
+          className="menu-toggle__icon menu-toggle__icon--open"
+          src="/list.svg"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          className="menu-toggle__icon menu-toggle__icon--close"
+          src="/x.svg"
+          alt=""
+          aria-hidden="true"
+        />
       </button>
       <ul className="dropdown-menu justify-content-start justify-content-md-center pt-5 pt-md-0">
         <li>

@@ -5,11 +5,16 @@
   font-family: "Slibinas";
 }
 
+.navbar .container {
+  height: 100%;
+}
+
 /* Title Behind the Thread */
 .navbar h1 {
+  flex: 1;
   color: var(--text-black);
   font-size: clamp(22px, 4vw, 35px);
-  margin-bottom: 0;
+  margin: 0;
   line-height: 1;
   text-align: center;
 }
@@ -43,4 +48,19 @@
 .navbar button:focus,
 .header-contact-link:focus {
   color: var(--text-black);
+}
+
+@media (max-width: 767.98px) {
+  .navbar h1 {
+    order: 1;
+    text-align: left;
+  }
+
+  .navbar .dropdown {
+    order: 2;
+  }
+
+  .header-contact-link {
+    display: none;
+  }
 }

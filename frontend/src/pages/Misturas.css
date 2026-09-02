@@ -1,7 +1,7 @@
 .page-misturas {
   /* Gradientes */
-  background-image: url(/gradients/misturas-center-top.svg);
-  background-size: clamp(100%, 90vw, 180%);
+  background-image: url(/gradients/contactos-center_top.svg); /*Misturas fica muito para baixo*/
+  background-size: clamp(100%, 90vw, 100%);
   background-repeat: no-repeat;
   background-position: center top;
 }
