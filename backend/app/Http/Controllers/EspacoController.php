@@ -18,8 +18,8 @@ class EspacoController extends Controller
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
-            'nome' => ['required', 'string', 'max:150'],
-            'site' => ['nullable', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'max:255'],
+            'site' => ['nullable', 'url', 'max:255'],
             'email' => ['nullable', 'email', 'max:150'],
             'localidade' => ['nullable', 'string', 'max:150'],
         ]);
@@ -30,8 +30,8 @@ class EspacoController extends Controller
     {
         $espaco = Espaco::findOrFail($id);
         $data = $request->validate([
-            'nome' => ['required', 'string', 'max:150'],
-            'site' => ['nullable', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'max:255'],
+            'site' => ['nullable', 'url', 'max:255'],
             'email' => ['nullable', 'email', 'max:150'],
             'localidade' => ['nullable', 'string', 'max:150'],
         ]);

@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('site', 255)->nullable();
             $table->string('email', 150)->nullable();
             $table->string('localidade', 150)->nullable();
+            $table->string('categoria', 150);
         });
     }
     public function down(): void { Schema::dropIfExists('espacos'); }

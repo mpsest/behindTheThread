@@ -10,8 +10,9 @@ return new class extends Migration {
         Schema::create('conteudos', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 150);
-            $table->text('descricao_breve')->nullable();
             $table->string('site', 255)->nullable();
+            $table->text('descricao')->nullable();
+            $table->string('categoria', 150);
         });
     }
     public function down(): void { Schema::dropIfExists('conteudos'); }

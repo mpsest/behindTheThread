@@ -15,10 +15,9 @@ class FerramentaController extends Controller
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
-            'nome' => ['required', 'string', 'max:150'],
-            'site' => ['nullable', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'max:255'],
+            'url' => ['nullable', 'url', 'max:255'],
             'descricao' => ['nullable', 'string'],
-            'opensource' => ['nullable', 'string'],
         ]);
         return response()->json(Ferramenta::create($data), 201);
     }
@@ -27,10 +26,9 @@ class FerramentaController extends Controller
     {
         $ferramenta = Ferramenta::findOrFail($id);
         $data = $request->validate([
-            'nome' => ['required', 'string', 'max:150'],
-            'site' => ['nullable', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'max:255'],
+            'url' => ['nullable', 'url', 'max:255'],
             'descricao' => ['nullable', 'string'],
-            'opensource' => ['nullable', 'string'],
         ]);
         $ferramenta->update($data);
         return response()->json($ferramenta);

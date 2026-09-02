@@ -13,31 +13,111 @@ use App\Http\Controllers\UtilizadorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('espacos', EspacoController::class);
-Route::apiResource('ferramentas', FerramentaController::class);
-Route::apiResource('conteudos', ConteudoController::class);
-Route::apiResource('utilizadores', UtilizadorController::class);
-Route::apiResource('newsletter', NewsletterController::class);
+Route::apiResource('espacos', EspacoController::class)
+    ->only(['index', 'show']);
 
-Route::apiResource('dirty-talks', DirtyTalkController::class);
-Route::put('/dirty-talks/{id}/keywords', [DirtyTalkController::class, 'syncKeywords']);
+Route::apiResource('ferramentas', FerramentaController::class)
+    ->only(['index', 'show']);
 
-Route::apiResource('artigos', ArtigoController::class);
-Route::put('/artigos/{id}/keywords', [ArtigoController::class, 'syncKeywords']);
+Route::apiResource('conteudos', ConteudoController::class)
+    ->only(['index', 'show']);
 
-Route::apiResource('designers', DesignerController::class);
-Route::put('/designers/{id}/keywords', [DesignerController::class, 'syncKeywords']);
+Route::apiResource('dirty-talks', DirtyTalkController::class)
+    ->only(['index', 'show', 'indexLatest']);
 
-Route::apiResource('keywords', KeywordController::class);
+Route::apiResource('artigos', ArtigoController::class)
+    ->only(['index', 'show', 'indexLatest']);
 
-// Route::post('/login', [AuthController::class, 'login']);
-// Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::apiResource('designers', DesignerController::class)
+    ->only(['index', 'show', 'indexLatest']);
 
-// Laravel Sanctum
+Route::apiResource('keywords', KeywordController::class)
+    ->only(['index', 'show']);
+
+Route::post('/newsletter', [NewsletterController::class, 'store']);
+
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])
+    ->name('password.email');
+
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])
+    ->name('password.update');
+
+
 Route::middleware('auth:sanctum')->group(function () {
-      Route::get('/user', fn (Request $request) => $request->user());
-  });
 
-Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
-Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
-Route::post('/utilizadores/{id}/change-password', [AuthController::class, 'changePassword'])->name('password.change');
+    Route::get('/user', fn (Request $request) => $request->user());
+
+    Route::apiResource('espacos', EspacoController::class)
+        ->except(['index', 'show']);
+
+    Route::apiResource('ferramentas', FerramentaController::class)
+        ->except(['index', 'show']);
+
+    Route::apiResource('conteudos', ConteudoController::class)
+        ->except(['index', 'show']);
+
+    Route::apiResource('dirty-talks', DirtyTalkController::class)
+        ->except(['index', 'show']);
+
+    Route::put(
+        '/dirty-talks/{id}/keywords',
+        [DirtyTalkController::class, 'syncKeywords']
+    );
+
+    Route::apiResource('artigos', ArtigoController::class)
+        ->except(['index', 'show']);
+
+    // Guardar keywords escolhidas para o artigo
+    Route::put(
+        '/artigos/{id}/keywords',
+        [ArtigoController::class, 'syncKeywords']
+    );
+
+    Route::apiResource('designers', DesignerController::class)
+        ->except(['index', 'show']);
+
+    Route::put(
+        '/designers/{id}/keywords',
+        [DesignerController::class, 'syncKeywords']
+    );
+
+    Route::apiResource('keywords', KeywordController::class)
+        ->except(['index', 'show']);
+
+    Route::apiResource('newsletter', NewsletterController::class)
+        ->except(['store']);
+
+    Route::get(
+        '/utilizadores/{id}',
+        [UtilizadorController::class, 'show']
+    );
+
+    Route::put(
+        '/utilizadores/{id}',
+        [UtilizadorController::class, 'update']
+    );
+
+    Route::post(
+        '/utilizadores/{id}/change-password',
+        [AuthController::class, 'changePassword']
+    )->name('password.change');
+
+
+    Route::middleware('admin')->group(function () {
+
+        Route::get(
+            '/utilizadores',
+            [UtilizadorController::class, 'index']
+        );
+
+        Route::post(
+            '/utilizadores',
+            [UtilizadorController::class, 'store']
+        );
+
+        Route::delete(
+            '/utilizadores/{id}',
+            [UtilizadorController::class, 'destroy']
+        );
+    });
+});

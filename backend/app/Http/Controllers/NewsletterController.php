@@ -16,7 +16,7 @@ class NewsletterController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email', 'max:150', 'unique:newsletter,email'],
-            'subscrito' => ['sometimes', 'boolean'],
+            'subscrito' => ['required', 'boolean'],
         ]);
         return response()->json(Newsletter::create($data), 201);
     }
@@ -26,7 +26,7 @@ class NewsletterController extends Controller
         $newsletter = Newsletter::findOrFail($id);
         $data = $request->validate([
             'email' => ['required', 'email', 'max:150', 'unique:newsletter,email,' . $newsletter->id],
-            'subscrito' => ['sometimes', 'boolean'],
+            'subscrito' => ['required', 'boolean'],
         ]);
         $newsletter->update($data);
         return response()->json($newsletter);
