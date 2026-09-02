@@ -11,6 +11,38 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
+    // public function login(Request $request): JsonResponse
+    // {
+    //     $data = $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required', 'string'],
+    //     ]);
+
+    //     $user = User::where('email', $data['email'])->first();
+
+    //     if (!$user || !Hash::check($data['password'], $user->password)) {
+    //         return response()->json([
+    //             'message' => 'Credenciais inválidas.',
+    //         ], 401);
+    //     }
+
+    //     $token = $user->createToken('api')->plainTextToken;
+
+    //     return response()->json([
+    //         'user' => $user,
+    //         'token' => $token,
+    //     ]);
+    // }
+
+    // public function logout(Request $request): JsonResponse
+    // {
+    //     $request->user()->currentAccessToken()->delete();
+
+    //     return response()->json([
+    //         'message' => 'Sessão terminada com sucesso.',
+    //     ]);
+    // }
+
     public function forgotPassword(Request $request): JsonResponse
     {
         $request->validate([

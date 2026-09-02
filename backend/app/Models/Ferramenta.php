@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Ferramenta extends Model
 {
     protected $table = 'ferramentas';
-    protected $fillable = ['nome', 'url', 'descricao'];
+    protected $fillable = ['nome', 'site', 'descricao'];
     public $timestamps = false;
 }
