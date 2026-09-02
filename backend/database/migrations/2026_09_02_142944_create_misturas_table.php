@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('duracao');
             $table->decimal('orcamento', 10, 2)->nullable();
             $table->integer('n_colaboradores')->nullable();
-            $table->email('email');
+            $table->string('email');
             $table->string('telemovel');
 
             $table->timestamps();
