@@ -12,6 +12,7 @@ import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
 import Error from "./pages/Error.jsx";
 import Contactos from "./pages/Contactos.jsx";
 import Artigos from "./pages/Artigos/Artigos.jsx";
+import ArtigosDetail from "./pages/Artigos/ArtigosDetail.jsx";
 import Designers from "./pages/Designers.jsx";
 import DirtyTalks from "./pages/DirtyTalks.jsx";
 import Misturas from "./pages/Misturas/Misturas.jsx";
@@ -38,6 +39,7 @@ function App() {
         { path: "/contactos", element: <Contactos /> },
         { path: "/basededados", element: <BaseDados /> },
         { path: "/artigos", element: <Artigos /> },
+        { path: "/artigos/:id", element: <ArtigosDetail /> },
         { path: "/conteudo/novo", element: <NovoConteudo /> },
         { path: "/dirtytalks", element: <DirtyTalks /> },
         { path: "/designers", element: <Designers /> },
