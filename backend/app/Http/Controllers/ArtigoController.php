@@ -27,7 +27,7 @@ class ArtigoController extends Controller
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'imagem' => ['required', 'url', 'max:255'],
+            'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
         ]);
         return response()->json(Artigo::create($data), 201);
@@ -38,7 +38,7 @@ class ArtigoController extends Controller
         $artigo = Artigo::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'imagem' => ['required', 'url', 'max:255'],
+            'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
         ]);
         $artigo->update($data);

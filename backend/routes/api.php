@@ -24,13 +24,13 @@ Route::apiResource('conteudos', ConteudoController::class)
     ->only(['index', 'show']);
 
 Route::apiResource('dirty-talks', DirtyTalkController::class)
-    ->only(['index', 'show', 'indexLatest']);
+    ->only(['index', 'show', 'indexLatest', 'store']);
 
 Route::apiResource('artigos', ArtigoController::class)
-    ->only(['index', 'show', 'indexLatest']);
+    ->only(['index', 'show', 'indexLatest', 'store']);
 
 Route::apiResource('designers', DesignerController::class)
-    ->only(['index', 'show', 'indexLatest']);
+    ->only(['index', 'show', 'indexLatest', 'store']);
 
 Route::apiResource('keywords', KeywordController::class)
     ->only(['index', 'show']);

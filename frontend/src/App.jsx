@@ -16,8 +16,8 @@ import Designers from "./pages/Designers.jsx";
 import DirtyTalks from "./pages/DirtyTalks.jsx";
 import Misturas from "./pages/Misturas/Misturas.jsx";
 import MisturasDetail from "./pages/Misturas/MisturasDetail.jsx";
-import NovoArtigo from "./pages/Dashboard/NovoArtigo.jsx";
 import Users from "./pages/auth/Users.jsx";
+import NovoConteudo from "./pages/auth/NovoConteudo.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,7 +38,7 @@ function App() {
         { path: "/contactos", element: <Contactos /> },
         { path: "/basededados", element: <BaseDados /> },
         { path: "/artigos", element: <Artigos /> },
-        { path: "/artigos/novo", element: <NovoArtigo /> },
+        { path: "/conteudo/novo", element: <NovoConteudo /> },
         { path: "/dirtytalks", element: <DirtyTalks /> },
         { path: "/designers", element: <Designers /> },
         { path: "/users", element: <Users /> },

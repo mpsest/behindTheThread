@@ -27,12 +27,13 @@ import "tinymce/plugins/wordcount";
 import "tinymce/skins/ui/oxide/skin.min.css";
 import "tinymce/skins/ui/oxide/content.min.css";
 
-export default function TextEditor({ initialValue, value, onChange }) {
+export default function TextEditor({ initialValue, name, value, onChange }) {
   const editorRef = useRef(null);
 
   return (
     <>
       <Editor
+        name={name}
         licenseKey="gpl"
         onInit={(evt, editor) => (editorRef.current = editor)}
         initialValue={initialValue}

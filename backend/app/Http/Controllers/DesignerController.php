@@ -27,7 +27,7 @@ class DesignerController extends Controller
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'imagem' => ['required', 'url', 'max:255'],
+            'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
         ]);
         return response()->json(Designer::create($data), 201);
@@ -38,7 +38,7 @@ class DesignerController extends Controller
         $designer = Designer::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'imagem' => ['required', 'url', 'max:255'],
+            'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
         ]);
         $designer->update($data);

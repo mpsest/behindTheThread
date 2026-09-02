@@ -1,10 +1,10 @@
 .novo-artigo-page {
   min-height: calc(100vh - var(--header-height, 90px));
   color: var(--text-black);
-  background-image: url(/gradients/signup_right-bottom.svg);
-  background-size: clamp(40%, 45vw, 90%);
+  background-image: url(/gradients/conteudos-right_top.svg);
+  background-size: clamp(80%, 45vw, 100%);
   background-repeat: no-repeat;
-  background-position: right top;
+  background-position: left top;
 }
 
 .novo-artigo-header {
@@ -26,14 +26,23 @@
   width: min(100% - 32px, 760px);
   margin: 30px auto 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(18px, 3vw, 28px);
+  grid-template-columns: 1fr;
+  gap: 20px;
   align-items: start;
+}
+
+.novo-artigo-fields--bottom {
+  margin-top: 0;
+  padding: 0 0 clamp(24px, 4vw, 40px);
 }
 
 .novo-artigo-field {
   display: grid;
   gap: 8px;
+}
+
+.novo-artigo-field--full {
+  grid-column: 1 / -1;
 }
 
 .novo-artigo-field label {
@@ -63,6 +72,31 @@
 .novo-artigo-field input:focus {
   background-color: rgba(26, 26, 26, 0.05);
   outline: none;
+}
+
+.novo-artigo-keywords {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.novo-artigo-keyword-inputs {
+  display: grid;
+  gap: 12px;
+}
+
+.novo-artigo-keywords input {
+  min-width: 0;
+}
+
+.novo-artigo-keywords .square-btn {
+  min-width: 46px;
+  min-height: 46px;
+  padding: 6px 14px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .novo-artigo-workspace {
@@ -137,6 +171,12 @@
   margin: 30px 0 0;
 }
 
+.novo-artigo-submit {
+  display: flex;
+  justify-content: center;
+  padding: 0 16px clamp(36px, 5vw, 56px);
+}
+
 .novo-artigo-editor .tox-tinymce {
   border: 2px solid var(--text-black);
   border-radius: 0;
@@ -195,7 +235,14 @@
 
   .novo-artigo-fields {
     width: min(100% - 24px, 760px);
+  }
+
+  .novo-artigo-keywords {
     grid-template-columns: 1fr;
+  }
+
+  .novo-artigo-keywords .square-btn {
+    justify-self: center;
   }
 
   .novo-artigo-editor,

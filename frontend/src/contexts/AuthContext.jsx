@@ -39,14 +39,8 @@ export const AuthProvider = ({ children }) => {
     });
 
     // 2. Post credentials with the token echoed back as a header
-    const res = await fetch(`${API}/login`, {
+    const res = await makeRequest("login", {
       method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-XSRF-TOKEN": getCookie("XSRF-TOKEN") ?? "",
-      },
       body: JSON.stringify({ email, password }),
     });
 
@@ -62,23 +56,19 @@ export const AuthProvider = ({ children }) => {
     return true;
   }
 
-  const login2 = async (authData) => {
-    const response = await fetch("http://localhost:8000/login", {
-      method: "POST",
+  const makeRequest = async (url, params) => {
+    const response = await fetch(`${API}/${url}`, {
+      ...params,
+      credentials: "include",
       headers: {
+        ...(params?.headers || {}),
         "Content-Type": "application/json",
+        Accept: "application/json",
+        "X-XSRF-TOKEN": getCookie("XSRF-TOKEN") ?? "",
       },
-      body: JSON.stringify(authData),
     });
 
-    if (!response.ok) {
-      throw new Error("Credenciais erradas.");
-    }
-
-    const data = await response.json();
-    setUser({ role: data.role });
-    localStorage.setItem("user", JSON.stringify(data));
-    return true;
+    return response;
   };
 
   const logout = () => {
@@ -87,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, makeRequest }}>
       {children}
     </AuthContext.Provider>
   );

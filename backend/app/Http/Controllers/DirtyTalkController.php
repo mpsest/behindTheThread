@@ -27,7 +27,7 @@ class DirtyTalkController extends Controller
     {
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'imagem' => ['required', 'url', 'max:255'],
+            'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
         ]);
         return response()->json(DirtyTalk::create($data), 201);
@@ -38,7 +38,7 @@ class DirtyTalkController extends Controller
         $dirtyTalk = DirtyTalk::findOrFail($id);
         $data = $request->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'imagem' => ['required', 'url', 'max:255'],
+            'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
         ]);
         $dirtyTalk->update($data);
