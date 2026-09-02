@@ -34,9 +34,9 @@ Route::apiResource('designers', DesignerController::class)
 
 Route::apiResource('keywords', KeywordController::class)
     ->only(['index', 'show']);
-    
+
 Route::apiResource('misturas', MisturaController::class)
-    ->only(['index', 'show']);
+    ->only(['index', 'show', 'indexLatest']);
 
 Route::post('/newsletter', [NewsletterController::class, 'store']);
 
@@ -64,7 +64,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->except(['index', 'show']);
 
     Route::apiResource('dirty-talks', DirtyTalkController::class)
-        ->except(['index', 'show']);
+        ->except(['index', 'show', 'indexLatest']);
 
     Route::put(
         '/dirty-talks/{id}/keywords',
@@ -72,7 +72,7 @@ Route::middleware('auth:sanctum')->group(function () {
     );
 
     Route::apiResource('artigos', ArtigoController::class)
-        ->except(['index', 'show']);
+        ->except(['index', 'show', 'indexLatest']);
 
     // Guardar keywords escolhidas para o artigo
     Route::put(
@@ -81,7 +81,7 @@ Route::middleware('auth:sanctum')->group(function () {
     );
 
     Route::apiResource('designers', DesignerController::class)
-        ->except(['index', 'show']);
+        ->except(['index', 'show', 'indexLatest']);
 
     Route::put(
         '/designers/{id}/keywords',
@@ -95,7 +95,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->except(['store']);
 
     Route::apiResource('misturas', MisturaController::class)
-    ->except(['index', 'show']);
+    ->except(['index', 'show', 'indexLatest']);
 
 
     Route::get(

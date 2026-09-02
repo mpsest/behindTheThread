@@ -10,12 +10,12 @@ class DirtyTalkController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(DirtyTalk::with(['keywords'])->get());
+        return response()->json(DirtyTalk::with(['keywords'])->latest()->get());
     }
 
     public function indexLatest(): JsonResponse
     {
-        return response()->json(DirtyTalk::with(['keywords'])->latest()->get());
+        return response()->json(DirtyTalk::with(['keywords'])->latest()->limit(3)->get());
     }
 
     public function show(int $id): JsonResponse
