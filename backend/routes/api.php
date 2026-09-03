@@ -135,5 +135,10 @@ Route::middleware('auth:sanctum')->group(function () {
             '/utilizadores/{id}',
             [UtilizadorController::class, 'destroy']
         );
+
+        Route::post(
+            '/newsletter/send',
+            [NewsletterController::class, 'send']
+        );
     });
 });

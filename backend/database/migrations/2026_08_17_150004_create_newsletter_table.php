@@ -10,7 +10,6 @@ return new class extends Migration {
         Schema::create('newsletter', function (Blueprint $table) {
             $table->id();
             $table->string('email', 150)->unique();
-            $table->boolean('subscrito')->default(true);
         });
     }
     public function down(): void { Schema::dropIfExists('newsletter'); }

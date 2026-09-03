@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewsletterMail;
 use App\Models\Newsletter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class NewsletterController extends Controller
 {
@@ -16,7 +18,6 @@ class NewsletterController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email', 'max:150', 'unique:newsletter,email'],
-            'subscrito' => ['required', 'boolean'],
         ]);
         return response()->json(Newsletter::create($data), 201);
     }
@@ -26,7 +27,6 @@ class NewsletterController extends Controller
         $newsletter = Newsletter::findOrFail($id);
         $data = $request->validate([
             'email' => ['required', 'email', 'max:150', 'unique:newsletter,email,' . $newsletter->id],
-            'subscrito' => ['required', 'boolean'],
         ]);
         $newsletter->update($data);
         return response()->json($newsletter);
@@ -36,5 +36,35 @@ class NewsletterController extends Controller
     {
         Newsletter::findOrFail($id)->delete();
         return response()->json(['message' => 'Registo de newsletter apagado com sucesso.']);
+    }
+
+    public function send(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'subject' => ['required', 'string', 'max:255'],
+            'html' => ['required', 'string'],
+        ]);
+
+        $total = Newsletter::count();
+
+        if ($total === 0) {
+            return response()->json([
+                'message' => 'Não existem subscritores na tabela newsletter.',
+            ], 422);
+        }
+
+        Newsletter::query()
+            ->select('email')
+            ->orderBy('id')
+            ->chunk(100, function ($subscribers) use ($data) {
+                foreach ($subscribers as $subscriber) {
+                    Mail::to($subscriber->email)
+                        ->queue(new NewsletterMail($data['subject'], $data['html']));
+                }
+            });
+
+        return response()->json([
+            'message' => "Newsletter colocada na fila de envio para {$total} destinatário(s).",
+        ]);
     }
 }
