@@ -1,0 +1,10 @@
+.boxy {
+  border: 4px solid var(--text-black);
+}
+
+.page-dashboard {
+  background-image: url(/gradients/dashboard-center_left.svg);
+  background-size: min(90%, 980px);
+  background-repeat: no-repeat;
+  background-position: left top;
+}

@@ -1,9 +1,9 @@
-.fornecedores-detail-table {
+.espacos-detail-table {
   width: 100%;
   min-width: 640px;
   table-layout: fixed;
   border-collapse: collapse;
-  background-image: url(/gradients/baseDados-fornecedores_center.svg);
+  background-image: url(/gradients/baseDados-espacos_center.svg);
   background-size: clamp(100%, 90vw, 190%);
   background-repeat: no-repeat;
   background-position: center center;
@@ -19,7 +19,7 @@
   text-decoration: none;
 }
 
-.fornecedores-detail-table th {
+.espacos-detail-table th {
   text-align: center;
   font-weight: 700;
   font-size: 18px;
@@ -27,7 +27,7 @@
   border: 2px solid var(--text-black);
 }
 
-.fornecedores-detail-table td {
+.espacos-detail-table td {
   text-align: center;
   box-sizing: border-box;
   padding: 20px;
@@ -35,13 +35,13 @@
   overflow-wrap: break-word;
 }
 
-.fornecedores-detail-table td a {
+.espacos-detail-table td a {
   text-decoration: none;
   color: var(--text-black);
   font-weight: 500;
 }
 
-.fornecedores-detail-table td a:hover {
+.espacos-detail-table td a:hover {
   text-decoration: underline;
   color: var(--text-black);
   font-weight: 700;

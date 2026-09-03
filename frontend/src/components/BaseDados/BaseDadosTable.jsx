@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./BaseDadosTable.css";
 
-export default function BaseDadosTable({ title, items }) {
+export default function BaseDadosTable({ title, routeSegment, items }) {
   const rows = [];
 
   for (let i = 0; i < items.length; i += 3) {
@@ -20,7 +20,9 @@ export default function BaseDadosTable({ title, items }) {
           <tr key={index} className="table-basedados-row">
             {types.map((type) => (
               <td key={type} className="col-12 col-sm-6 col-md-4">
-                <Link to={`/basededados/${title.toLowerCase()}/${type}`}>
+                <Link
+                  to={`/basededados/${routeSegment ?? title.toLowerCase()}/${type}`}
+                >
                   {type}
                 </Link>
               </td>

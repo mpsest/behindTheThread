@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SquareButton from "../../components/SquareButton";
 import "./Login.css";
 
@@ -47,6 +47,10 @@ export default function LoginForm() {
           <SquareButton type="submit" variant="light">
             Login
           </SquareButton>
+        </p>
+
+        <p className="login-recovery">
+          <Link to="/esqueci-password">Esqueci-me da password</Link>
         </p>
       </form>
     </section>
