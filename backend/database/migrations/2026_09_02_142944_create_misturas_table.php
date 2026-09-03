@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('n_colaboradores')->nullable();
             $table->string('email');
             $table->string('telemovel');
+            $table->boolean('aprovado');
 
             $table->timestamps();
         });
