@@ -44,11 +44,13 @@ export default function Menu() {
       </button>
       <ul className="dropdown-menu justify-content-start justify-content-md-center pt-5 pt-md-0">
 
-         <li>
-          <Link to="/dashboard" className="dropdown-item">
-            DASHBOARD
-          </Link>
-        </li>
+         {user && (
+          <li>
+            <Link to="/dashboard" className="dropdown-item">
+              DASHBOARD
+            </Link>
+          </li>
+        )}
 
 
         <li>
@@ -81,13 +83,7 @@ export default function Menu() {
             CONTACTOS
           </Link>
         </li>
-        {user && (
-          <li>
-            <Link to="/dashboard" className="dropdown-item">
-              DASHBOARD
-            </Link>
-          </li>
-        )}
+      
       </ul>
     </div>
   );
