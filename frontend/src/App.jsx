@@ -51,6 +51,7 @@ function App() {
         { path: "/dirtytalks/:id", element: <DirtyTalksDetail /> },
         { path: "/designers", element: <Designers /> },
         { path: "/designers/:id", element: <DesignersDetail /> },
+        { path: "/users", element: <Users /> },
         { path: "/utilizadores", element: <Users /> },
         {
           path: "/basededados/espacos/:type",
