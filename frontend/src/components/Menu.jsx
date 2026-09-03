@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import "./Menu.css";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../contexts/AuthContext.jsx";
 
 export default function Menu() {
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
     const dropdown = document.querySelector(".dropdown");
     const body = document.body;
@@ -70,6 +73,13 @@ export default function Menu() {
             CONTACTOS
           </Link>
         </li>
+        {user && (
+          <li>
+            <Link to="/dashboard" className="dropdown-item">
+              DASHBOARD
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );
