@@ -4,6 +4,8 @@
   font-size: clamp(32px, 7vw, 55px);
   width: 100%;
   border-bottom: 2px solid var(--text-black);
+  margin-bottom: 0;
+  padding-bottom: 15px;
 }
 .page-title p {
   font-family: "Lexend";

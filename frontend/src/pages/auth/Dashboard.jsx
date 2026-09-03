@@ -12,28 +12,27 @@ export default function Dashboard() {
         <div className="col-3 text-center">
           <PageSubTitle>Editar Conteúdos</PageSubTitle>
 
-            <Link to="/conteudo/novo">
-              <SquareButton className="m-2">Adicionar Conteúdo</SquareButton>
-            </Link>
+          <Link to="/conteudo/novo">
+            <SquareButton className="m-2">Adicionar Conteúdo</SquareButton>
+          </Link>
 
-            <br />
+          <br />
 
-            <Link to="/basedados">
-              <SquareButton className="m-2">Editar Base de Dados</SquareButton>
-            </Link>
+          <Link to="/basedados">
+            <SquareButton className="m-2">Editar Base de Dados</SquareButton>
+          </Link>
 
-            <br />
+          <br />
 
-            <Link to="/misturas">
-              <SquareButton className="m-2">Misturas</SquareButton>
-            </Link>
-
+          <Link to="/misturas">
+            <SquareButton className="m-2">Misturas</SquareButton>
+          </Link>
         </div>
 
         <div className="col-3 text-center">
           <PageSubTitle>Gestão de Utilizadores</PageSubTitle>
 
-           <Link to="/users">
+          <Link to="/users">
             <SquareButton className="m-2">Gestão de Utilizadores</SquareButton>
           </Link>
         </div>
@@ -41,7 +40,7 @@ export default function Dashboard() {
         <div className="col-3 text-center">
           <PageSubTitle>Gestão de Conta</PageSubTitle>
 
-           <Link to="/users">
+          <Link to="/users">
             <SquareButton className="m-2">Logout</SquareButton>
           </Link>
 
@@ -52,16 +51,11 @@ export default function Dashboard() {
           </Link>
         </div>
 
-         <div className="col-3 text-center boxy">
+        <div className="col-3 text-center boxy">
           <PageSubTitle>Mensagens</PageSubTitle>
 
-            <SquareButton className="m-2">Mensagem por ler</SquareButton>
-        
+          <SquareButton className="m-2">Mensagem por ler</SquareButton>
         </div>
-
-
-
-       
       </div>
     </div>
   );

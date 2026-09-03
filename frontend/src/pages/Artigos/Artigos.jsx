@@ -8,7 +8,7 @@ export default function Artigos() {
   const artigos = useArtigos();
   return (
     <>
-      <PageTitle>ARTIGOS</PageTitle>
+      <PageTitle className="artigos-title">ARTIGOS</PageTitle>
       <div className="artigos-container">
         {artigos.map((artigo) => (
           <ConteudoItem key={artigo.id} conteudo={artigo} type="artigo" />

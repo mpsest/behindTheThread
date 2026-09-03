@@ -14,7 +14,9 @@
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
-  border: 2px solid var(--text-black);
+  border-left: 2px solid var(--text-black);
+  border-right: 2px solid var(--text-black);
+  border-bottom: 2px solid var(--text-black);
 }
 
 .conteudo-item-title {

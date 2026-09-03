@@ -6,9 +6,13 @@
   background-position: center top;
 }
 
+.page-title.artigos-title {
+  margin-bottom: 0;
+}
+
 .artigos-container {
   width: 100%;
-  padding: clamp(28px, 5vw, 56px) 0;
+  padding: 0 0 clamp(28px, 5vw, 56px);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;

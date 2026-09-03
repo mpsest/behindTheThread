@@ -6,6 +6,8 @@ import { AuthProvider } from "./contexts/AuthContext.jsx";
 import Dashboard from "./pages/auth/Dashboard.jsx";
 import Signup from "./pages/auth/signup.jsx";
 import Login from "./pages/auth/login.jsx";
+import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
+import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import BaseDados from "./pages/BaseDados/BaseDados.jsx";
 import FornecedoresDetail from "./pages/BaseDados/FornecedoresDetail.jsx";
 import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
@@ -13,8 +15,10 @@ import Error from "./pages/Error.jsx";
 import Contactos from "./pages/Contactos.jsx";
 import Artigos from "./pages/Artigos/Artigos.jsx";
 import ArtigosDetail from "./pages/Artigos/ArtigosDetail.jsx";
-import Designers from "./pages/Designers.jsx";
-import DirtyTalks from "./pages/DirtyTalks.jsx";
+import Designers from "./pages/Designers/Designers.jsx";
+import DesignersDetail from "./pages/Designers/DesignersDetail.jsx";
+import DirtyTalks from "./pages/DirtyTalks/DirtyTalks.jsx";
+import DirtyTalksDetail from "./pages/DirtyTalks/DirtyTalksDetail.jsx";
 import Misturas from "./pages/Misturas/Misturas.jsx";
 import MisturasDetail from "./pages/Misturas/MisturasDetail.jsx";
 import Users from "./pages/auth/Users.jsx";
@@ -36,13 +40,17 @@ function App() {
         { path: "/misturas/:id", element: <MisturasDetail /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
+        { path: "/recuperar-password", element: <ResetPassword /> },
+        { path: "/esqueci-password", element: <ForgotPassword /> },
         { path: "/contactos", element: <Contactos /> },
         { path: "/basededados", element: <BaseDados /> },
         { path: "/artigos", element: <Artigos /> },
         { path: "/artigos/:id", element: <ArtigosDetail /> },
         { path: "/conteudo/novo", element: <NovoConteudo /> },
         { path: "/dirtytalks", element: <DirtyTalks /> },
+        { path: "/dirtytalks/:id", element: <DirtyTalksDetail /> },
         { path: "/designers", element: <Designers /> },
+        { path: "/designers/:id", element: <DesignersDetail /> },
         { path: "/users", element: <Users /> },
         {
           path: "/basededados/fornecedores/:type",
