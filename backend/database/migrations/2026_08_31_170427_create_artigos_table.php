@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('artigos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo', 255);
-            $table->string('imagem', 255);
+            $table->string('imagem');
             $table->text('texto');
             $table->timestamps();
         });
