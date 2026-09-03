@@ -9,7 +9,7 @@ import Login from "./pages/auth/login.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import BaseDados from "./pages/BaseDados/BaseDados.jsx";
-import FornecedoresDetail from "./pages/BaseDados/FornecedoresDetail.jsx";
+import EspacosDetail from "./pages/BaseDados/EspacosDetail.jsx";
 import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
 import Error from "./pages/Error.jsx";
 import Contactos from "./pages/Contactos.jsx";
@@ -51,10 +51,10 @@ function App() {
         { path: "/dirtytalks/:id", element: <DirtyTalksDetail /> },
         { path: "/designers", element: <Designers /> },
         { path: "/designers/:id", element: <DesignersDetail /> },
-        { path: "/users", element: <Users /> },
+        { path: "/utilizadores", element: <Users /> },
         {
-          path: "/basededados/fornecedores/:type",
-          element: <FornecedoresDetail />,
+          path: "/basededados/espacos/:type",
+          element: <EspacosDetail />,
         },
       ],
     },

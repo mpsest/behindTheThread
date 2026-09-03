@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PageTitle from "../../components/PageTitle";
 import SquareButton from "../../components/SquareButton";
 import PageSubTitle from "../../components/PageSubTitle";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   return (

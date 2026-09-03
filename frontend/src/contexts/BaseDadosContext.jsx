@@ -4,7 +4,7 @@ export const BaseDadosContext = createContext();
 
 /* TODO: Apagar objetos e ligar à base de dados*/
 const BASE_DADOS = {
-  Fornecedores: {
+  Espacos: {
     Confeção: [
       {
         name: "Petratex",

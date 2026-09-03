@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function BaseDados() {
   const baseDados = useContext(BaseDadosContext);
-  const fornecedores = Object.keys(baseDados.Fornecedores);
+  const espacos = Object.keys(baseDados.Espacos);
 
   return (
     <div className="base-dados-page container-fluid px-0">
@@ -17,15 +17,15 @@ export default function BaseDados() {
         <p className="px-3 px-md-5">
           A página Base de Dados é o lugar onde podes encontrar pontos cruciais
           da tua carreira como criativo, quer seja através duma lista de
-          fornecedores em diversas áreas, ferramentas de todos os tipos e formas
+          espaços em diversas áreas, ferramentas de todos os tipos e formas
           ou conteúdos como filmes e livros para expandires o teu mundo.
           <br />
           Se tiveres alguma sugestão de algo que possa ser adicionado a uma
           destas categorias podes sempre contactar-nos. Obrigado.
         </p>
       </PageTitle>
-      <div className="section-fornecedores">
-        <BaseDadosTable title="Fornecedores" items={fornecedores} />
+      <div className="section-espacos">
+        <BaseDadosTable title="Espaços" routeSegment="espacos" items={espacos} />
       </div>
       <div>
         <p className="last-p px-3 px-md-5 pt-4 pt-md-5">

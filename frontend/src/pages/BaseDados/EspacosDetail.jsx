@@ -2,22 +2,22 @@ import { useContext } from "react";
 import { BaseDadosContext } from "../../contexts/BaseDadosContext";
 import { useParams, Link } from "react-router-dom";
 import SquareButton from "../../components/SquareButton";
-import "./FornecedoresDetail.css";
+import "./EspacosDetail.css";
 
-export default function FornecedoresDetail() {
+export default function EspacosDetail() {
   const { type } = useParams();
   const baseDados = useContext(BaseDadosContext);
-  const fornecedores = baseDados.Fornecedores[type];
+  const espacos = baseDados.Espacos[type];
 
   return (
-    <div className="fornecedores-detail-page container-fluid px-3 px-md-4 px-lg-0">
+    <div className="espacos-detail-page container-fluid px-3 px-md-4 px-lg-0">
       <div className="align-button d-flex justify-content-end py-3 pe-md-2">
         <Link to="/basededados">
           <SquareButton>Voltar atrás</SquareButton>
         </Link>
       </div>
       <div className="table-responsive">
-        <table className="fornecedores-detail-table">
+        <table className="espacos-detail-table">
           <thead>
             <tr>
               <th colSpan={3} className="py-3 px-2">
@@ -26,13 +26,13 @@ export default function FornecedoresDetail() {
             </tr>
           </thead>
           <tbody>
-            {fornecedores.map((fornecedor) => (
-              <tr key={fornecedor.name} className="fornecedores-detail-row">
+            {espacos.map((espaco) => (
+              <tr key={espaco.name} className="espacos-detail-row">
                 <td className="p-2 p-md-3 p-lg-4">
-                  <a href={fornecedor.url}>{fornecedor.name}</a>
+                  <a href={espaco.url}>{espaco.name}</a>
                 </td>
-                <td className="p-2 p-md-3 p-lg-4">{fornecedor.email}</td>
-                <td className="p-2 p-md-3 p-lg-4">{fornecedor.location}</td>
+                <td className="p-2 p-md-3 p-lg-4">{espaco.email}</td>
+                <td className="p-2 p-md-3 p-lg-4">{espaco.location}</td>
               </tr>
             ))}
           </tbody>
