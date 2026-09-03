@@ -18,7 +18,7 @@ class UtilizadorController extends Controller
     {
         $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
 
-        if ($request->user()->id !== $user->id) {
+        if (($request->user()->id !== $user->id)|| ($request->user()->user_type !== User::TYPE_ADMIN)) {
             abort(403, 'Só pode ver os dados da sua própria conta.');
         }
 
