@@ -5,3 +5,23 @@
   background-repeat: no-repeat;
   background-position: center top;
 }
+
+.artigos-container {
+  width: 100%;
+  padding: clamp(28px, 5vw, 56px) 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+@media (max-width: 900px) {
+  .artigos-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .artigos-container {
+    grid-template-columns: 1fr;
+  }
+}

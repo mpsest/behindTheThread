@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.sq-btn-title {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

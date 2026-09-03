@@ -1,0 +1,28 @@
+.conteudo-card {
+  min-width: 0;
+}
+
+.conteudo-item {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.conteudo-item img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--text-black);
+}
+
+.conteudo-item-title {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  width: min(100% - 32px, 320px);
+  display: flex;
+  justify-content: center;
+  transform: translateX(-50%);
+}

@@ -11,7 +11,7 @@ export default function ArtigosDetail() {
   }
 
   return (
-    <div className="artigos-detail">
+    <div className="container">
       <h2>{artigo.titulo}</h2>
       <img src={artigo.imagem} alt={artigo.titulo} />
       <div
