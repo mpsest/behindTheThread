@@ -7,7 +7,7 @@ export default function Dashboard() {
       <PageTitle>DASHBOARD</PageTitle>
       <h4>Olá, !</h4>
 
-    return (
+  
         <div>
             <h1>Dashboard</h1>
             <p>Welcome to the dashboard!</p>
@@ -16,7 +16,7 @@ export default function Dashboard() {
 
 
         </div>
-    )
+    
     </div>
   );
 };
