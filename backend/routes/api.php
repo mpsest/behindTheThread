@@ -39,6 +39,7 @@ Route::apiResource('misturas', MisturaController::class)
     ->only(['index', 'show', 'indexLatest']);
 
 Route::post('/newsletter', [NewsletterController::class, 'store']);
+Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe']);
 
 Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])
     ->name('password.email');

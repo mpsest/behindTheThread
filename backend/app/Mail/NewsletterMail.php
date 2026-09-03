@@ -15,10 +15,12 @@ class NewsletterMail extends Mailable
     /**
      * @param string $mailSubject Assunto do email
      * @param string $htmlContent Conteudo da newsletter
+     * @param string $unsubscribeUrl Link de anulação de subscrição, específico do destinatário
      */
     public function __construct(
         public string $mailSubject,
         public string $htmlContent,
+        public string $unsubscribeUrl,
     ) {
     }
 
@@ -31,9 +33,13 @@ class NewsletterMail extends Mailable
 
     public function content(): Content
     {
-        // htmlString permite usar diretamente o HTML vindo do editor React, sem precisar de uma view Blade.
+        // htmlString permite usar diretamente o HTML vindo do editor React, rodapé com o link de anulação de subscrição.
+        $footer = view('emails.newsletter-footer', [
+            'unsubscribeUrl' => $this->unsubscribeUrl,
+        ])->render();
+
         return new Content(
-            htmlString: $this->htmlContent,
+            htmlString: $this->htmlContent . $footer,
         );
     }
 
