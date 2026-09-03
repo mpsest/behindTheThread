@@ -34,7 +34,7 @@ class MisturaController extends Controller
         $data = $request->validate([
             'autor' => ['required', 'string', 'max:255'],
             'nome_projeto' => ['required', 'string', 'max:255'],
-            'descricao' => ['required', 'text'],
+            'descricao' => ['required', 'string'],
             'regime' => ['required', 'string'],
             'localizacao' => ['nullable', 'string', 'max:255'],
             'area' => ['required', 'string'],
@@ -44,6 +44,7 @@ class MisturaController extends Controller
             'n_colaboradores' => ['nullable', 'integer', 'min:0'],
             'email' => ['required', 'email', 'max:255'],
             'telemovel' => ['required', 'string', 'max:20'],
+            'aprovado' => ['required', 'boolean'],
         ]);
 
         return response()->json(
@@ -59,7 +60,7 @@ class MisturaController extends Controller
         $data = $request->validate([
             'autor' => ['required', 'string', 'max:255'],
             'nome_projeto' => ['required', 'string', 'max:255'],
-            'descricao' => ['required', 'text'],
+            'descricao' => ['required', 'string'],
             'regime' => ['required', 'string'],
             'localizacao' => ['nullable', 'string', 'max:255'],
             'area' => ['required', 'string'],
@@ -69,6 +70,7 @@ class MisturaController extends Controller
             'n_colaboradores' => ['nullable', 'integer', 'min:0'],
             'email' => ['required', 'email', 'max:255'],
             'telemovel' => ['required', 'string', 'max:20'],
+            'aprovado' => ['required', 'boolean'],
         ]);
 
         $mistura->update($data);

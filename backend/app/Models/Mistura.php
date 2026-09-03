@@ -10,7 +10,7 @@ class Mistura extends Model
 
     protected $fillable = [
         'autor',
-        'nomeProjeto',
+        'nome_projeto',
         'descricao',
         'regime',
         'localizacao',
@@ -21,11 +21,13 @@ class Mistura extends Model
         'n_colaboradores',
         'email',
         'telemovel',
+        'aprovado',
     ];
 
     protected $casts = [
         'data_inicio' => 'date',
         'orcamento' => 'decimal:2',
         'n_colaboradores' => 'integer',
+        'aprovado' => 'boolean',
     ];
 }
