@@ -16,7 +16,7 @@ class FerramentaController extends Controller
     {
         $data = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
-            'site' => ['nullable', 'url', 'max:255'],
+            'site' => ['nullable', 'url'],
             'descricao' => ['nullable', 'string'],
         ]);
         return response()->json(Ferramenta::create($data), 201);
@@ -27,7 +27,7 @@ class FerramentaController extends Controller
         $ferramenta = Ferramenta::findOrFail($id);
         $data = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
-            'site' => ['nullable', 'url', 'max:255'],
+            'site' => ['nullable', 'url'],
             'descricao' => ['nullable', 'string'],
         ]);
         $ferramenta->update($data);

@@ -33,7 +33,7 @@ class MisturaController extends Controller
     {
         $data = $request->validate([
             'autor' => ['required', 'string', 'max:255'],
-            'nomeProjeto' => ['required', 'string', 'max:255'],
+            'nome_projeto' => ['required', 'string', 'max:255'],
             'descricao' => ['required', 'text'],
             'regime' => ['required', 'string'],
             'localizacao' => ['nullable', 'string', 'max:255'],
@@ -58,7 +58,7 @@ class MisturaController extends Controller
 
         $data = $request->validate([
             'autor' => ['required', 'string', 'max:255'],
-            'nomeProjeto' => ['required', 'string', 'max:255'],
+            'nome_projeto' => ['required', 'string', 'max:255'],
             'descricao' => ['required', 'text'],
             'regime' => ['required', 'string'],
             'localizacao' => ['nullable', 'string', 'max:255'],

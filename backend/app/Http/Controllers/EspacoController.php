@@ -19,7 +19,7 @@ class EspacoController extends Controller
     {
         $data = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
-            'site' => ['nullable', 'url', 'max:255'],
+            'site' => ['nullable', 'url'],
             'email' => ['nullable', 'email', 'max:150'],
             'localidade' => ['nullable', 'string', 'max:150'],
         ]);
@@ -31,7 +31,7 @@ class EspacoController extends Controller
         $espaco = Espaco::findOrFail($id);
         $data = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
-            'site' => ['nullable', 'url', 'max:255'],
+            'site' => ['nullable', 'url'],
             'email' => ['nullable', 'email', 'max:150'],
             'localidade' => ['nullable', 'string', 'max:150'],
         ]);
