@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Misturas.css";
 import PlusButton from "../../components/PlusButton.jsx";
 import PageTitle from "../../components/PageTitle.jsx";
@@ -8,17 +9,17 @@ import { useMisturas } from "../../hooks/useApi.js";
 
 export default function Misturas() {
   const { makeRequest } = useContext(AuthContext);
-  const misturas = useMisturas(); // lista já aprovada
+  const navigate = useNavigate();
+  const misturas = useMisturas();
 
   async function handleSubmit(formData) {
-    // mapeia os nomes do form (inglês) para o que a API espera (português)
     const payload = {
       autor: formData.creator,
       nome_projeto: formData.projectName,
       descricao: formData.description,
       regime: formData.regime,
       localizacao: formData.location || null,
-      area: formData.area.join(", "),          // array -> string
+      area: formData.area.join(", "),
       data_inicio: formData.startDate,
       duracao: formData.duration,
       orcamento: formData.budget ? Number(formData.budget.replace(/[^\d.]/g, "")) : null,
@@ -34,6 +35,7 @@ export default function Misturas() {
 
     if (res.ok) {
       alert("Proposta submetida! Será revista antes de publicação.");
+      navigate("/");
     } else {
       const err = await res.json().catch(() => null);
       alert(err?.message ?? "Erro ao submeter.");
@@ -42,14 +44,13 @@ export default function Misturas() {
 
   return (
     <div className="container-fluid px-0">
-      <PageTitle>MISTURAS{/* ...texto... */}</PageTitle>
+      <PageTitle>MISTURAS</PageTitle>
 
       <PlusButton collapseTarget="misturas-form" />
       <div className="collapse" id="misturas-form">
         <MisturasForm onSubmit={handleSubmit} />
       </div>
 
-      {/* lista das colaborações aprovadas */}
       <div className="row">
         {misturas.map((m) => (
           <div className="col-md-4" key={m.id}>

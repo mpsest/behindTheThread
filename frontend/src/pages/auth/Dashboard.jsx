@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PageTitle from "../../components/PageTitle";
 import SquareButton from "../../components/SquareButton";
 import PageSubTitle from "../../components/PageSubTitle";
+import LogoutButton from "../../components/LogoutButton.jsx";
 import { useMisturasNaoLidas } from "../../hooks/useApi.js";
 
 export default function Dashboard() {
@@ -44,9 +45,7 @@ export default function Dashboard() {
         <div className="col-3 text-center">
           <PageSubTitle>Gestão de Conta</PageSubTitle>
 
-           <Link to="/users">
-            <SquareButton className="m-2">Logout</SquareButton>
-          </Link>
+           <LogoutButton/>
 
           <br />
 

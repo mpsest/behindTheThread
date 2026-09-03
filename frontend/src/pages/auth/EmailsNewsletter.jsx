@@ -4,7 +4,7 @@ import PageTitle from "../../components/PageTitle.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
 import "./EmailsNewsletter.css";
 
-const API_URL = "http://localhost:8000/api/newsletter";
+const RESOURCE = "api/newsletter";
 
 export default function EmailsNewsletter() {
   const { makeRequest } = useContext(AuthContext);
@@ -20,7 +20,7 @@ export default function EmailsNewsletter() {
     setLoading(true);
     setErro(null);
     try {
-      const res = await makeRequest(API_URL);
+      const res = await makeRequest(RESOURCE);
       if (!res.ok) throw new Error(`Erro ${res.status}`);
       const data = await res.json();
       setEmails(Array.isArray(data) ? data : []);
@@ -36,7 +36,7 @@ export default function EmailsNewsletter() {
   async function handleDelete(id) {
     if (!window.confirm("Remover este email da newsletter?")) return;
     try {
-      const res = await makeRequest(`${API_URL}/${id}`, { method: "DELETE" });
+      const res = await makeRequest(`${RESOURCE}/${id}`, { method: "DELETE" });
       if (!res.ok) throw new Error(`Erro ${res.status}`);
       loadEmails();
     } catch (err) {
@@ -53,17 +53,14 @@ export default function EmailsNewsletter() {
   return (
     <main className="emails-newsletter">
       <PageTitle>EMAILS NEWSLETTER</PageTitle>
-
       <div className="emails-newsletter__header">
         <p>{emails.length} subscritor(es)</p>
         <SquareButton onClick={copiarTodos} disabled={emails.length === 0}>
           Copiar todos
         </SquareButton>
       </div>
-
       {loading && <p>A carregar...</p>}
       {erro && <p className="emails-newsletter__error">{erro}</p>}
-
       {!loading && !erro && (
         <table className="emails-newsletter__table">
           <thead>
