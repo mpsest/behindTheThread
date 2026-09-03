@@ -43,6 +43,14 @@ export default function Menu() {
         />
       </button>
       <ul className="dropdown-menu justify-content-start justify-content-md-center pt-5 pt-md-0">
+
+         <li>
+          <Link to="/dashboard" className="dropdown-item">
+            DASHBOARD
+          </Link>
+        </li>
+
+
         <li>
           <Link to="/dirtytalks" className="dropdown-item">
             DIRTY TALKS
