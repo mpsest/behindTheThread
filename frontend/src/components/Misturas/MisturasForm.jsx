@@ -101,7 +101,7 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form__field">
         <label htmlFor="budget">Orçamento (caso haja)</label>
-        <input id="budget" name="budget" type="text" placeholder="500 €"
+        <input id="budget" name="budget" type="text" placeholder="500"
           value={formData.budget} onChange={handleChange} />
       </div>
 
@@ -119,12 +119,15 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form__field">
         <label htmlFor="phone">Telemóvel*</label>
-        <input id="phone" name="phone" type="tel" placeholder="nome@gmail.com"
+        <input id="phone" name="phone" type="tel" placeholder="912 345 678"
           value={formData.phone} onChange={handleChange} required />
       </div>
 
       <div className="collab-form__submit">
-        <SquareButton type="submit" variant="dark">Submeter</SquareButton>
+        <Link to="/misturas">
+          <SquareButton type="submit" variant="dark"  >Submeter</SquareButton>
+        </Link>
+        
       </div>
     </form>
   );

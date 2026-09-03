@@ -36,7 +36,12 @@ Route::apiResource('keywords', KeywordController::class)
     ->only(['index', 'show']);
 
 Route::apiResource('misturas', MisturaController::class)
-    ->only(['index', 'show', 'indexLatest']);
+    ->only(['index', 'show'])
+    ->whereNumber('mistura');
+
+Route::get('/misturas-latest', [MisturaController::class, 'indexLatest']);
+
+Route::post('/misturas', [MisturaController::class, 'store']);
 
 Route::post('/newsletter', [NewsletterController::class, 'store']);
 
@@ -52,7 +57,7 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword'])
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::get('/user', fn (Request $request) => $request->user());
+    Route::get('/user', fn(Request $request) => $request->user());
 
     Route::apiResource('espacos', EspacoController::class)
         ->except(['index', 'show']);
@@ -94,9 +99,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('newsletter', NewsletterController::class)
         ->except(['store']);
 
-    Route::apiResource('misturas', MisturaController::class)
-    ->except(['index', 'show', 'indexLatest']);
+    Route::get('/misturas/nao-lidas/count', [MisturaController::class, 'naoLidasCount']);
 
+    Route::get('/misturas/pendentes', [MisturaController::class, 'pendentes']);
+
+    Route::patch('/misturas/{id}/lida', [MisturaController::class, 'marcarLida']);
+
+    Route::patch('/misturas/{id}/aprovar', [MisturaController::class, 'aprovar']);
+    
+    Route::apiResource('misturas', MisturaController::class)
+        ->only(['update', 'destroy'])
+        ->whereNumber('mistura');
 
     Route::get(
         '/utilizadores',

@@ -19,6 +19,8 @@ import Misturas from "./pages/Misturas/Misturas.jsx";
 import MisturasDetail from "./pages/Misturas/MisturasDetail.jsx";
 import Users from "./pages/auth/Users.jsx";
 import NovoConteudo from "./pages/auth/NovoConteudo.jsx";
+import EmailsNewsletter from "./pages/auth/EmailsNewsletter.jsx";
+import MisturasPendentes from "./pages/auth/MisturasPendentes.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +35,7 @@ function App() {
       children: [
         { path: "/dashboard", element: <Dashboard /> },
         { path: "/misturas", element: <Misturas /> },
+        { path: "/misturas/pendentes", element: <MisturasPendentes /> },
         { path: "/misturas/:id", element: <MisturasDetail /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
@@ -44,6 +47,8 @@ function App() {
         { path: "/dirtytalks", element: <DirtyTalks /> },
         { path: "/designers", element: <Designers /> },
         { path: "/users", element: <Users /> },
+        { path: "/newsletter/emails", element: <EmailsNewsletter /> },
+        
         {
           path: "/basededados/fornecedores/:type",
           element: <FornecedoresDetail />,
