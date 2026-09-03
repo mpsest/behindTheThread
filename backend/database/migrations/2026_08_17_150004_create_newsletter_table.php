@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('newsletter', function (Blueprint $table) {
             $table->id();
             $table->string('email', 150)->unique();
+            $table->string('token', 64)->unique()->nullable();
         });
     }
     public function down(): void { Schema::dropIfExists('newsletter'); }

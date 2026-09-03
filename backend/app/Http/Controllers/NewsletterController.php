@@ -7,6 +7,7 @@ use App\Models\Newsletter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class NewsletterController extends Controller
 {
@@ -14,12 +15,45 @@ class NewsletterController extends Controller
 
     public function show(int $id): JsonResponse { return response()->json(Newsletter::findOrFail($id)); }
 
+    /**
+     * Regista o pedido de subscrição. Gera logo um token usado apenas para construir o link de anular subscrição.
+     */
     public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
             'email' => ['required', 'email', 'max:150', 'unique:newsletter,email'],
         ]);
-        return response()->json(Newsletter::create($data), 201);
+
+        $subscriber = Newsletter::create([
+            'email' => $data['email'],
+            'token' => Str::random(48),
+        ]);
+
+        return response()->json([
+            'message' => 'Subscrição efetuada com sucesso.',
+        ], 201);
+    }
+
+    /**
+     * Remove a subscrição a partir do link presente no rodapé
+     */
+    public function unsubscribe(Request $request): JsonResponse
+    {
+        $request->validate(['token' => ['required', 'string']]);
+
+        $subscriber = Newsletter::where('token', $request->query('token'))->first();
+
+        if (!$subscriber) {
+            return response()->json([
+                'message' => 'Link de anulação inválido ou já usado.',
+            ], 404);
+        }
+
+        $subscriber->delete();
+
+        return response()->json([
+            'message' => 'Subscrição anulada com sucesso.',
+        ]);
     }
 
     public function update(Request $request, int $id): JsonResponse
@@ -53,13 +87,20 @@ class NewsletterController extends Controller
             ], 422);
         }
 
+        $frontendUrl = rtrim(config('app.frontend_url', config('app.url')), '/');
+
+        // Processa em blocos de 100 para não sobrecarregar a memória
+        // com listas grandes, e coloca cada email na fila em vez de
+        // o enviar de forma síncrona.
         Newsletter::query()
-            ->select('email')
+            ->select('email', 'token')
             ->orderBy('id')
-            ->chunk(100, function ($subscribers) use ($data) {
+            ->chunk(100, function ($subscribers) use ($data, $frontendUrl) {
                 foreach ($subscribers as $subscriber) {
+                    $unsubscribeUrl = $frontendUrl . '/newsletter/cancelar?token=' . $subscriber->token;
+
                     Mail::to($subscriber->email)
-                        ->queue(new NewsletterMail($data['subject'], $data['html']));
+                        ->queue(new NewsletterMail($data['subject'], $data['html'], $unsubscribeUrl));
                 }
             });
 
