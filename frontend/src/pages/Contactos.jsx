@@ -13,7 +13,7 @@ const TEAM = [
   {
     name: "Francisco Brito",
     role: "Designer",
-    linkedin: "franciscobritofb8@gmail.com",
+    linkedin: "www.linkedin.com/in/xiquito",
   },
   { name: "Paula Esteves", role: "Developer", linkedin: "https://www.linkedin.com/in/paulasesteves/" },
 ];
@@ -61,11 +61,11 @@ export default function ContactPage() {
                 DESIGNERS E <br /> DEVELOPERS
               </li>
               {TEAM.map((person) => (
-                <li key={person.email}>
+                <li key={person.linkedin}>
                   {person.name}, {person.role}
                   <br />
-                  <a href={person.linkedIn} target="_blank" rel="noreferrer">
-                    {person.linkedIn}
+                  <a href={person.linkedin} target="_blank" rel="noreferrer">
+                    {person.linkedin}
                   </a>
                 </li>
               ))}

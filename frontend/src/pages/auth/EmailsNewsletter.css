@@ -1,0 +1,27 @@
+.emails-newsletter {
+  padding: 1rem;
+}
+
+.emails-newsletter__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.emails-newsletter__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.emails-newsletter__table th,
+.emails-newsletter__table td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.emails-newsletter__error {
+  color: #b00020;
+}

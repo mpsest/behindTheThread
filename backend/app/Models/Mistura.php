@@ -22,6 +22,7 @@ class Mistura extends Model
         'email',
         'telemovel',
         'aprovado',
+        'lida',
     ];
 
     protected $casts = [
@@ -29,5 +30,6 @@ class Mistura extends Model
         'orcamento' => 'decimal:2',
         'n_colaboradores' => 'integer',
         'aprovado' => 'boolean',
+        'lida' => 'boolean',
     ];
 }
