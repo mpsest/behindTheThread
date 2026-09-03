@@ -9,7 +9,7 @@ export default function Dashboard() {
       <PageTitle>DASHBOARD</PageTitle>
       <h4>Olá, !</h4>
       <div className="row">
-        <div className="col-4 text-center">
+        <div className="col-3 text-center">
           <PageSubTitle>Editar Conteúdos</PageSubTitle>
 
             <Link to="/conteudo/novo">
@@ -30,7 +30,7 @@ export default function Dashboard() {
 
         </div>
 
-        <div className="col-4 text-center">
+        <div className="col-3 text-center">
           <PageSubTitle>Gestão de Utilizadores</PageSubTitle>
 
            <Link to="/users">
@@ -38,7 +38,7 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        <div className="col-4 text-center">
+        <div className="col-3 text-center">
           <PageSubTitle>Gestão de Conta</PageSubTitle>
 
            <Link to="/users">
@@ -50,6 +50,13 @@ export default function Dashboard() {
           <Link to="/users">
             <SquareButton className="m-2">Mudar Password</SquareButton>
           </Link>
+        </div>
+
+         <div className="col-3 text-center boxy">
+          <PageSubTitle>Mensagens</PageSubTitle>
+
+            <SquareButton className="m-2">Mensagem por ler</SquareButton>
+        
         </div>
 
 
