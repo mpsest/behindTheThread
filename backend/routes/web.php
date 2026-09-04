@@ -23,18 +23,18 @@ Route::post('/login', function (Request $request) {
       }
 
       $request->session()->regenerate();
-      return response()->noContent();
+      //return response()->noContent();
 
-    // //guarda o utilizador
-    //  $user = Auth::user();
+    //guarda o utilizador
+     $user = Auth::user();
     //  //cria um token sanctum para react
     //  $token = $user->createToken('react')->plainTextToken;
-    // // retorna mensagem de sucesso, utilizador e token
-    //  return response()->json([
-    //     'message' => 'Login efetuado com sucesso.',
-    //     'user' => $user,
-    //     'token' => $token,
-    // ]);
+    // retorna mensagem de sucesso, utilizador e token
+     return response()->json([
+        'message' => 'Login efetuado com sucesso.',
+        'user' => $user,
+        //'token' => $token,
+    ]);
   })->name('login');
 
   Route::post('/logout', function (Request $request) {
