@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import PageTitle from "../../components/PageTitle";
 import SquareButton from "../../components/SquareButton";
 import PageSubTitle from "../../components/PageSubTitle";
-import "./Dashboard.css";
+import LogoutButton from "../../components/LogoutButton.jsx";
+import { useMisturasNaoLidas } from "../../hooks/useApi.js";
 
 export default function Dashboard() {
+  const naoLidas = useMisturasNaoLidas();
+
   return (
     <div>
       <PageTitle>DASHBOARD</PageTitle>
@@ -41,22 +44,33 @@ export default function Dashboard() {
         <div className="col-3 text-center">
           <PageSubTitle>Gestão de Conta</PageSubTitle>
 
-          <Link to="/users">
-            <SquareButton className="m-2">Logout</SquareButton>
-          </Link>
+           <LogoutButton/>
 
           <br />
 
           <Link to="/users">
             <SquareButton className="m-2">Mudar Password</SquareButton>
           </Link>
+
+          <br />
+
+          <Link to="/newsletter/emails">
+            <SquareButton className="m-2">Emails para Newsletter</SquareButton>
+          </Link>
         </div>
 
-        <div className="col-3 text-center boxy">
-          <PageSubTitle>Mensagens</PageSubTitle>
+         <div className="col-3 text-center boxy">
+        <PageSubTitle>Mensagens</PageSubTitle>
+        <Link to="/misturas/pendentes">
+          <SquareButton className="m-2">
+            {naoLidas} {naoLidas === 1 ? "mensagem por ler" : "mensagens por ler"}
+          </SquareButton>
+        </Link>
+      </div>
 
-          <SquareButton className="m-2">Mensagem por ler</SquareButton>
-        </div>
+
+
+       
       </div>
     </div>
   );

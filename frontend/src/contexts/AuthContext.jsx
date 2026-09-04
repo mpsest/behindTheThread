@@ -20,17 +20,24 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, []);
 
-  async function fetchUser() {
-    const user = await fetch(`${API}/api/user`, {
-      credentials: "include",
-      headers: { Accept: "application/json" },
-    }).then((r) => r.json());
+async function fetchUser() {
+  const res = await fetch(`${API}/api/user`, {
+    credentials: "include",
+    headers: { Accept: "application/json" },
+  });
 
-    setUser(user);
-    localStorage.setItem("user", JSON.stringify(user));
-
-    return user;
+  if (!res.ok) {
+    setUser(null);
+    localStorage.removeItem("user");
+    return null;
   }
+
+  const user = await res.json();
+  setUser(user);
+  localStorage.setItem("user", JSON.stringify(user));
+
+  return user;
+}
 
   async function login({ email, password }) {
     // 1. Get the CSRF cookie (sets XSRF-TOKEN + laravel_session)
@@ -71,10 +78,16 @@ export const AuthProvider = ({ children }) => {
     return response;
   };
 
-  const logout = () => {
+  function logout() {
+    // Limpa já o estado local para a UI reagir de imediato.
     localStorage.removeItem("user");
     setUser(null);
-  };
+
+    // Termina a sessão no servidor sem bloquear a navegação.
+    makeRequest("logout", { method: "POST" }).catch((err) => {
+      console.error("Erro ao terminar sessão no servidor:", err);
+    });
+  }
 
   return (
     <AuthContext.Provider value={{ user, login, logout, makeRequest }}>

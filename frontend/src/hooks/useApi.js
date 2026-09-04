@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 
 export function useArtigos() {
@@ -102,3 +102,56 @@ export function useDesigner(designerId) {
 
   return designer;
 }
+
+export function useMisturas() {
+  const [misturas, setMisturas] = useState([]);
+  const { makeRequest } = useContext(AuthContext);
+
+  useEffect(() => {
+    async function fetchMisturas() {
+      const response = await makeRequest("api/misturas");
+      if (!response.ok) return;
+      const data = await response.json();
+      setMisturas(Array.isArray(data) ? data : []);
+    }
+    fetchMisturas();
+  }, [makeRequest]);
+
+  return misturas;
+}
+
+export function useMisturasPendentes() {
+  const [pendentes, setPendentes] = useState([]);
+  const { makeRequest } = useContext(AuthContext);
+
+  const refetch = useCallback(async () => {
+    const response = await makeRequest("api/misturas/pendentes");
+    if (!response.ok) {
+      setPendentes([]);
+      return;
+    }
+    const data = await response.json();
+    setPendentes(Array.isArray(data) ? data : []);
+  }, [makeRequest]);
+
+  useEffect(() => { refetch(); }, [refetch]);
+
+  return { pendentes, refetch };
+}
+
+export function useMisturasNaoLidas() {
+  const [total, setTotal] = useState(0);
+  const { makeRequest } = useContext(AuthContext);
+
+  useEffect(() => {
+    async function fetchCount() {
+      const response = await makeRequest("api/misturas/nao-lidas/count");
+      const data = await response.json();
+      setTotal(data.total ?? 0);
+    }
+    fetchCount();
+  }, [makeRequest]);
+
+  return total;
+}
+

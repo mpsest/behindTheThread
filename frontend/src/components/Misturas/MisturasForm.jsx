@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SquareButton from "../SquareButton.jsx";
+import { Link } from "react-router-dom";
 import './MisturasForm.css';
 
 const AREAS = [
@@ -89,7 +90,7 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form__field">
         <label htmlFor="startDate">Data de começo*</label>
-        <input id="startDate" name="startDate" type="text" placeholder="a partir de 22 de março"
+        <input id="startDate" name="startDate" type="text" placeholder="2026-01-01"
           value={formData.startDate} onChange={handleChange} required />
       </div>
 
@@ -101,8 +102,8 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form__field">
         <label htmlFor="budget">Orçamento (caso haja)</label>
-        <input id="budget" name="budget" type="text" placeholder="500 €"
-          value={formData.budget} onChange={handleChange} />
+        <input id="budget" name="budget" type="text" placeholder="500"
+          value={formData.budget} onChange={handleChange}  />
       </div>
 
       <div className="collab-form__field">
@@ -119,12 +120,15 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form__field">
         <label htmlFor="phone">Telemóvel*</label>
-        <input id="phone" name="phone" type="tel" placeholder="nome@gmail.com"
+        <input id="phone" name="phone" type="tel" placeholder="912 345 678"
           value={formData.phone} onChange={handleChange} required />
       </div>
 
       <div className="collab-form__submit">
-        <SquareButton type="submit" variant="dark">Submeter</SquareButton>
+      
+          <SquareButton type="submit" variant="dark"  >Submeter</SquareButton>
+       
+        
       </div>
     </form>
   );

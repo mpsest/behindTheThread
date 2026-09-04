@@ -1,8 +1,33 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import SquareButton from "./SquareButton.jsx";
+import { AuthContext } from "../contexts/AuthContext.jsx";
 
 export default function Footer() {
+  const { makeRequest } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState(null);
+
+  async function handleNewsletterSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const res = await makeRequest("api/newsletter", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+      });
+
+      if (!res.ok) throw new Error("Falha ao subscrever");
+
+      setStatus("sucesso");
+      setEmail("");
+    } catch (err) {
+      console.error(err);
+      setStatus("erro");
+    }
+  }
+
   return (
     <footer className="site-footer">
       <div className="container site-footer-content row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 align-items-start align-items-lg-center text-start mx-auto">
@@ -12,6 +37,7 @@ export default function Footer() {
             alt="imagem com o título Behind the Thread"
           ></img>
         </Link>
+
         <div className="footer-menu">
           <button
             className="btn collapse-button"
@@ -111,6 +137,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
         <div className="footer-menu">
           <button
             className="btn collapse-button"
@@ -128,15 +155,22 @@ export default function Footer() {
             id="footerNewsletterCollapse"
             aria-labelledby="footerNewsletterButton"
           >
-            <form className="footer-newsletter-form" method="post" action="#">
+            <form
+              className="footer-newsletter-form"
+              onSubmit={handleNewsletterSubmit}
+            >
               <input
                 type="email"
                 name="email"
                 placeholder="Coloca aqui o teu email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <SquareButton type="submit">Subscrever</SquareButton>
             </form>
+            {status === "sucesso" && <p>Estás na lista!</p>}
+            {status === "erro" && <p>Não deu. Tenta outra vez!</p>}
           </div>
         </div>
       </div>
@@ -147,3 +181,6 @@ export default function Footer() {
 //TODO: Falta rota no Laravel para a newsletter @FILIPE
 
 //TODO: Se houver tempo, ver o que se passa ao clicar em Newsletter, que muda de sítio depois de fechar o collapse.
+
+
+
