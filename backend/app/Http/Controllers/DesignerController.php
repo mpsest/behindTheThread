@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Designer;
+use App\Models\Keyword;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -29,8 +30,27 @@ class DesignerController extends Controller
             'titulo' => ['required', 'string', 'max:255'],
             'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
+            'keywords' => ['nullable', 'array'],
+            'keywords.*' => ['nullable', 'string', 'max:100'],
         ]);
-        return response()->json(Designer::create($data), 201);
+        $keywordNames = [];
+        foreach ($request->input('keywords', []) as $keyword) {
+            $keyword = trim($keyword);
+            if ($keyword !== '' && !in_array($keyword, $keywordNames)) {
+                $keywordNames[] = $keyword;
+            }
+        }
+        unset($data['keywords']);
+
+        $designer = Designer::create($data);
+        $keywordIds = [];
+        foreach ($keywordNames as $keywordName) {
+            $keyword = Keyword::firstOrCreate(['palavra' => $keywordName]);
+            $keywordIds[] = $keyword->id;
+        }
+        $designer->keywords()->sync($keywordIds);
+
+        return response()->json($designer->load('keywords'), 201);
     }
 
     public function update(Request $request, int $id): JsonResponse
@@ -40,9 +60,27 @@ class DesignerController extends Controller
             'titulo' => ['required', 'string', 'max:255'],
             'imagem' => ['required', 'url'],
             'texto' => ['required', 'string'],
+            'keywords' => ['nullable', 'array'],
+            'keywords.*' => ['nullable', 'string', 'max:100'],
         ]);
+        $keywordNames = [];
+        foreach ($request->input('keywords', []) as $keyword) {
+            $keyword = trim($keyword);
+            if ($keyword !== '' && !in_array($keyword, $keywordNames)) {
+                $keywordNames[] = $keyword;
+            }
+        }
+        unset($data['keywords']);
+
         $designer->update($data);
-        return response()->json($designer);
+        $keywordIds = [];
+        foreach ($keywordNames as $keywordName) {
+            $keyword = Keyword::firstOrCreate(['palavra' => $keywordName]);
+            $keywordIds[] = $keyword->id;
+        }
+        $designer->keywords()->sync($keywordIds);
+
+        return response()->json($designer->load('keywords'));
     }
 
     public function destroy(int $id): JsonResponse
