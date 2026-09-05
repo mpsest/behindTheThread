@@ -18,6 +18,7 @@ class FerramentaController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'site' => ['nullable', 'url'],
             'descricao' => ['nullable', 'string'],
+            'categoria' => ['required', 'string', 'max:150'],
         ]);
         return response()->json(Ferramenta::create($data), 201);
     }
@@ -29,6 +30,7 @@ class FerramentaController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'site' => ['nullable', 'url'],
             'descricao' => ['nullable', 'string'],
+            'categoria' => ['required', 'string', 'max:150'],
         ]);
         $ferramenta->update($data);
         return response()->json($ferramenta);

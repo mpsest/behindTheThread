@@ -1,94 +1,74 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { AuthContext } from "./AuthContext.jsx";
 
 export const BaseDadosContext = createContext();
 
-/* TODO: Apagar objetos e ligar à base de dados*/
-const BASE_DADOS = {
-  Espacos: {
-    Confeção: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-      {
-        name: "Bla bla",
-        url: "https://www.blabla.com/",
-        email: "blabla@bla.com",
-        location: "Algures, Portugal",
-      },
-    ],
-    Tecidos: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-    Malhas: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-    Acessórios: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-    Transformações: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-    Armazéns: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-    Feiras: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-    Museus: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-    Museus2: [
-      {
-        name: "Petratex",
-        url: "https://www.petratex.com/",
-        email: "petratex@petratex.com",
-        location: "Paços de Ferreira, Portugal",
-      },
-    ],
-  },
+const EMPTY_BASE_DADOS = {
+  Espacos: {},
+  Ferramentas: {},
+  Conteudos: {},
 };
 
+const RESOURCES = [
+  ["Espacos", "api/espacos"],
+  ["Ferramentas", "api/ferramentas"],
+  ["Conteudos", "api/conteudos"],
+];
+
+function groupByCategoria(items) {
+  return items.reduce((groups, item) => {
+    const categoria = item.categoria?.trim() || "Sem categoria";
+    return {
+      ...groups,
+      [categoria]: [...(groups[categoria] ?? []), item],
+    };
+  }, {});
+}
+
 export const BaseDadosProvider = ({ children }) => {
+  const { makeRequest } = useContext(AuthContext);
+  const [baseDados, setBaseDados] = useState(EMPTY_BASE_DADOS);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchBaseDados = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const responses = await Promise.all(
+        RESOURCES.map(async ([key, endpoint]) => {
+          const response = await makeRequest(endpoint);
+
+          if (!response.ok) {
+            throw new Error(`Erro ao carregar ${endpoint}`);
+          }
+
+          const data = await response.json();
+          return [key, groupByCategoria(Array.isArray(data) ? data : [])];
+        }),
+      );
+
+      setBaseDados({
+        ...EMPTY_BASE_DADOS,
+        ...Object.fromEntries(responses),
+      });
+    } catch (err) {
+      setError(err.message);
+      setBaseDados(EMPTY_BASE_DADOS);
+    } finally {
+      setLoading(false);
+    }
+  }, [makeRequest]);
+
+  useEffect(() => {
+    fetchBaseDados();
+  }, [fetchBaseDados]);
+
   return (
-    <BaseDadosContext.Provider value={BASE_DADOS}>
+    <BaseDadosContext.Provider
+      value={{ ...baseDados, loading, error, refetch: fetchBaseDados }}
+    >
       {children}
     </BaseDadosContext.Provider>
   );

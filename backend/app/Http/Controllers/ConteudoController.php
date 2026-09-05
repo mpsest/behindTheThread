@@ -18,6 +18,7 @@ class ConteudoController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'site' => ['nullable', 'url'],
             'descricao' => ['nullable', 'string'],
+            'categoria' => ['required', 'string', 'max:150'],
         ]);
         return response()->json(Conteudo::create($data), 201);
     }
@@ -29,6 +30,7 @@ class ConteudoController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'site' => ['nullable', 'url'],
             'descricao' => ['nullable', 'string'],
+            'categoria' => ['required', 'string', 'max:150'],
         ]);
         $conteudo->update($data);
         return response()->json($conteudo);

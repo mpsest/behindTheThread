@@ -22,6 +22,7 @@ class EspacoController extends Controller
             'site' => ['nullable', 'url'],
             'email' => ['nullable', 'email', 'max:150'],
             'localidade' => ['nullable', 'string', 'max:150'],
+            'categoria' => ['required', 'string', 'max:150'],
         ]);
         return response()->json(Espaco::create($data), 201);
     }
@@ -34,6 +35,7 @@ class EspacoController extends Controller
             'site' => ['nullable', 'url'],
             'email' => ['nullable', 'email', 'max:150'],
             'localidade' => ['nullable', 'string', 'max:150'],
+            'categoria' => ['required', 'string', 'max:150'],
         ]);
         $espaco->update($data);
         return response()->json($espaco);

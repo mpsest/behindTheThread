@@ -1,10 +1,6 @@
 .base-dados-table {
   width: 100%;
   border-collapse: collapse;
-  background-image: url(/gradients/baseDados-espacos_center.svg);
-  background-size: clamp(100%, 90vw, 190%);
-  background-repeat: no-repeat;
-  background-position: center top;
 }
 
 .base-dados-table thead,
@@ -21,7 +17,7 @@
   text-align: center;
   font-weight: 700;
   font-size: 18px;
-  padding: 20px 0 20px 0;
+  padding: 30px;
 }
 
 .base-dados-table tbody {
@@ -42,11 +38,15 @@
   border-bottom: 2px solid var(--text-black);
   text-align: center;
   box-sizing: border-box;
-  padding: 20px;
 }
 
 /* Página de detalhes de cada tipo*/
 .base-dados-table td a {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+  padding: 20px;
   text-decoration: none;
   color: var(--text-black);
   font-weight: 500;

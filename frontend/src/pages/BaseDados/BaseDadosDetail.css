@@ -1,0 +1,79 @@
+main:has(.base-dados-detail-page) {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gradiente para página Espaços */
+.espacos-detail-page {
+  background-image: url(/gradients/baseDados-espacos_center.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  flex: 1;
+}
+/* Gradiente para página Ferramentas */
+.ferramentas-detail-page {
+  background-image: url(/gradients/baseDados-ferramentas_center.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  flex: 1;
+}
+/* Gradiente para página Conteúdos */
+.conteudos-detail-page {
+  background-image: url(/gradients/baseDados-conteudos_center.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  flex: 1;
+}
+
+.base-dados-detail-table {
+  width: 100%;
+  min-width: 640px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.align-button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 10px 20px 0;
+}
+
+.align-button a {
+  text-decoration: none;
+}
+
+.base-dados-detail-table th {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 30px;
+  border: 2px solid var(--text-black);
+}
+
+.base-dados-detail-table td {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 30px;
+  word-break: normal;
+  overflow-wrap: break-word;
+  border-bottom: 2px solid var(--text-black);
+}
+
+.base-dados-detail-table tr:last-child td {
+  border-bottom: none;
+}
+
+.base-dados-detail-table td a {
+  text-decoration: none;
+  color: var(--text-black);
+  font-weight: 500;
+}
+
+.base-dados-detail-table td a:hover {
+  text-decoration: underline;
+  color: var(--text-black);
+  font-weight: 700;
+}
