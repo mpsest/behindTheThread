@@ -30,7 +30,7 @@ main:has(.base-dados-detail-page) {
 
 .base-dados-detail-table {
   width: 100%;
-  min-width: 640px;
+  min-width: 760px;
   table-layout: fixed;
   border-collapse: collapse;
 }
@@ -38,6 +38,7 @@ main:has(.base-dados-detail-page) {
 .align-button {
   display: flex;
   justify-content: flex-end;
+  gap: 12px;
   padding: 20px 10px 20px 0;
 }
 
@@ -76,4 +77,94 @@ main:has(.base-dados-detail-page) {
   text-decoration: underline;
   color: var(--text-black);
   font-weight: 700;
+}
+
+.base-dados-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.base-dados-detail-actions .square-btn {
+  flex: 0 1 110px;
+}
+
+.base-dados-detail-table .base-dados-detail-add-cell {
+  text-align: center;
+}
+
+.base-dados-detail-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(26, 26, 26, 0.5);
+}
+
+.base-dados-detail-form {
+  width: min(100%, 520px);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+  background: var(--bg);
+  border: 3px solid var(--text-black);
+}
+
+.base-dados-detail-form h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.base-dados-detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.base-dados-detail-field label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.base-dados-detail-field input,
+.base-dados-detail-field textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--text-black);
+  background: transparent;
+  color: var(--text-black);
+  font: inherit;
+  outline: none;
+  padding: 4px 0 8px;
+}
+
+.base-dados-detail-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.base-dados-detail-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 575.98px) {
+  .base-dados-detail-form {
+    padding: 22px;
+  }
+
+  .base-dados-detail-form-actions .square-btn {
+    flex: 1 1 140px;
+  }
 }
