@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BaseDadosContext } from "../../contexts/BaseDadosContext";
 import { useParams, Link } from "react-router-dom";
 import SquareButton from "../../components/SquareButton";
+import LargeSquareButton from "../../components/LargeSquareButton";
 import PageTitle from "../../components/PageTitle";
 import { AuthContext } from "../../contexts/AuthContext";
 import BaseDadosFormModal from "./BaseDadosFormModal";
@@ -28,6 +29,45 @@ const RESOURCE_CONFIG = {
   },
 };
 
+const CATEGORY_ORDER = {
+  Espacos: [
+    "Confeção",
+    "Tecidos",
+    "Malhas",
+    "Acessórios",
+    "Transformações",
+    "Armazéns",
+    "Feiras",
+    "Museus",
+    "Lojas",
+  ],
+  Ferramentas: [
+    "Tipografia",
+    "Cor",
+    "Ilustração",
+    "Imagens",
+    "Mockups",
+    "3D",
+    "Vídeos",
+    "Texturas",
+    "Softwares",
+    "Organização",
+    "Escrita",
+    "Som",
+  ],
+  Conteudos: [
+    "Livros",
+    "Filmes",
+    "Séries",
+    "Blogs",
+    "Revistas",
+    "Inspiração",
+    "Podcasts",
+    "Teatro",
+    "Youtube",
+  ],
+};
+
 const EMPTY_FORM = {
   nome: "",
   site: "",
@@ -45,6 +85,37 @@ function decodeRouteParam(value) {
   }
 }
 
+function orderedCategories(baseDados, key) {
+  const categories = Object.keys(baseDados[key] ?? {});
+  const preferredOrder = CATEGORY_ORDER[key] ?? [];
+  const knownCategories = preferredOrder.filter((category) =>
+    categories.includes(category),
+  );
+  const extraCategories = categories
+    .filter((category) => !preferredOrder.includes(category))
+    .sort((a, b) => a.localeCompare(b, "pt"));
+
+  return [...knownCategories, ...extraCategories];
+}
+
+function getNextCategories(categories, currentCategory) {
+  if (categories.length <= 1) return [];
+
+  const currentIndex = categories.indexOf(currentCategory);
+  const startIndex = currentIndex === -1 ? 0 : currentIndex + 1;
+  const nextCategories = [];
+
+  for (let offset = 0; offset < categories.length - 1; offset += 1) {
+    const category = categories[(startIndex + offset) % categories.length];
+    if (category !== currentCategory) {
+      nextCategories.push(category);
+    }
+    if (nextCategories.length === 3) break;
+  }
+
+  return nextCategories;
+}
+
 export default function BaseDadosDetail() {
   const { resource = "espacos", type } = useParams(); // valor default
   const baseDados = useContext(BaseDadosContext);
@@ -52,10 +123,18 @@ export default function BaseDadosDetail() {
   const config = RESOURCE_CONFIG[resource] ?? RESOURCE_CONFIG.espacos;
   const categoria = decodeRouteParam(type);
   const items = baseDados[config.contextKey]?.[categoria] ?? [];
+  const nextCategories = getNextCategories(
+    orderedCategories(baseDados, config.contextKey),
+    categoria,
+  );
   const [editingItem, setEditingItem] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [resource, type]);
 
   function startCreate() {
     if (!user) return;
@@ -268,6 +347,20 @@ export default function BaseDadosDetail() {
           onSubmit={handleSubmit}
           onClose={closeEdit}
         />
+      )}
+
+      {!baseDados.loading && nextCategories.length > 0 && (
+        <nav className="base-dados-detail-next" aria-label="Categorias seguintes">
+          {nextCategories.map((nextCategory) => (
+            <LargeSquareButton
+              key={nextCategory}
+              as={Link}
+              to={`/basededados/${resource}/${encodeURIComponent(nextCategory)}`}
+            >
+              {nextCategory}&gt;
+            </LargeSquareButton>
+          ))}
+        </nav>
       )}
     </div>
   );

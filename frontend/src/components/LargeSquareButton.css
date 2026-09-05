@@ -1,0 +1,30 @@
+.large-square-btn {
+  width: 100%;
+  min-height: clamp(96px, 14vw, 124px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--text-black);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text-black);
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.large-square-btn:hover {
+  background: var(--text-black);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+.large-square-btn:active {
+  transform: translate(2px, 2px);
+}

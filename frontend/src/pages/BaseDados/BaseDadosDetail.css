@@ -95,6 +95,20 @@ main:has(.base-dados-detail-page) {
   text-align: center;
 }
 
+.base-dados-detail-next {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0;
+}
+
+.base-dados-detail-next .large-square-btn {
+  border-left-width: 0;
+}
+
+.base-dados-detail-next .large-square-btn:first-child {
+  border-left-width: 3px;
+}
+
 .base-dados-detail-modal {
   position: fixed;
   inset: 0;
@@ -160,6 +174,19 @@ main:has(.base-dados-detail-page) {
 }
 
 @media (max-width: 575.98px) {
+  .base-dados-detail-next {
+    grid-template-columns: 1fr;
+  }
+
+  .base-dados-detail-next .large-square-btn {
+    border-left-width: 3px;
+    border-top-width: 0;
+  }
+
+  .base-dados-detail-next .large-square-btn:first-child {
+    border-top-width: 3px;
+  }
+
   .base-dados-detail-form {
     padding: 22px;
   }
