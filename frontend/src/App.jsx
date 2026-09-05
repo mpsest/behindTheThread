@@ -23,6 +23,7 @@ import Misturas from "./pages/Misturas/Misturas.jsx";
 import MisturasDetail from "./pages/Misturas/MisturasDetail.jsx";
 import Users from "./pages/auth/Users.jsx";
 import NovoConteudo from "./pages/auth/NovoConteudo.jsx";
+import EditarConteudo from "./pages/auth/EditarConteudo.jsx";
 import EmailsNewsletter from "./pages/auth/EmailsNewsletter.jsx";
 import MisturasPendentes from "./pages/auth/MisturasPendentes.jsx";
 
@@ -50,13 +51,14 @@ function App() {
         { path: "/artigos", element: <Artigos /> },
         { path: "/artigos/:id", element: <ArtigosDetail /> },
         { path: "/conteudo/novo", element: <NovoConteudo /> },
+        { path: "/conteudo/:tipo/:id/editar", element: <EditarConteudo /> },
         { path: "/dirtytalks", element: <DirtyTalks /> },
         { path: "/dirtytalks/:id", element: <DirtyTalksDetail /> },
         { path: "/designers", element: <Designers /> },
         { path: "/designers/:id", element: <DesignersDetail /> },
         { path: "/users", element: <Users /> },
         { path: "/newsletter/emails", element: <EmailsNewsletter /> },
-        
+
         {
           path: "/basededados/espacos/:type",
           element: <EspacosDetail />,

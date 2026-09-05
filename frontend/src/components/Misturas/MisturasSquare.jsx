@@ -9,3 +9,5 @@ export default function MisturasSquare() {
     </div>
   );
 }
+
+//TODO: pode escolher 1 dos 3 gradientes

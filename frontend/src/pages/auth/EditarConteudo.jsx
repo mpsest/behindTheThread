@@ -1,19 +1,45 @@
 import "./NovoConteudo.css";
 import PageTitle from "../../components/PageTitle.jsx";
 import TextEditor from "../../components/TextEditor.jsx";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import SquareButton from "../../components/SquareButton.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-export default function NovoConteudo() {
+export default function EditarConteudo() {
   const { makeRequest } = useContext(AuthContext);
+  const { tipo, id } = useParams();
+  const [conteudo, setConteudo] = useState();
   const [editorContent, setEditorContent] = useState("");
   const [keywordsCount, setKeywordsCount] = useState(1);
   const navigate = useNavigate();
+
   function addKeywordField() {
     setKeywordsCount(keywordsCount + 1);
   }
+
+  useEffect(() => {
+    async function fetchConteudo() {
+      const url =
+        tipo === "dirty_talk"
+          ? `api/dirty-talks/${id}`
+          : tipo === "artigo"
+            ? `api/artigos/${id}`
+            : `api/designers/${id}`;
+
+      const response = await makeRequest(url);
+      if (response.ok) {
+        const data = await response.json();
+        setConteudo(data);
+        setEditorContent(data.texto || "");
+        setKeywordsCount(data.keywords.length || 1);
+      } else {
+        alert("Erro ao carregar o conteúdo.");
+      }
+    }
+
+    fetchConteudo();
+  }, [tipo, id, makeRequest]);
 
   async function createArticle(event) {
     event.preventDefault();
@@ -32,21 +58,20 @@ export default function NovoConteudo() {
           ? "api/artigos"
           : "api/designers";
 
-    const result = await makeRequest(url, {
-      method: "POST",
+    const result = await makeRequest(url + `/${id}`, {
+      method: "PUT",
       body: JSON.stringify(data),
     });
 
     if (result.ok) {
-      const conteudo = await result.json();
-      alert("Conteúdo criado com sucesso!");
+      alert("Conteúdo atualizado com sucesso!");
       if (data.tipo === "dirty_talk") {
-        navigate(`/dirtytalks/${conteudo.id}`);
+        navigate(`/dirtytalks/${id}`);
       } else {
-        navigate(`/${data.tipo}s/${conteudo.id}`);
+        navigate(`/${data.tipo}s/${id}`);
       }
     } else {
-      alert("Erro ao criar o conteúdo.");
+      alert("Erro ao atualizar o conteúdo.");
     }
   }
 
@@ -54,20 +79,17 @@ export default function NovoConteudo() {
     <section className="novo-artigo-page container-fluid px-0">
       <form onSubmit={createArticle}>
         <div className="novo-artigo-header">
-          <PageTitle>NOVO CONTEUDO</PageTitle>
+          <PageTitle>EDITAR CONTEUDO</PageTitle>
 
           <p className="novo-artigo-intro">
-            Nesta página podes criar novos Artigos, Dirty Talks ou perfis de
-            Designers através do editor de texto. Podes também adicionar imagens
-            introduzindo o seu URL.
+            Nesta página podes <b>editar</b> Artigos, Dirty Talks ou perfis de
+            Designers.
           </p>
 
           <div className="novo-artigo-fields">
             <div className="novo-artigo-field novo-artigo-field--full">
-              <label htmlFor="novo-conteudo">
-                Que conteúdo vais criar hoje?
-              </label>
-              <select id="novo-conteudo" name="tipo">
+              <label htmlFor="novo-conteudo">Estás a editar:</label>
+              <select id="novo-conteudo" name="tipo" defaultValue={tipo}>
                 <option value=""> Seleciona uma opção </option>
                 <option value="dirty_talk">Dirty Talk</option>
                 <option value="artigo">Artigo</option>
@@ -76,8 +98,13 @@ export default function NovoConteudo() {
             </div>
 
             <div className="novo-artigo-field novo-artigo-field--full">
-              <label htmlFor="titulo">Qual é o título do conteúdo?</label>
-              <input type="text" id="titulo" name="titulo" />
+              <label htmlFor="titulo">Título do conteúdo</label>
+              <input
+                type="text"
+                id="titulo"
+                name="titulo"
+                defaultValue={conteudo?.titulo}
+              />
             </div>
           </div>
         </div>
@@ -105,7 +132,12 @@ export default function NovoConteudo() {
             <label htmlFor="cover-image">
               Introduz o URL da imagem de capa
             </label>
-            <input type="text" id="cover-image" name="imagem" />
+            <input
+              type="text"
+              id="cover-image"
+              name="imagem"
+              defaultValue={conteudo?.imagem}
+            />
           </div>
 
           <div className="novo-artigo-field novo-artigo-field--full">
@@ -114,16 +146,17 @@ export default function NovoConteudo() {
               <div className="novo-artigo-keyword-inputs">
                 {[...Array(keywordsCount)].map((_, index) => (
                   <input
-                    key={index}
+                    key={`${conteudo?.id ?? "loading"}-${index}`}
                     id={index === 0 ? "keywords" : undefined}
                     type="text"
                     name="keywords"
+                    defaultValue={conteudo?.keywords?.[index]?.palavra ?? ""}
                   />
                 ))}
+                <SquareButton type="button" onClick={addKeywordField}>
+                  +
+                </SquareButton>
               </div>
-              <SquareButton type="button" onClick={addKeywordField}>
-                +
-              </SquareButton>
             </div>
           </div>
         </div>

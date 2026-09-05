@@ -4,14 +4,17 @@ import SquareButton from "../../components/SquareButton";
 import PageSubTitle from "../../components/PageSubTitle";
 import LogoutButton from "../../components/LogoutButton.jsx";
 import { useMisturasNaoLidas } from "../../hooks/useApi.js";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useContext } from "react";
 
 export default function Dashboard() {
   const naoLidas = useMisturasNaoLidas();
+  const { user } = useContext(AuthContext);
 
   return (
     <div>
       <PageTitle>DASHBOARD</PageTitle>
-      <h4>Olá, !</h4>
+      <h4>Olá, {user?.name}!</h4>
       <div className="row">
         <div className="col-3 text-center">
           <PageSubTitle>Editar Conteúdos</PageSubTitle>
@@ -22,7 +25,7 @@ export default function Dashboard() {
 
           <br />
 
-          <Link to="/basedados">
+          <Link to="/basededados">
             <SquareButton className="m-2">Editar Base de Dados</SquareButton>
           </Link>
 
@@ -44,7 +47,7 @@ export default function Dashboard() {
         <div className="col-3 text-center">
           <PageSubTitle>Gestão de Conta</PageSubTitle>
 
-           <LogoutButton/>
+          <LogoutButton />
 
           <br />
 
@@ -59,18 +62,15 @@ export default function Dashboard() {
           </Link>
         </div>
 
-         <div className="col-3 text-center boxy">
-        <PageSubTitle>Mensagens</PageSubTitle>
-        <Link to="/misturas/pendentes">
-          <SquareButton className="m-2">
-            {naoLidas} {naoLidas === 1 ? "mensagem por ler" : "mensagens por ler"}
-          </SquareButton>
-        </Link>
-      </div>
-
-
-
-       
+        <div className="col-3 text-center boxy">
+          <PageSubTitle>Mensagens</PageSubTitle>
+          <Link to="/misturas/pendentes">
+            <SquareButton className="m-2">
+              {naoLidas}{" "}
+              {naoLidas === 1 ? "mensagem por ler" : "mensagens por ler"}
+            </SquareButton>
+          </Link>
+        </div>
       </div>
     </div>
   );
