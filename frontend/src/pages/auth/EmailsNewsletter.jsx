@@ -53,16 +53,16 @@ export default function EmailsNewsletter() {
   return (
     <main className="emails-newsletter">
       <PageTitle>EMAILS NEWSLETTER</PageTitle>
-      <div className="emails-newsletter__header">
+      <div className="emails-newsletter-header">
         <p>{emails.length} subscritor(es)</p>
         <SquareButton onClick={copiarTodos} disabled={emails.length === 0}>
           Copiar todos
         </SquareButton>
       </div>
       {loading && <p>A carregar...</p>}
-      {erro && <p className="emails-newsletter__error">{erro}</p>}
+      {erro && <p className="emails-newsletter-error">{erro}</p>}
       {!loading && !erro && (
-        <table className="emails-newsletter__table">
+        <table className="emails-newsletter-table">
           <thead>
             <tr>
               <th>#</th>

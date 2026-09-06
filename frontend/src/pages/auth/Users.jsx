@@ -92,7 +92,7 @@ export default function Users() {
 
   return (
     <main className="users-page">
-      <div className="users-page__header">
+      <div className="users-page-header">
         <h1>Gestão de Utilizadores</h1>
         <SquareButton variant="dark" onClick={startCreate}>
           Novo Utilizador
@@ -102,7 +102,7 @@ export default function Users() {
       {loading ? (
         <p>A carregar...</p>
       ) : (
-        <table className="users-page__table">
+        <table className="users-page-table">
           <thead>
             <tr>
               <th>Nome</th>
@@ -115,7 +115,7 @@ export default function Users() {
               <tr key={user.id}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td className="users-page__actions">
+                <td className="users-page-actions">
                   <SquareButton onClick={() => startEdit(user)}>Editar</SquareButton>
                   <SquareButton onClick={() => handleDelete(user.id)}>Remover</SquareButton>
                 </td>
@@ -131,15 +131,15 @@ export default function Users() {
       )}
 
       {showForm && (
-        <div className="users-page__modal-overlay" onClick={() => setShowForm(false)}>
+        <div className="users-page-modal-overlay" onClick={() => setShowForm(false)}>
           <form
-            className="users-page__form"
+            className="users-page-form"
             onClick={(e) => e.stopPropagation()}
             onSubmit={handleSubmit}
           >
             <h2>{editingId ? 'Editar Utilizador' : 'Novo Utilizador'}</h2>
 
-            <div className="users-page__field">
+            <div className="users-page-field">
               <label htmlFor="name">Nome</label>
               <input
                 id="name"
@@ -152,7 +152,7 @@ export default function Users() {
               />
             </div>
 
-            <div className="users-page__field">
+            <div className="users-page-field">
               <label htmlFor="email">Email</label>
               <input
                 id="email"
@@ -165,7 +165,7 @@ export default function Users() {
               />
             </div>
 
-            <div className="users-page__field">
+            <div className="users-page-field">
               <label htmlFor="password">
                 {editingId ? 'Nova password (opcional)' : 'Password'}
               </label>
@@ -180,7 +180,7 @@ export default function Users() {
               />
             </div>
 
-            <div className="users-page__form-actions">
+            <div className="users-page-form-actions">
               <SquareButton variant="dark" onClick={handleSubmit}>
                 Guardar
               </SquareButton>

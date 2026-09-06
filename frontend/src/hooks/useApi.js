@@ -105,19 +105,36 @@ export function useDesigner(designerId) {
 
 export function useMisturas() {
   const [misturas, setMisturas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { makeRequest } = useContext(AuthContext);
 
-  useEffect(() => {
-    async function fetchMisturas() {
+  const fetchMisturas = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
       const response = await makeRequest("api/misturas");
-      if (!response.ok) return;
+
+      if (!response.ok) {
+        throw new Error("Erro ao carregar misturas");
+      }
+
       const data = await response.json();
       setMisturas(Array.isArray(data) ? data : []);
+    } catch (err) {
+      setError(err.message);
+      setMisturas([]);
+    } finally {
+      setLoading(false);
     }
-    fetchMisturas();
   }, [makeRequest]);
 
-  return misturas;
+  useEffect(() => {
+    fetchMisturas();
+  }, [fetchMisturas]);
+
+  return { misturas, loading, error, refetch: fetchMisturas };
 }
 
 export function useMisturasPendentes() {
@@ -155,3 +172,36 @@ export function useMisturasNaoLidas() {
   return total;
 }
 
+export function useMistura(id) {
+  const [mistura, setMistura] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { makeRequest } = useContext(AuthContext);
+
+  const fetchMistura = useCallback(async (misturaId) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await makeRequest(`api/misturas/${misturaId}`);
+
+      if (!response.ok) {
+        throw new Error("Erro ao carregar mistura");
+      }
+
+      const data = await response.json();
+      setMistura(data);
+    } catch (err) {
+      setError(err.message);
+      setMistura();
+    } finally {
+      setLoading(false);
+    }
+  }, [makeRequest]);
+
+  useEffect(() => {
+    fetchMistura(id);
+  }, [fetchMistura, id]);
+
+  return { mistura, loading, error };
+}

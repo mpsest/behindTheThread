@@ -6,7 +6,6 @@
   background-position: center top;
 }
 
-
 #misturas-form {
   padding: 0 20px 64px;
 }
@@ -18,6 +17,23 @@
   text-align: left;
 }
 
-#misturas-form .collab-form__field input {
+#misturas-form .collab-form-field input {
   width: 100%;
+}
+
+.misturas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 400px));
+  gap: 32px;
+  justify-content: center;
+  padding: 32px 20px 72px;
+}
+
+.misturas-grid a {
+  text-decoration: none;
+}
+
+.misturas-status {
+  padding: 32px 20px 72px;
+  text-align: center;
 }

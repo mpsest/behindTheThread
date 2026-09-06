@@ -5,19 +5,19 @@
   max-width: 520px;
 }
 
-.collab-form__field {
+.collab-form-field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.collab-form__field label {
+.collab-form-field label {
   font-weight: 700;
   font-size: 14px;
   color: #1a1a1a;
 }
 
-.collab-form__field input {
+.collab-form-field input {
   border: none;
   border-bottom: 2px solid #1a1a1a;
   background: transparent;
@@ -30,16 +30,16 @@
   outline: none;
 }
 
-.collab-form__field input::placeholder {
+.collab-form-field input::placeholder {
   color: #8a8a80;
   font-style: italic;
 }
 
-.collab-form__field input:focus {
+.collab-form-field input:focus {
   border-bottom-width: 3px;
 }
 
-.collab-form__pills {
+.collab-form-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -67,7 +67,7 @@
   color: var(--bg);
 }
 
-.collab-form__submit {
+.collab-form-submit {
   margin-top: 12px;
   display: flex;
   justify-content: center;

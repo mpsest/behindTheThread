@@ -12,14 +12,35 @@ class MisturaController extends Controller
     public function index(): JsonResponse
     {
         return response()->json(
-            Mistura::where('aprovado', true)->latest()->get()
+            Mistura::where('aprovado', true)
+                ->latest()
+                ->get([
+                    'id',
+                    'nome_projeto',
+                    'area',
+                    'data_inicio',
+                    'duracao',
+                    'localizacao',
+                    'regime',
+                ])
         );
     }
 
     public function indexLatest(): JsonResponse
     {
         return response()->json(
-            Mistura::where('aprovado', true)->latest()->limit(3)->get()
+            Mistura::where('aprovado', true)
+                ->latest()
+                ->limit(3)
+                ->get([
+                    'id',
+                    'nome_projeto',
+                    'area',
+                    'data_inicio',
+                    'duracao',
+                    'localizacao',
+                    'regime',
+                ])
         );
     }
 

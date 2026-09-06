@@ -26,6 +26,10 @@ import EditarConteudo from "./pages/auth/EditarConteudo.jsx";
 import EmailsNewsletter from "./pages/auth/EmailsNewsletter.jsx";
 import MisturasPendentes from "./pages/auth/MisturasPendentes.jsx";
 
+function BaseDadosRoute({ children }) {
+  return <BaseDadosProvider>{children}</BaseDadosProvider>;
+}
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -46,7 +50,14 @@ function App() {
         { path: "/recuperar-password", element: <ResetPassword /> },
         { path: "/esqueci-password", element: <ForgotPassword /> },
         { path: "/contactos", element: <Contactos /> },
-        { path: "/basededados", element: <BaseDados /> },
+        {
+          path: "/basededados",
+          element: (
+            <BaseDadosRoute>
+              <BaseDados />
+            </BaseDadosRoute>
+          ),
+        },
         { path: "/artigos", element: <Artigos /> },
         { path: "/artigos/:id", element: <ArtigosDetail /> },
         { path: "/conteudo/novo", element: <NovoConteudo /> },
@@ -60,7 +71,11 @@ function App() {
 
         {
           path: "/basededados/:resource/:type",
-          element: <BaseDadosDetail />,
+          element: (
+            <BaseDadosRoute>
+              <BaseDadosDetail />
+            </BaseDadosRoute>
+          ),
         },
       ],
     },
@@ -68,9 +83,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <BaseDadosProvider>
-        <RouterProvider router={router} />
-      </BaseDadosProvider>
+      <RouterProvider router={router} />
     </AuthProvider>
   );
 }

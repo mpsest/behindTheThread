@@ -8,7 +8,7 @@ body.dropdown-open {
   gap: 8px;
 }
 
-.menu-toggle__icon {
+.menu-toggle-icon {
   display: none;
   width: 28px;
   height: 28px;
@@ -65,15 +65,15 @@ body.dropdown-open {
     display: none;
   }
 
-  .menu-toggle__icon--open {
+  .menu-toggle-icon--open {
     display: block;
   }
 
-  .menu-toggle[aria-expanded="true"] .menu-toggle__icon--open {
+  .menu-toggle[aria-expanded="true"] .menu-toggle-icon--open {
     display: none;
   }
 
-  .menu-toggle[aria-expanded="true"] .menu-toggle__icon--close {
+  .menu-toggle[aria-expanded="true"] .menu-toggle-icon--close {
     display: block;
   }
 }

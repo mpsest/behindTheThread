@@ -2,45 +2,45 @@
   padding: 40px;
 }
 
-.users-page__header {
+.users-page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
 }
 
-.users-page__header h1 {
+.users-page-header h1 {
   font-size: 28px;
   font-weight: 700;
   color: #1a1a1a;
 }
 
-.users-page__table {
+.users-page-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.users-page__table th,
-.users-page__table td {
+.users-page-table th,
+.users-page-table td {
   text-align: left;
   padding: 12px 8px;
   border-bottom: 2px solid #1a1a1a;
   font-size: 14px;
 }
 
-.users-page__table th {
+.users-page-table th {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 0.05em;
 }
 
-.users-page__actions {
+.users-page-actions {
   display: flex;
   gap: 10px;
 }
 
-.users-page__modal-overlay {
+.users-page-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(26, 26, 26, 0.5);
@@ -50,7 +50,7 @@
   z-index: 100;
 }
 
-.users-page__form {
+.users-page-form {
   background: #f5e6c8;
   border: 3px solid #1a1a1a;
   padding: 32px;
@@ -61,23 +61,23 @@
   gap: 20px;
 }
 
-.users-page__form h2 {
+.users-page-form h2 {
   font-size: 18px;
   font-weight: 700;
 }
 
-.users-page__field {
+.users-page-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.users-page__field label {
+.users-page-field label {
   font-weight: 700;
   font-size: 13px;
 }
 
-.users-page__field input {
+.users-page-field input {
   border: none;
   border-bottom: 2px solid #1a1a1a;
   background: transparent;
@@ -86,7 +86,7 @@
   outline: none;
 }
 
-.users-page__form-actions {
+.users-page-form-actions {
   display: flex;
   gap: 12px;
   margin-top: 8px;

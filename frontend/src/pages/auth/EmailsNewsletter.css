@@ -2,7 +2,7 @@
   padding: 1rem;
 }
 
-.emails-newsletter__header {
+.emails-newsletter-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,18 +10,18 @@
   margin-bottom: 1rem;
 }
 
-.emails-newsletter__table {
+.emails-newsletter-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.emails-newsletter__table th,
-.emails-newsletter__table td {
+.emails-newsletter-table th,
+.emails-newsletter-table td {
   text-align: left;
   padding: 0.5rem 0.75rem;
   border-bottom: 1px solid #ddd;
 }
 
-.emails-newsletter__error {
+.emails-newsletter-error {
   color: #b00020;
 }

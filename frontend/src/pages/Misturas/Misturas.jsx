@@ -1,16 +1,17 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Misturas.css";
 import PlusButton from "../../components/PlusButton.jsx";
 import PageTitle from "../../components/PageTitle.jsx";
 import MisturasForm from "../../components/Misturas/MisturasForm.jsx";
+import MisturasSquare from "../../components/Misturas/MisturasSquare.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useMisturas } from "../../hooks/useApi.js";
 
 export default function Misturas() {
   const { makeRequest } = useContext(AuthContext);
   const navigate = useNavigate();
-  const misturas = useMisturas();
+  const { misturas, loading, error } = useMisturas();
 
   async function handleSubmit(formData) {
     const payload = {
@@ -65,17 +66,24 @@ export default function Misturas() {
         <MisturasForm onSubmit={handleSubmit} />
       </div>
 
-      <div className="row">
-        {misturas.map((m) => (
-          <div className="col-md-4" key={m.id}>
-            <h5>{m.nome_projeto}</h5>
-            <p>
-              {m.autor} — {m.area}
-            </p>
-            <p>{m.descricao}</p>
-          </div>
-        ))}
-      </div>
+      {loading && <p className="misturas-status">A carregar misturas...</p>}
+      {error && (
+        <p className="misturas-status">
+          Não foi possível carregar as misturas.
+        </p>
+      )}
+      {!loading && !error && misturas.length === 0 && (
+        <p className="misturas-status">Ainda não há misturas publicadas.</p>
+      )}
+      {!loading && !error && misturas.length > 0 && (
+        <div className="misturas-grid">
+          {misturas.map((m) => (
+            <Link key={m.id} to={`/misturas/${m.id}`}>
+              <MisturasSquare mistura={m} />
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

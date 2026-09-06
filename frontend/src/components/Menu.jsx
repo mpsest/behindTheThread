@@ -30,13 +30,13 @@ export default function Menu() {
       >
         <span>Menu</span>
         <img
-          className="menu-toggle__icon menu-toggle__icon--open"
+          className="menu-toggle-icon menu-toggle-icon--open"
           src="/list.svg"
           alt=""
           aria-hidden="true"
         />
         <img
-          className="menu-toggle__icon menu-toggle__icon--close"
+          className="menu-toggle-icon menu-toggle-icon--close"
           src="/x.svg"
           alt=""
           aria-hidden="true"

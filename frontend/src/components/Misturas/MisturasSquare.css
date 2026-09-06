@@ -1,0 +1,83 @@
+.misturas-square {
+  width: min(400px, 100%);
+  aspect-ratio: 1;
+  background-image: url(/gradientsMisturas/greenBg.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 3px solid var(--text-black);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(22px, 7%, 34px);
+  padding: 10px;
+  color: var(--text-black);
+  font-family: "Lexend", sans-serif;
+}
+
+.misturas-square-title,
+.misturas-square-area,
+.misturas-square-meta span {
+  width: fit-content;
+  max-width: 100%;
+  border: 3px solid var(--text-black);
+  border-radius: 0;
+  color: var(--text-black);
+  background: var(--bg);
+  box-shadow: none;
+}
+
+.misturas-square-title {
+  align-self: center;
+  justify-self: center;
+  margin: 0;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.misturas-square-area {
+  align-self: start;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.misturas-square-meta {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 12px;
+  align-items: end;
+}
+
+.misturas-square-meta span {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.15;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .misturas-square {
+    padding: 34px 22px 24px;
+  }
+
+  .misturas-square-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .misturas-square-meta span {
+    min-height: 42px;
+  }
+}

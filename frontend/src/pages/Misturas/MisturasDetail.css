@@ -1,0 +1,24 @@
+.page-misturas-detail {
+  /* Gradientes */
+  background-image: url(/gradients/contactos-center_top.svg);
+  background-size: clamp(100%, 90vw, 100%);
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.misturas-detail-square {
+  border: 3px solid #1a1a1a;
+  border-radius: 0;
+  max-width: 100%;
+  padding: clamp(6px, 1vw, 8px) clamp(14px, 2.5vw, 20px);
+  font-size: clamp(13px, 1.8vw, 15px);
+  font-weight: 400;
+  white-space: normal;
+  display: inline-block;
+}
+.img-background {
+  background-image: url(/gradientsMisturas/greenBg.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
