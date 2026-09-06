@@ -19,43 +19,18 @@ export default function MisturasDetail() {
   const { id } = useParams();
   const { mistura } = useMistura(id);
 
-  const test = {
-    id: 2,
-    autor: "Inês Rocha",
-    nome_projeto: "Cápsula Zero Desperdício",
-    descricao:
-      "Projeto fictício para criar uma pequena coleção com excedentes têxteis.",
-    regime: "Híbrido",
-    localizacao: "Lisboa",
-    area: "Moda sustentável",
-    data_inicio: "2026-10-01T00:00:00.000000Z",
-    duracao: "6 semanas",
-    orcamento: "850.00",
-    n_colaboradores: 3,
-    email: "ines.rocha@example.test",
-    telemovel: "910000001",
-    aprovado: true,
-    lida: false,
-    created_at: "2026-09-05T16:23:58.000000Z",
-    updated_at: "2026-09-05T16:23:58.000000Z",
-  };
-
   return (
     <>
       <PageTitle>MISTURAS</PageTitle>
       {mistura && (
-        <div className="row">
-          <div className="col-md-6 img-background">
-            <div>
+        <div className="mistura-detail-div flex-column flex-md-row">
+          <div className="mistura-detail-left mistura-img-background">
+            <div className="d-flex flex-column align-items-start">
               <h5 className="misturas-detail-square">{mistura.area}</h5>
               <h4 className="misturas-detail-square">{mistura.nome_projeto}</h4>
-              <h6>{mistura.autor}</h6>
-              <h5 className="subtitle">Email</h5>
-              <p>{mistura.email}</p>
-              <h5 className="subtitle">Telemóvel</h5>
-              <p>{mistura.telemovel}</p>
+              <h6 className="pt-2">{mistura.autor}</h6>
             </div>
-            <div>
+            <div className="d-flex gap-3 flex-wrap">
               <p className="misturas-detail-square">
                 {formatDate(mistura.data_inicio)}
               </p>
@@ -63,25 +38,46 @@ export default function MisturasDetail() {
               <p className="misturas-detail-square">{mistura.localizacao}</p>
             </div>
           </div>
-          <div className="col-md-6">
-            <h5>Descrição</h5>
-            <p>{mistura.descricao}</p>
-            <h5>Regime</h5>
-            <p>{mistura.regime}</p>
-            <h5>Localização</h5>
-            <p>{mistura.localizacao}</p>
-            <h5>Data de início</h5>
-            <p>{mistura.data_inicio}</p>
-            <h5>Duração</h5>
-            <p>{mistura.duracao}</p>
-            <h5>Orçamento</h5>
-            <p>{mistura.orcamento}</p>
-            <h5>Número de colaboradores</h5>
-            <p>{mistura.n_colaboradores}</p>
+          <div className="mistura-detail-right">
+            <div>
+              <h5>Descrição</h5>
+              <p>{mistura.descricao}</p>
+            </div>
+            <div>
+              <h5>Regime</h5>
+              <p>{mistura.regime}</p>
+            </div>
+            <div>
+              <h5>Localização</h5>
+              <p>{mistura.localizacao}</p>
+            </div>
+            <div>
+              <h5>Data de início</h5>
+              <p>{new Date(mistura.data_inicio).toLocaleDateString()}</p>
+            </div>
+            <div>
+              <h5>Duração</h5>
+              <p>{mistura.duracao}</p>
+            </div>
+            <div>
+              <h5>Orçamento</h5>
+              <p>{mistura.orcamento}</p>
+            </div>
+            <div>
+              <h5>Número de colaboradores</h5>
+              <p>{mistura.n_colaboradores}</p>
+            </div>
+            <div>
+              <h5 className="subtitle">Email</h5>
+              <p>{mistura.email}</p>
+            </div>
+            <div>
+              <h5 className="subtitle">Telemóvel</h5>
+              <p>{mistura.telemovel}</p>
+            </div>
           </div>
         </div>
       )}
     </>
   );
 }
-// TODO: Adicionar {name} ao PageTitle

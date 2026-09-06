@@ -1,5 +1,18 @@
 .conteudo-card {
+  position: relative;
   min-width: 0;
+}
+
+.conteudo-card-actions {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: min(100% - 32px, 320px);
+  transform: translateX(-50%);
 }
 
 .conteudo-item {

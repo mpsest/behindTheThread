@@ -1,3 +1,8 @@
+.page-misturas main {
+  display: flex;
+  flex-direction: column;
+}
+
 .page-misturas-detail {
   /* Gradientes */
   background-image: url(/gradients/contactos-center_top.svg);
@@ -5,8 +10,24 @@
   background-repeat: no-repeat;
   background-position: center top;
 }
+.mistura-detail-div {
+  display: flex;
+  flex: 1;
+}
+
+.mistura-detail-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  flex-basis: 50vw;
+  flex-shrink: 0;
+  min-height: 50vw;
+  border-right: 2px solid var(--text-black);
+}
 
 .misturas-detail-square {
+  background-color: var(--bg);
   border: 3px solid #1a1a1a;
   border-radius: 0;
   max-width: 100%;
@@ -16,9 +37,36 @@
   white-space: normal;
   display: inline-block;
 }
-.img-background {
+
+.mistura-img-background {
   background-image: url(/gradientsMisturas/greenBg.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  align-content: space-evenly;
+}
+
+.mistura-detail-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (max-width: 767.98px) {
+  .mistura-detail-left {
+    flex-basis: 100%;
+    height: unset;
+    border-bottom: 2px solid var(--text-black);
+    border-right: unset;
+  }
+  .mistura-detail-right {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+  }
 }

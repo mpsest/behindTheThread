@@ -8,14 +8,14 @@ export default function ConteudoItem({ conteudo, type, onEdit, onDelete }) {
   return (
     <article className="conteudo-card">
       {onEdit && onDelete && (
-        <>
-          <button className="btn btn-primary" onClick={onEdit}>
+        <div className="conteudo-card-actions">
+          <SquareButton onClick={onEdit}>
             Editar
-          </button>
-          <button className="btn btn-danger" onClick={onDelete}>
+          </SquareButton>
+          <SquareButton onClick={onDelete}>
             Apagar
-          </button>
-        </>
+          </SquareButton>
+        </div>
       )}
       <Link to={`/${type}s/${conteudo.id}`} className="conteudo-item">
         <img src={conteudo.imagem} alt={conteudo.titulo} />
