@@ -1,17 +1,10 @@
 import { useContext, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
-import "./ResetPassword.css";
+import "./ChangePassword.css";
 
-export default function ResetPassword() {
-  const { makeRequest } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-
-  const tokenFromLink = searchParams.get("token") ?? "";
-  const emailFromLink = searchParams.get("email") ?? "";
-
+export default function ChangePassword() {
+  const { user, makeRequest } = useContext(AuthContext);
   const [status, setStatus] = useState({ message: null, error: false });
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +13,7 @@ export default function ResetPassword() {
     setStatus({ message: null, error: false });
 
     const formData = new FormData(event.target);
+    const current_password = formData.get("current_password");
     const password = formData.get("password");
     const password_confirmation = formData.get("password_confirmation");
 
@@ -31,30 +25,31 @@ export default function ResetPassword() {
     setLoading(true);
 
     try {
-      const res = await makeRequest("api/reset-password", {
-        method: "POST",
-        body: JSON.stringify({
-          token: tokenFromLink,
-          email: emailFromLink,
-          password,
-          password_confirmation,
-        }),
-      });
+      const res = await makeRequest(
+        `api/utilizadores/${user?.id}/change-password`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            current_password,
+            password,
+            password_confirmation,
+          }),
+        }
+      );
 
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
         throw new Error(
-          data?.message ?? "Não foi possível repor a password."
+          data?.message ?? "Não foi possível alterar a password."
         );
       }
 
       setStatus({
-        message: data?.message ?? "Password reposta com sucesso.",
+        message: data?.message ?? "Password alterada com sucesso.",
         error: false,
       });
-
-      setTimeout(() => navigate("/login"), 1500);
+      event.target.reset();
     } catch (error) {
       setStatus({ message: error.message, error: true });
     } finally {
@@ -63,19 +58,17 @@ export default function ResetPassword() {
   }
 
   return (
-    <section className="reset-password-page d-flex align-items-center justify-content-center px-3 px-sm-4 py-4 py-sm-5">
-      <form className="reset-password-modal p-5" onSubmit={handleSubmit}>
-        <h2>RESET PASSWORD</h2>
+    <section className="change-password-page d-flex align-items-center justify-content-center px-3 px-sm-4 py-4 py-sm-5">
+      <form className="change-password-modal p-5" onSubmit={handleSubmit}>
+        <h2>MUDAR PASSWORD</h2>
 
         <div className="control-row">
           <div className="control">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="current_password">Password Atual</label>
             <input
-              id="email"
-              name="email"
-              type="email"
-              defaultValue={emailFromLink}
-              readOnly={Boolean(emailFromLink)}
+              id="current_password"
+              name="current_password"
+              type="password"
               required
             />
           </div>
@@ -111,7 +104,7 @@ export default function ResetPassword() {
 
         <p className="form-actions">
           <SquareButton type="submit" variant="light" disabled={loading}>
-            {loading ? "A repor..." : "Reset Password"}
+            {loading ? "A guardar..." : "Guardar"}
           </SquareButton>
         </p>
       </form>
