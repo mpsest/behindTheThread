@@ -1,11 +1,10 @@
 .misturas-square {
-  width: min(400px, 100%);
+  width: 100%;
   aspect-ratio: 1;
   background-image: url(/gradientsMisturas/greenBg.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 3px solid var(--text-black);
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: clamp(22px, 7%, 34px);

@@ -76,9 +76,13 @@ export default function Misturas() {
         <p className="misturas-status">Ainda não há misturas publicadas.</p>
       )}
       {!loading && !error && misturas.length > 0 && (
-        <div className="misturas-grid">
+        <div className="misturas-grid row g-0 mx-0">
           {misturas.map((m) => (
-            <Link key={m.id} to={`/misturas/${m.id}`}>
+            <Link
+              key={m.id}
+              className="misturas-grid-link col-12 col-md-6 col-lg-4"
+              to={`/misturas/${m.id}`}
+            >
               <MisturasSquare mistura={m} />
             </Link>
           ))}
@@ -86,12 +90,4 @@ export default function Misturas() {
       )}
     </div>
   );
-}
-
-{
-  /* NÃO APAGAR ISTO! <TextEditor value={editorContent} onChange={setEditorContent} />
-      <div>
-        <h2>Preview:</h2>
-        <div dangerouslySetInnerHTML={{ __html: editorContent }} />
-      </div> */
 }

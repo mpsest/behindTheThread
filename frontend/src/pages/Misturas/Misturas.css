@@ -22,15 +22,18 @@
 }
 
 .misturas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 400px));
-  gap: 32px;
-  justify-content: center;
-  padding: 32px 20px 72px;
+  border-top: 2px solid var(--text-black);
 }
 
-.misturas-grid a {
+.misturas-grid-link {
+  display: block;
   text-decoration: none;
+  border-right: 2px solid var(--text-black);
+  border-bottom: 2px solid var(--text-black);
+}
+
+.misturas-grid-link:nth-child(3n) {
+  border-right: unset;
 }
 
 .misturas-status {
