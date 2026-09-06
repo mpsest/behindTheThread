@@ -7,12 +7,18 @@ const AREAS = [
   'Joalharia', 'Instalações', 'Eventos', 'Outros',
 ];
 
-export default function MisturasForm({ onSubmit }) {
-  const [formData, setFormData] = useState({
+const emptyFormData = {
     creator: '', projectName: '', description: '', regime: '',
     location: '', area: [], startDate: '', duration: '',
     budget: '', numCollaborators: '', email: '', phone: '',
-  });
+};
+
+export default function MisturasForm({
+  initialValues = emptyFormData,
+  onSubmit,
+  submitLabel = "Submeter",
+}) {
+  const [formData, setFormData] = useState(initialValues);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -125,7 +131,7 @@ export default function MisturasForm({ onSubmit }) {
 
       <div className="collab-form-submit">
       
-          <SquareButton type="submit" variant="dark"  >Submeter</SquareButton>
+          <SquareButton type="submit" variant="dark"  >{submitLabel}</SquareButton>
        
         
       </div>

@@ -9,3 +9,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.conteudo-detail-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}

@@ -1,7 +1,9 @@
 import "./MisturasDetail.css";
+import { useContext } from "react";
 import PageTitle from "../../components/PageTitle.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
-import { useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useMistura } from "../../hooks/useApi.js";
 
 function formatDate(date) {
@@ -17,11 +19,40 @@ function formatDate(date) {
 
 export default function MisturasDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { mistura } = useMistura(id);
+  const { user, makeRequest } = useContext(AuthContext);
+
+  function handleEdit() {
+    navigate(`/misturas/${id}/editar`);
+  }
+
+  function handleDelete() {
+    if (!window.confirm("Tem a certeza que deseja apagar esta mistura?")) {
+      return;
+    }
+
+    makeRequest(`api/misturas/${id}`, {
+      method: "DELETE",
+    }).then((res) => {
+      if (res.ok) {
+        alert("Mistura apagada com sucesso!");
+        navigate("/misturas");
+      } else {
+        alert("Erro ao apagar mistura.");
+      }
+    });
+  }
 
   return (
     <>
       <PageTitle>MISTURAS</PageTitle>
+      {mistura && user && (
+        <div className="mistura-detail-actions">
+          <SquareButton onClick={handleEdit}>Editar</SquareButton>
+          <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+        </div>
+      )}
       {mistura && (
         <div className="mistura-detail-div flex-column flex-md-row">
           <div className="mistura-detail-left mistura-img-background">

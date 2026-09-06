@@ -29,6 +29,7 @@ import NovoConteudo from "./pages/auth/NovoConteudo.jsx";
 import EditarConteudo from "./pages/auth/EditarConteudo.jsx";
 import EmailsNewsletter from "./pages/auth/EmailsNewsletter.jsx";
 import MisturasPendentes from "./pages/auth/MisturasPendentes.jsx";
+import EditarMistura from "./pages/auth/EditarMistura.jsx";
 import { useContext, useEffect } from "react";
 
 function UserRoute({ children }) {
@@ -81,6 +82,14 @@ function App() {
           ),
         },
         { path: "/misturas/:id", element: <MisturasDetail /> },
+        {
+          path: "/misturas/:id/editar",
+          element: (
+            <UserRoute>
+              <EditarMistura />
+            </UserRoute>
+          ),
+        },
         {
           path: "/signup",
           element: (
