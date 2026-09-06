@@ -252,17 +252,19 @@ export default function BaseDadosDetail() {
       className={`${resource}-detail-page container-fluid px-3 px-md-4 px-lg-0`}
     >
       <PageTitle className="border-0">BASE DE DADOS</PageTitle>
-      <div className="align-button d-flex justify-content-end py-3 pe-md-2">
-        <Link to="/basededados">
-          <SquareButton>Voltar atrás</SquareButton>
-        </Link>
-      </div>
+      <div className="align-button d-flex justify-content-end py-3 pe-md-2"></div>
       <div className="table-responsive">
         <table className="base-dados-detail-table">
           <thead>
             <tr>
               <th colSpan={config.columns.length + (user ? 1 : 0)}>
-                {categoria}
+                <div className="d-flex justify-content-between">
+                  <span style={{ width: 132 }}></span>
+                  {categoria}
+                  <Link to="/basededados">
+                    <SquareButton variant="dark">Voltar atrás</SquareButton>
+                  </Link>
+                </div>
               </th>
             </tr>
           </thead>
@@ -350,7 +352,10 @@ export default function BaseDadosDetail() {
       )}
 
       {!baseDados.loading && nextCategories.length > 0 && (
-        <nav className="base-dados-detail-next" aria-label="Categorias seguintes">
+        <nav
+          className="base-dados-detail-next"
+          aria-label="Categorias seguintes"
+        >
           {nextCategories.map((nextCategory) => (
             <LargeSquareButton
               key={nextCategory}

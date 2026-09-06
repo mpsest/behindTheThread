@@ -1,4 +1,8 @@
-main:has(.base-dados-detail-page) {
+.page-basededados.page-basededados-detail {
+  background-image: unset;
+}
+
+main.base-dados-detail-page {
   display: flex;
   flex-direction: column;
 }
@@ -49,9 +53,15 @@ main:has(.base-dados-detail-page) {
 .base-dados-detail-table th {
   text-align: center;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 25px;
   padding: 30px;
   border: 2px solid var(--text-black);
+}
+
+.base-dados-detail-table .go-back-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
 
 .base-dados-detail-table td {
