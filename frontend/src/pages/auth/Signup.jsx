@@ -24,7 +24,7 @@ export default function Signup() {
         role: "admin",
       };
 
-      fetch("http://localhost:3000/signup", {
+      fetch("http://localhost:8000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
