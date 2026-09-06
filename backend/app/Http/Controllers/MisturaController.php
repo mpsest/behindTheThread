@@ -63,7 +63,7 @@ class MisturaController extends Controller
     public function naoLidasCount(): JsonResponse
     {
         return response()->json([
-            'total' => Mistura::where('lida', false)->count(),
+            'total' => Mistura::where('lida', false)->where("aprovado", false)->count(),
         ]);
     }
 
