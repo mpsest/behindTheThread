@@ -8,13 +8,6 @@
 
     <style>
         @font-face {
-            font-family: "Slibinas";
-            src: url("{{ config('app.url') }}/typography/Slibinas.otf")
-                format("opentype");
-            font-weight: 400;
-        }
-
-        @font-face {
             font-family: "Lexend";
             src: url("{{ config('app.url') }}/typography/Lexend-Regular.ttf")
                 format("truetype");
@@ -37,16 +30,18 @@
                 width: 100% !important;
             }
 
-            .brand {
-                font-size: 24px !important;
+            .brand-img {
+                width: 260px !important;
+                height: auto !important;
             }
 
             .content-cell {
                 padding: 32px 25px !important;
             }
 
-            .page-title {
-                font-size: 28px !important;
+            .title-img {
+                width: 300px !important;
+                height: auto !important;
             }
 
             .main-card {
@@ -89,8 +84,14 @@
         <td
             align="center"
             class="email-wrapper"
+            background="{{ config('app.url') }}/gradients/menu_left_bottom-email.png"
             style="
                 padding:55px 20px 70px;
+                background-color:#fef0cf;
+                background-image:url('{{ config('app.url') }}/gradients/menu_left_bottom-email.png');
+                background-repeat:no-repeat;
+                background-position:left bottom;
+                background-size:340px auto;
             "
         >
 
@@ -120,17 +121,24 @@
                             <tr>
                                 <td
                                     align="center"
-                                    class="brand"
-                                    style="
-                                        color:#1e1e1e;
-                                        font-family:'Slibinas', sans-serif;
-                                        font-size:30px;
-                                        line-height:1;
-                                        letter-spacing:-.5px;
-                                        text-transform:uppercase;
-                                    "
+                                    style="padding:0;"
                                 >
-                                    Behind the Thread
+                                    <img
+                                        src="{{ config('app.url') }}/email/brand-behind-the-thread.png"
+                                        alt="Behind the Thread"
+                                        width="460"
+                                        height="32"
+                                        class="brand-img"
+                                        style="
+                                            display:inline-block;
+                                            width:460px;
+                                            max-width:100%;
+                                            height:auto;
+                                            border:0;
+                                            outline:none;
+                                            text-decoration:none;
+                                        "
+                                    >
                                 </td>
                             </tr>
                         </table>
@@ -165,21 +173,28 @@
                                 >
 
                                     <h1
-                                        class="page-title"
                                         style="
                                             margin:0 0 28px;
                                             padding:0;
-                                            color:#1e1e1e;
-                                            font-family:'Slibinas', sans-serif;
-                                            font-size:34px;
-                                            line-height:1;
-                                            font-weight:400;
-                                            letter-spacing:0;
                                             text-align:center;
-                                            text-transform:uppercase;
                                         "
                                     >
-                                        Recuperar Password
+                                        <img
+                                            src="{{ config('app.url') }}/email/title-recuperar-password.png"
+                                            alt="Recuperar Password"
+                                            width="540"
+                                            height="35"
+                                            class="title-img"
+                                            style="
+                                                display:inline-block;
+                                                width:540px;
+                                                max-width:100%;
+                                                height:auto;
+                                                border:0;
+                                                outline:none;
+                                                text-decoration:none;
+                                            "
+                                        >
                                     </h1>
 
                                     <p
