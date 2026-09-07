@@ -39,6 +39,7 @@ body.dropdown-open {
 }
 
 .navbar .dropdown-menu.show {
+  overscroll-behavior-y: none;
   display: flex;
 }
 
