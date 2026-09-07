@@ -5,12 +5,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import SquareButton from "../../components/SquareButton.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useDesigner } from "../../hooks/useApi.js";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function DesignersDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const designer = useDesigner(id);
   const { user, makeRequest } = useContext(AuthContext);
+  const { showToast } = useToast();
 
   function handleEdit() {
     navigate(`/conteudo/designer/${id}/editar`);
@@ -25,10 +27,10 @@ export default function DesignersDetail() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        alert("Designer apagado com sucesso!");
+        showToast("Designer apagado com sucesso!", "success");
         navigate("/designers");
       } else {
-        alert("Erro ao apagar designer.");
+        showToast("Erro ao apagar designer.", "error");
       }
     });
   }

@@ -5,11 +5,13 @@ import ConteudoItem from "../../components/ConteudoItem.jsx";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function Designers() {
   const designers = useDesigners();
   const { user, makeRequest } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   function handleEdit(designerId) {
     navigate(`/conteudo/designer/${designerId}/editar`);
@@ -24,10 +26,10 @@ export default function Designers() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        alert("Designer apagado com sucesso!");
+        showToast("Designer apagado com sucesso!", "success");
         window.location.reload();
       } else {
-        alert("Erro ao apagar designer.");
+        showToast("Erro ao apagar designer.", "error");
       }
     });
   }

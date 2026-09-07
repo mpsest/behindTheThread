@@ -31,6 +31,7 @@ import EmailsNewsletter from "./pages/auth/EmailsNewsletter.jsx";
 import MisturasPendentes from "./pages/auth/MisturasPendentes.jsx";
 import EditarMistura from "./pages/auth/EditarMistura.jsx";
 import { useContext, useEffect } from "react";
+import { ToastProvider } from "./contexts/ToastContext.jsx";
 
 function UserRoute({ children }) {
   const { user } = useContext(AuthContext);
@@ -161,9 +162,11 @@ function App() {
     },
   ]);
 
-  return (
+   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
     </AuthProvider>
   );
 }

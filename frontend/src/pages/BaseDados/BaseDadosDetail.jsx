@@ -7,6 +7,7 @@ import PageTitle from "../../components/PageTitle";
 import { AuthContext } from "../../contexts/AuthContext";
 import BaseDadosFormModal from "./BaseDadosFormModal";
 import "./BaseDadosDetail.css";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 const RESOURCE_CONFIG = {
   espacos: {
@@ -67,6 +68,8 @@ const CATEGORY_ORDER = {
     "Youtube",
   ],
 };
+
+
 
 const EMPTY_FORM = {
   nome: "",
@@ -131,6 +134,7 @@ export default function BaseDadosDetail() {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [saving, setSaving] = useState(false);
+  const { showToast } = useToast();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -217,7 +221,7 @@ export default function BaseDadosDetail() {
       closeEdit();
     } catch (err) {
       console.error(err);
-      alert("Não foi possível guardar este elemento.");
+      showToast("Não foi possível guardar este elemento.", "error");
       setSaving(false);
     }
   }
@@ -243,7 +247,7 @@ export default function BaseDadosDetail() {
       await baseDados.refetch();
     } catch (err) {
       console.error(err);
-      alert("Não foi possível apagar este elemento.");
+      showToast("Não foi possível apagar este elemento.", "error");
     }
   }
 

@@ -5,6 +5,7 @@ import SquareButton from "../../components/SquareButton.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useMistura } from "../../hooks/useApi.js";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 function formatDate(date) {
   if (!date) return null;
@@ -22,7 +23,7 @@ export default function MisturasDetail() {
   const navigate = useNavigate();
   const { mistura } = useMistura(id);
   const { user, makeRequest } = useContext(AuthContext);
-
+  const { showToast } = useToast();
   function handleEdit() {
     navigate(`/misturas/${id}/editar`);
   }
@@ -36,10 +37,10 @@ export default function MisturasDetail() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        alert("Mistura apagada com sucesso!");
+        showToast("Mistura apagada com sucesso!", "success");
         navigate("/misturas");
       } else {
-        alert("Erro ao apagar mistura.");
+        showToast("Erro ao apagar mistura.", "error");
       }
     });
   }

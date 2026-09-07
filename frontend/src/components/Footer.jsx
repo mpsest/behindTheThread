@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import "./Footer.css";
 import SquareButton from "./SquareButton.jsx";
 import { AuthContext } from "../contexts/AuthContext.jsx";
+import { useToast } from "../contexts/ToastContext.jsx";
 
 export default function Footer() {
   const { makeRequest } = useContext(AuthContext);
+  const { showToast } = useToast();
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(null);
 
   async function handleNewsletterSubmit(e) {
     e.preventDefault();
@@ -20,11 +21,11 @@ export default function Footer() {
 
       if (!res.ok) throw new Error("Falha ao subscrever");
 
-      setStatus("sucesso");
+      showToast("Estás na lista! Caso queiras sair, manda email para behindthethreadd@gmail.com.", "success");
       setEmail("");
     } catch (err) {
       console.error(err);
-      setStatus("erro");
+      showToast("Não deu. Tenta outra vez!", "error");
     }
   }
 
@@ -169,8 +170,6 @@ export default function Footer() {
               />
               <SquareButton type="submit">Subscrever</SquareButton>
             </form>
-            {status === "sucesso" && <p>Estás na lista!</p>}
-            {status === "erro" && <p>Não deu. Tenta outra vez!</p>}
           </div>
         </div>
       </div>

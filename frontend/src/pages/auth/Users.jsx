@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext.jsx';
 import SquareButton from '../../components/SquareButton';
 import './Users.css';
+import { useToast } from '../../contexts/ToastContext.jsx';
 
 const RESOURCE = 'api/utilizadores';
 
@@ -13,6 +14,7 @@ export default function Users() {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [editingId, setEditingId] = useState(null);
+  const { showToast } = useToast();
 
   useEffect(() => {
     loadUsers();
@@ -73,7 +75,7 @@ export default function Users() {
       loadUsers();
     } catch (err) {
       console.error(err);
-      alert('Não foi possível guardar o utilizador.');
+      showToast('Não foi possível guardar o utilizador.', 'error');
     }
   }
 
@@ -86,7 +88,7 @@ export default function Users() {
       loadUsers();
     } catch (err) {
       console.error(err);
-      alert('Não foi possível remover o utilizador.');
+      showToast('Não foi possível remover o utilizador.', 'error');
     }
   }
 

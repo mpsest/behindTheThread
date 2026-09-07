@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import ConteudoItem from "../../components/ConteudoItem.jsx";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function Artigos() {
   const artigos = useArtigos();
   const { user, makeRequest } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   // Admin functions for editing and deleting articles
   function handleEdit(artigoId) {
@@ -25,10 +27,10 @@ export default function Artigos() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        alert("Artigo apagado com sucesso!");
+        showToast("Artigo apagado com sucesso!", "success");
         window.location.reload();
       } else {
-        alert("Erro ao apagar artigo.");
+        showToast("Erro ao apagar artigo.", "error");
       }
     });
   }

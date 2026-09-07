@@ -5,12 +5,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import SquareButton from "../../components/SquareButton.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useDirtyTalk } from "../../hooks/useApi.js";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function DirtyTalksDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dirtyTalk = useDirtyTalk(id);
   const { user, makeRequest } = useContext(AuthContext);
+  const { showToast } = useToast();
 
   function handleEdit() {
     navigate(`/conteudo/dirty_talk/${id}/editar`);
@@ -25,10 +27,10 @@ export default function DirtyTalksDetail() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        alert("Dirty Talk apagado com sucesso!");
+        showToast("Dirty Talk apagado com sucesso!", "success");
         navigate("/dirtytalks");
       } else {
-        alert("Erro ao apagar Dirty Talk.");
+        showToast("Erro ao apagar Dirty Talk.", "error");
       }
     });
   }
