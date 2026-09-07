@@ -83,14 +83,13 @@ export default function BaseDadosFormModal({
 
         <div className="base-dados-detail-field">
           <label htmlFor="categoria">Categoria</label>
-          <input
-            id="categoria"
-            name="categoria"
-            type="text"
-            value={formData.categoria}
-            onChange={onChange}
-            required
-          />
+            <input
+              id="categoria"
+              name="categoria"
+              type="text"
+              value={formData.categoria}
+              readOnly
+            />
         </div>
 
         <div className="base-dados-detail-form-actions">
