@@ -1,30 +1,30 @@
 import { useContext, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useToast } from "../../contexts/ToastContext.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
 import "./ResetPassword.css";
 
 export default function ResetPassword() {
   const { makeRequest } = useContext(AuthContext);
+  const { showToast } = useToast();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const tokenFromLink = searchParams.get("token") ?? "";
   const emailFromLink = searchParams.get("email") ?? "";
 
-  const [status, setStatus] = useState({ message: null, error: false });
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setStatus({ message: null, error: false });
 
     const formData = new FormData(event.target);
     const password = formData.get("password");
     const password_confirmation = formData.get("password_confirmation");
 
     if (password !== password_confirmation) {
-      setStatus({ message: "As passwords não coincidem.", error: true });
+      showToast("As passwords não coincidem.", "error");
       return;
     }
 
@@ -49,14 +49,11 @@ export default function ResetPassword() {
         );
       }
 
-      setStatus({
-        message: data?.message ?? "Password reposta com sucesso.",
-        error: false,
-      });
+      showToast(data?.message ?? "Password reposta com sucesso.", "success");
 
       setTimeout(() => navigate("/login"), 1500);
     } catch (error) {
-      setStatus({ message: error.message, error: true });
+      showToast(error.message, "error");
     } finally {
       setLoading(false);
     }
@@ -102,12 +99,6 @@ export default function ResetPassword() {
             />
           </div>
         </div>
-
-        {status.message && (
-          <p style={{ color: status.error ? "crimson" : "inherit" }}>
-            {status.message}
-          </p>
-        )}
 
         <p className="form-actions">
           <SquareButton type="submit" variant="light" disabled={loading}>

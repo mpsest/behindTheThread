@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useToast } from "../../contexts/ToastContext.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
 import "./ForgotPassword.css";
 
 export default function ForgotPassword() {
   const { makeRequest } = useContext(AuthContext);
-  const [status, setStatus] = useState({ message: null, error: false });
+  const { showToast } = useToast();
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
-    setStatus({ message: null, error: false });
 
     const formData = new FormData(event.target);
     const email = formData.get("email");
@@ -28,13 +28,13 @@ export default function ForgotPassword() {
         throw new Error(data?.message ?? "Não foi possível enviar o email.");
       }
 
-      setStatus({
-        message: data?.message ?? "Verifica o teu email para continuares.",
-        error: false,
-      });
+      showToast(
+        data?.message ?? "Verifica o teu email para continuares.",
+        "success"
+      );
       event.target.reset();
     } catch (error) {
-      setStatus({ message: error.message, error: true });
+      showToast(error.message, "error");
     } finally {
       setLoading(false);
     }
@@ -60,12 +60,6 @@ export default function ForgotPassword() {
             />
           </div>
         </div>
-
-        {status.message && (
-          <p style={{ color: status.error ? "crimson" : "inherit" }}>
-            {status.message}
-          </p>
-        )}
 
         <p className="form-actions">
           <SquareButton type="submit" variant="light" disabled={loading}>

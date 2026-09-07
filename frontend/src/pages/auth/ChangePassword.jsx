@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useToast } from "../../contexts/ToastContext.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
 import "./ChangePassword.css";
 
 export default function ChangePassword() {
   const { user, makeRequest } = useContext(AuthContext);
-  const [status, setStatus] = useState({ message: null, error: false });
+  const { showToast } = useToast();
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setStatus({ message: null, error: false });
 
     const formData = new FormData(event.target);
     const current_password = formData.get("current_password");
@@ -18,7 +18,7 @@ export default function ChangePassword() {
     const password_confirmation = formData.get("password_confirmation");
 
     if (password !== password_confirmation) {
-      setStatus({ message: "As passwords não coincidem.", error: true });
+      showToast("As passwords não coincidem.", "error");
       return;
     }
 
@@ -45,13 +45,10 @@ export default function ChangePassword() {
         );
       }
 
-      setStatus({
-        message: data?.message ?? "Password alterada com sucesso.",
-        error: false,
-      });
+      showToast(data?.message ?? "Password alterada com sucesso.", "success");
       event.target.reset();
     } catch (error) {
-      setStatus({ message: error.message, error: true });
+      showToast(error.message, "error");
     } finally {
       setLoading(false);
     }
@@ -95,12 +92,6 @@ export default function ChangePassword() {
             />
           </div>
         </div>
-
-        {status.message && (
-          <p style={{ color: status.error ? "crimson" : "inherit" }}>
-            {status.message}
-          </p>
-        )}
 
         <p className="form-actions">
           <SquareButton type="submit" variant="light" disabled={loading}>
