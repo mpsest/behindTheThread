@@ -7,11 +7,14 @@ import MisturasForm from "../../components/Misturas/MisturasForm.jsx";
 import MisturasSquare from "../../components/Misturas/MisturasSquare.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useMisturas } from "../../hooks/useApi.js";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function Misturas() {
   const { makeRequest } = useContext(AuthContext);
   const navigate = useNavigate();
   const { misturas, loading, error } = useMisturas();
+  const { showToast } = useToast();
+
 
   async function handleSubmit(formData) {
     const payload = {
@@ -39,11 +42,11 @@ export default function Misturas() {
     });
 
     if (res.ok) {
-      alert("Proposta submetida! Será revista antes de publicação.");
+      showToast("Recebemos a tua sugestão! Vamos rever e publicar (se nos apetecer).", "success");
       navigate("/");
     } else {
       const err = await res.json().catch(() => null);
-      alert(err?.message ?? "Erro ao submeter.");
+      showToast(err?.message ?? "Erro ao submeter.", "error");
     }
   }
 

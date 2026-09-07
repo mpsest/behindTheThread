@@ -4,11 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import SquareButton from "../../components/SquareButton.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useArtigo } from "../../hooks/useApi.js";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function ArtigosDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const artigo = useArtigo(id);
+  const { showToast } = useToast();
   const { user, makeRequest } = useContext(AuthContext);
 
   function handleEdit() {
@@ -24,10 +26,10 @@ export default function ArtigosDetail() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        alert("Artigo apagado com sucesso!");
+        showToast("Artigo apagado com sucesso!", "success");
         navigate("/artigos");
       } else {
-        alert("Erro ao apagar artigo.");
+        showToast("Erro ao apagar artigo.", "error");
       }
     });
   }

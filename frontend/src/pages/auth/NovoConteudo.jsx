@@ -5,12 +5,15 @@ import React, { useState, useContext } from "react";
 import SquareButton from "../../components/SquareButton.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function NovoConteudo() {
   const { makeRequest } = useContext(AuthContext);
   const [editorContent, setEditorContent] = useState("");
   const [keywordsCount, setKeywordsCount] = useState(1);
   const navigate = useNavigate();
+  const { showToast } = useToast(); 
+  
   function addKeywordField() {
     setKeywordsCount(keywordsCount + 1);
   }
@@ -39,14 +42,14 @@ export default function NovoConteudo() {
 
     if (result.ok) {
       const conteudo = await result.json();
-      alert("Conteúdo criado com sucesso!");
+      showToast("Conteúdo criado com sucesso!", "success");
       if (data.tipo === "dirty_talk") {
         navigate(`/dirtytalks/${conteudo.id}`);
       } else {
         navigate(`/${data.tipo}s/${conteudo.id}`);
       }
     } else {
-      alert("Erro ao criar o conteúdo.");
+      showToast("Erro ao criar o conteúdo.", "error");
     }
   }
 

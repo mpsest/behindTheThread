@@ -5,6 +5,7 @@ import React, { useState, useContext, useEffect } from "react";
 import SquareButton from "../../components/SquareButton.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useParams, useNavigate } from "react-router-dom";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function EditarConteudo() {
   const { makeRequest } = useContext(AuthContext);
@@ -13,6 +14,7 @@ export default function EditarConteudo() {
   const [editorContent, setEditorContent] = useState("");
   const [keywordsCount, setKeywordsCount] = useState(1);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   function addKeywordField() {
     setKeywordsCount(keywordsCount + 1);
@@ -34,7 +36,7 @@ export default function EditarConteudo() {
         setEditorContent(data.texto || "");
         setKeywordsCount(data.keywords.length || 1);
       } else {
-        alert("Erro ao carregar o conteúdo.");
+        showToast("Erro ao carregar o conteúdo.", "error");
       }
     }
 
@@ -64,14 +66,14 @@ export default function EditarConteudo() {
     });
 
     if (result.ok) {
-      alert("Conteúdo atualizado com sucesso!");
+      showToast("Conteúdo atualizado com sucesso!", "success");
       if (data.tipo === "dirty_talk") {
         navigate(`/dirtytalks/${id}`);
       } else {
         navigate(`/${data.tipo}s/${id}`);
       }
     } else {
-      alert("Erro ao atualizar o conteúdo.");
+      showToast("Erro ao atualizar o conteúdo.", "error");
     }
   }
 

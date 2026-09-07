@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext.jsx";
 import PageTitle from "../../components/PageTitle.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
 import "./EmailsNewsletter.css";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 const RESOURCE = "api/newsletter";
 
@@ -11,6 +12,7 @@ export default function EmailsNewsletter() {
   const [emails, setEmails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState(null);
+  const { showToast } = useToast();
 
   useEffect(() => {
     loadEmails();
@@ -41,7 +43,7 @@ export default function EmailsNewsletter() {
       loadEmails();
     } catch (err) {
       console.error(err);
-      alert("Não foi possível remover o email.");
+      showToast("Não foi possível remover o email.", "error");
     }
   }
 

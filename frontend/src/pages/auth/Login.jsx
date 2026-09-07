@@ -3,10 +3,12 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import SquareButton from "../../components/SquareButton";
 import "./Login.css";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const { showToast } = useToast();
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -23,7 +25,7 @@ export default function LoginForm() {
       }
     } catch (error) {
       console.error(error);
-      alert("Ocorreu um erro. Tenta novamente.");
+      showToast("Algo está errado. Tenta novamente.", "error");
     }
   }
 

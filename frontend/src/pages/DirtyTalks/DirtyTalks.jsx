@@ -5,11 +5,13 @@ import ConteudoItem from "../../components/ConteudoItem.jsx";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 export default function DirtyTalks() {
   const dirtyTalks = useDirtyTalks();
   const { user, makeRequest } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   function handleEdit(dirtyTalkId) {
     navigate(`/conteudo/dirty_talk/${dirtyTalkId}/editar`);
@@ -24,10 +26,10 @@ export default function DirtyTalks() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        alert("Dirty Talk apagado com sucesso!");
+        showToast("Dirty Talk apagado com sucesso!", "success");
         window.location.reload();
       } else {
-        alert("Erro ao apagar Dirty Talk.");
+        showToast("Erro ao apagar Dirty Talk.", "error");
       }
     });
   }

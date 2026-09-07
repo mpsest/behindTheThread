@@ -4,6 +4,7 @@ import PageTitle from "../../components/PageTitle.jsx";
 import MisturasForm from "../../components/Misturas/MisturasForm.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useMistura } from "../../hooks/useApi.js";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
 function toFormData(mistura) {
   return {
@@ -29,6 +30,7 @@ export default function EditarMistura() {
   const navigate = useNavigate();
   const { makeRequest } = useContext(AuthContext);
   const { mistura, loading, error } = useMistura(id);
+  const { showToast } = useToast();
 
   async function handleSubmit(formData) {
     const payload = {
@@ -56,11 +58,11 @@ export default function EditarMistura() {
     });
 
     if (res.ok) {
-      alert("Mistura atualizada com sucesso!");
+      showToast("Mistura atualizada com sucesso!", "success");
       navigate(`/misturas/${id}`);
     } else {
       const err = await res.json().catch(() => null);
-      alert(err?.message ?? "Erro ao atualizar mistura.");
+      showToast(err?.message ?? "Erro ao atualizar mistura.", "error");
     }
   }
 
