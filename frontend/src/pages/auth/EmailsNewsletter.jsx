@@ -53,9 +53,9 @@ export default function EmailsNewsletter() {
   }
 
   return (
-    <main className="emails-newsletter">
+    <div className="emails-newsletter">
       <PageTitle>EMAILS NEWSLETTER</PageTitle>
-      <div className="emails-newsletter-header">
+      <div className="emails-newsletter-header pt-3">
         <p>{emails.length} subscritor(es)</p>
         <SquareButton onClick={copiarTodos} disabled={emails.length === 0}>
           Copiar todos
@@ -92,6 +92,6 @@ export default function EmailsNewsletter() {
           </tbody>
         </table>
       )}
-    </main>
+    </div>
   );
 }

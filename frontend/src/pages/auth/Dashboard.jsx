@@ -6,6 +6,7 @@ import LogoutButton from "../../components/LogoutButton.jsx";
 import { useMisturasNaoLidas } from "../../hooks/useApi.js";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useContext } from "react";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   const naoLidas = useMisturasNaoLidas();
@@ -14,61 +15,66 @@ export default function Dashboard() {
   return (
     <div>
       <PageTitle>DASHBOARD</PageTitle>
-      <h4>Olá, {user?.name}!</h4>
+      <div className="greeting-message">
+        <h3>Olá, {user?.name}!</h3>
+        <LogoutButton />
+      </div>
+
       <div className="row">
-        <div className="col-3 text-center">
-          <PageSubTitle>Editar Conteúdos</PageSubTitle>
+        <div className="col-3 text-center boxy">
+          <PageSubTitle>Conteúdos</PageSubTitle>
 
           <Link to="/conteudo/novo">
             <SquareButton className="m-2">Adicionar Conteúdo</SquareButton>
           </Link>
 
-          <br />
+          <Link to="/dirtytalks">
+            <SquareButton className="m-2">Editar Dirty Talks</SquareButton>
+          </Link>
+
+          <Link to="/artigos">
+            <SquareButton className="m-2">Editar Artigos</SquareButton>
+          </Link>
+
+          <Link to="/designers">
+            <SquareButton className="m-2">Editar Designers</SquareButton>
+          </Link>
 
           <Link to="/basededados">
             <SquareButton className="m-2">Editar Base de Dados</SquareButton>
           </Link>
-
-          <br />
-
-          <Link to="/misturas">
-            <SquareButton className="m-2">Misturas</SquareButton>
-          </Link>
-        </div>
-
-        <div className="col-3 text-center">
-          <PageSubTitle>Gestão de Utilizadores</PageSubTitle>
-
-          <Link to="/users">
-            <SquareButton className="m-2">Gestão de Utilizadores</SquareButton>
-          </Link>
-        </div>
-
-        <div className="col-3 text-center">
-          <PageSubTitle>Gestão de Conta</PageSubTitle>
-
-          <LogoutButton />
-
-          <br />
-
-          <Link to="/mudar-password">
-            <SquareButton className="m-2">Mudar Password</SquareButton>
-          </Link>
-
-          <br />
-
-          <Link to="/newsletter/emails">
-            <SquareButton className="m-2">Emails para Newsletter</SquareButton>
-          </Link>
         </div>
 
         <div className="col-3 text-center boxy">
-          <PageSubTitle>Mensagens</PageSubTitle>
+          <PageSubTitle>Misturas</PageSubTitle>
+
+          <Link to="/misturas">
+            <SquareButton className="m-2">Editar Misturas</SquareButton>
+          </Link>
+
           <Link to="/misturas/pendentes">
             <SquareButton className="m-2">
               {naoLidas}{" "}
               {naoLidas === 1 ? "mensagem por ler" : "mensagens por ler"}
             </SquareButton>
+          </Link>
+        </div>
+
+        <div className="col-3 text-center boxy">
+          <PageSubTitle>Contas</PageSubTitle>
+
+          <Link to="/mudar-password">
+            <SquareButton className="m-2">Mudar Password</SquareButton>
+          </Link>
+          <Link to="/users">
+            <SquareButton className="m-2">Gestão de Utilizadores</SquareButton>
+          </Link>
+        </div>
+
+        <div className="col-3 text-center boxy">
+          <PageSubTitle>Newsletter</PageSubTitle>
+          <Link to="/newsletter/emails">
+            <SquareButton className="m-2">Lista de subscritores</SquareButton>
           </Link>
         </div>
       </div>

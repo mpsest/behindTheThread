@@ -19,7 +19,7 @@
 .emails-newsletter-table td {
   text-align: left;
   padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px dashed var(--text-black);
 }
 
 .emails-newsletter-error {
