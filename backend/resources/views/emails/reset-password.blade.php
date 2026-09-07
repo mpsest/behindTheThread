@@ -154,7 +154,7 @@
                                         text-transform:uppercase;
                                     "
                                 >
-                                    ACCOUNT
+                                    
                                 </td>
 
                             </tr>
@@ -212,7 +212,7 @@
                                         text-transform:uppercase;
                                     "
                                 >
-                                    PASSWORD RECOVERY
+                                    RECUPERAÇÃO DE PASSWORD
                                 </td>
                             </tr>
                         </table>
