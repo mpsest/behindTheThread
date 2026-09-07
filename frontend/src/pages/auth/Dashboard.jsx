@@ -51,7 +51,7 @@ export default function Dashboard() {
 
           <br />
 
-          <Link to="/users">
+          <Link to="/mudar-password">
             <SquareButton className="m-2">Mudar Password</SquareButton>
           </Link>
 

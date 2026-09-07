@@ -1,39 +1,57 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
+import { useToast } from "../../contexts/ToastContext.jsx";
 import "./Signup.css";
 
 export default function Signup() {
   const [passMatch, setPassMatch] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const { makeRequest } = useContext(AuthContext);
+  const { showToast } = useToast();
   const navigate = useNavigate();
 
   //função que recebe os dados do form e os valida / trata / envia para API
-  function registUser(event) {
+  async function registUser(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    console.log(formData.get("email"));
 
     if (formData.get("password") !== formData.get("passwordConfirmation")) {
       setPassMatch(false);
-    } else {
-      setPassMatch(true);
-      const user = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        password: formData.get("password"),
-        termsAndConditions: true,
-        role: "admin",
-      };
+      return;
+    }
 
-      fetch("http://localhost:3000/signup", {
+    setPassMatch(true);
+    setLoading(true);
+
+    const user = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    try {
+      const res = await makeRequest("api/utilizadores", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       });
 
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(
+          data?.message ?? "Não foi possível criar a conta de administrador."
+        );
+      }
+
+      showToast("Conta de administrador criada com sucesso!", "success");
+
       //reencaminhar para a homepage
-      navigate("/", {
-        state: { message: "Admin account created successfully!" },
-      });
+      navigate("/");
+    } catch (error) {
+      showToast(error.message, "error");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -45,12 +63,12 @@ export default function Signup() {
         <div className="control-row">
           <div className="control">
             <label htmlFor="name">Nome</label>
-            <input id="name" name="name" type="text" />
+            <input id="name" name="name" type="text" required />
           </div>
 
           <div className="control">
             <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" />
+            <input id="email" name="email" type="email" required />
           </div>
 
           <div className="control">
@@ -60,6 +78,8 @@ export default function Signup() {
               name="password"
               type="password"
               placeholder="A password deve ser alterada depois"
+              minLength={6}
+              required
             />
           </div>
 
@@ -69,6 +89,8 @@ export default function Signup() {
               id="passwordConfirmation"
               name="passwordConfirmation"
               type="password"
+              minLength={6}
+              required
             />
           </div>
         </div>
@@ -80,7 +102,9 @@ export default function Signup() {
         )}
 
         <p className="form-actions">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "A criar..." : "Submit"}
+          </button>
         </p>
       </form>
     </section>

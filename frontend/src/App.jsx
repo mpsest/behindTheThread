@@ -7,10 +7,11 @@ import {
 } from "react-router-dom";
 import { AuthContext, AuthProvider } from "./contexts/AuthContext.jsx";
 import Dashboard from "./pages/auth/Dashboard.jsx";
-import Signup from "./pages/auth/signup.jsx";
-import Login from "./pages/auth/login.jsx";
+import Signup from "./pages/auth/Signup.jsx";
+import Login from "./pages/auth/Login.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
+import ChangePassword from "./pages/auth/ChangePassword.jsx";
 import BaseDados from "./pages/BaseDados/BaseDados.jsx";
 import BaseDadosDetail from "./pages/BaseDados/BaseDadosDetail.jsx";
 import { BaseDadosProvider } from "./contexts/BaseDadosContext.jsx";
@@ -102,6 +103,14 @@ function App() {
         { path: "/login", element: <Login /> },
         { path: "/recuperar-password", element: <ResetPassword /> },
         { path: "/esqueci-password", element: <ForgotPassword /> },
+        {
+          path: "/mudar-password",
+          element: (
+            <UserRoute>
+              <ChangePassword />
+            </UserRoute>
+          ),
+        },
         { path: "/contactos", element: <Contactos /> },
         {
           path: "/basededados",
