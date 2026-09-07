@@ -1,6 +1,50 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 
+export function useHomeLatest() {
+  const [latest, setLatest] = useState({
+    dirtyTalks: [],
+    artigos: [],
+    designers: [],
+    misturas: [],
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { makeRequest } = useContext(AuthContext);
+
+  useEffect(() => {
+    async function fetchLatest() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await makeRequest("api/home/latest");
+
+        if (!response.ok) {
+          throw new Error("Erro ao carregar a homepage");
+        }
+
+        const data = await response.json();
+        setLatest({
+          dirtyTalks: Array.isArray(data.dirtyTalks) ? data.dirtyTalks : [],
+          artigos: Array.isArray(data.artigos) ? data.artigos : [],
+          designers: Array.isArray(data.designers) ? data.designers : [],
+          misturas: Array.isArray(data.misturas) ? data.misturas : [],
+        });
+      } catch (err) {
+        setError(err.message);
+        setLatest({ dirtyTalks: [], artigos: [], designers: [], misturas: [] });
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchLatest();
+  }, [makeRequest]);
+
+  return { latest, loading, error };
+}
+
 export function useArtigos() {
   const [artigos, setArtigos] = useState([]);
   const { makeRequest } = useContext(AuthContext);

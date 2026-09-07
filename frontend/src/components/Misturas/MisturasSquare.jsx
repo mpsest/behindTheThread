@@ -15,7 +15,7 @@ function formatDate(date) {
   })}`;
 }
 
-export default function MisturasSquare({ mistura }) {
+export default function MisturasSquare({ mistura, index }) {
   if (!mistura) return null;
 
   const title = mistura.nome_projeto;
@@ -24,8 +24,11 @@ export default function MisturasSquare({ mistura }) {
   const duration = mistura.duracao;
   const location = mistura.localizacao ?? mistura.regime;
 
+  /* Variável para alternar entre 3 backgrounds consoante o índice da Mistura */
+  const variant = index % 3;
+
   return (
-    <div className="misturas-square">
+    <div className={`misturas-square misturas-square-bg-${variant}`}>
       <h2 className="misturas-square-title">{title}</h2>
       <div className="misturas-square-area">{area}</div>
       <div className="misturas-square-meta">

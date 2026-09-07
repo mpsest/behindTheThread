@@ -27,6 +27,8 @@ body.dropdown-open {
   flex-direction: column;
   justify-content: center;
   background-color: var(--bg);
+  margin-top: 0px;
+  border-radius: 0;
 
   /*Gradientes*/
   background-image:

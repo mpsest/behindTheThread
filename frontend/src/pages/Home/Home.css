@@ -1,0 +1,220 @@
+.page-home {
+  background-color: var(--bg);
+  background-image: none;
+}
+
+.home-page {
+  color: var(--text-black);
+  background: var(--bg);
+}
+
+.home-section {
+  border-bottom: 2px solid var(--text-black);
+}
+
+.home-section-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  min-height: clamp(190px, 27vw, 270px);
+  border-bottom: 2px solid var(--text-black);
+}
+
+.home-section-dirtyTalks .home-section-hero {
+  background-image: url(/gradientsHome/home-dirtyTalks.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.home-section-artigos .home-section-hero,
+.home-section-misturas .home-section-hero {
+  grid-template-columns: 1fr;
+}
+
+.home-section-artigos .home-brand-panel {
+  min-height: clamp(150px, 20vw, 210px);
+  border-right: 0;
+  border-bottom: 2px solid var(--text-black);
+}
+
+.home-section-artigos .home-headline-panel,
+.home-section-misturas .home-headline-panel {
+  padding: 0px 0px 20px;
+}
+
+.home-section-artigos .home-headline-panel p,
+.home-section-misturas .home-headline-panel p {
+  max-width: unset;
+}
+
+.home-brand-panel,
+.home-headline-panel {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.home-brand-panel {
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 5vw, 64px);
+  border-right: 2px solid var(--text-black);
+}
+
+.home-brand-panel h2,
+.home-directory-section h2 {
+  margin: 0 0 clamp(18px, 3vw, 28px);
+  font-family: "Slibinas", "Terminal Grotesque", sans-serif;
+  font-size: clamp(46px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.home-cta-link {
+  align-self: flex-start;
+  text-decoration: none;
+}
+
+.home-cta {
+  font-weight: 900;
+}
+
+.home-headline-panel {
+  align-items: center;
+  padding: clamp(28px, 6vw, 58px);
+}
+
+.home-headline-panel p {
+  max-width: 620px;
+  margin: 0;
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1.12;
+}
+
+.home-status {
+  margin: 0;
+  padding: 28px;
+  font-family: "Lexend", system-ui, sans-serif;
+  font-weight: 800;
+  text-align: center;
+}
+
+.home-latest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-height: clamp(300px, 34vw, 430px);
+}
+
+.home-latest-card,
+.home-latest-placeholder {
+  position: relative;
+  display: block;
+  min-height: clamp(300px, 34vw, 430px);
+  overflow: hidden;
+  border-right: 2px solid var(--text-black);
+}
+
+.home-latest-card {
+  color: var(--text-black);
+  text-decoration: none;
+}
+
+.home-latest-card:last-child,
+.home-latest-placeholder:last-child {
+  border-right: 0;
+}
+
+.home-latest-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.home-latest-card-mistura {
+  background: var(--bg);
+}
+
+.home-latest-card-mistura .misturas-square {
+  height: 100%;
+  min-height: inherit;
+  aspect-ratio: auto;
+}
+
+.home-latest-card span {
+  position: absolute;
+  right: clamp(18px, 3vw, 32px);
+  bottom: clamp(18px, 3vw, 32px);
+  width: min(70%, 300px);
+  padding: 12px 13px;
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 900;
+  line-height: 1.12;
+  background: var(--bg);
+  border: 2px solid var(--text-black);
+}
+
+.home-directory-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: clamp(220px, 28vw, 340px);
+  padding: clamp(32px, 7vw, 90px);
+  border-bottom: 2px solid var(--text-black);
+}
+
+.home-directory-section:last-child {
+  border-bottom: 0;
+}
+
+.home-directory-section p {
+  max-width: 720px;
+  margin: 0 0 28px;
+  font-family: "Lexend", system-ui, sans-serif;
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 900;
+  line-height: 1.16;
+}
+
+@media (max-width: 760px) {
+  .home-section-hero,
+  .home-latest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-brand-panel {
+    min-height: 210px;
+    border-right: 0;
+    border-bottom: 2px solid var(--text-black);
+  }
+
+  .home-headline-panel {
+    min-height: 170px;
+  }
+
+  .home-latest-grid {
+    min-height: auto;
+  }
+
+  .home-latest-card,
+  .home-latest-placeholder {
+    min-height: 320px;
+    border-right: 0;
+    border-bottom: 2px solid var(--text-black);
+  }
+
+  .home-latest-card:last-child,
+  .home-latest-placeholder:last-child {
+    border-bottom: 0;
+  }
+
+  .home-latest-card span {
+    right: 18px;
+    bottom: 18px;
+    width: min(78%, 280px);
+  }
+}

@@ -278,3 +278,7 @@ img,
 svg {
   max-width: 100%;
 }
+
+.dropdown-open .root-layout {
+  background-image: none;
+}

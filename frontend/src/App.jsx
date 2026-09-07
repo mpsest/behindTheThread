@@ -6,6 +6,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { AuthContext, AuthProvider } from "./contexts/AuthContext.jsx";
+import Home from "./pages/Home/Home.jsx";
 import Dashboard from "./pages/auth/Dashboard.jsx";
 import Signup from "./pages/auth/Signup.jsx";
 import Login from "./pages/auth/Login.jsx";
@@ -66,6 +67,7 @@ function App() {
         </RootLayout>
       ),
       children: [
+        { index: true, element: <Home /> },
         {
           path: "/dashboard",
           element: (

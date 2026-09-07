@@ -15,7 +15,6 @@ export default function Misturas() {
   const { misturas, loading, error } = useMisturas();
   const { showToast } = useToast();
 
-
   async function handleSubmit(formData) {
     const payload = {
       autor: formData.creator,
@@ -42,7 +41,10 @@ export default function Misturas() {
     });
 
     if (res.ok) {
-      showToast("Recebemos a tua sugestão! Vamos rever e publicar (se nos apetecer).", "success");
+      showToast(
+        "Recebemos a tua sugestão! Vamos rever e publicar (se nos apetecer).",
+        "success",
+      );
       navigate("/");
     } else {
       const err = await res.json().catch(() => null);
@@ -80,13 +82,13 @@ export default function Misturas() {
       )}
       {!loading && !error && misturas.length > 0 && (
         <div className="misturas-grid row g-0 mx-0">
-          {misturas.map((m) => (
+          {misturas.map((m, index) => (
             <Link
               key={m.id}
               className="misturas-grid-link col-12 col-md-6 col-lg-4"
               to={`/misturas/${m.id}`}
             >
-              <MisturasSquare mistura={m} />
+              <MisturasSquare mistura={m} index={index} />
             </Link>
           ))}
         </div>

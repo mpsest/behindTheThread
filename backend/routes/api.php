@@ -7,12 +7,15 @@ use App\Http\Controllers\DesignerController;
 use App\Http\Controllers\DirtyTalkController;
 use App\Http\Controllers\EspacoController;
 use App\Http\Controllers\FerramentaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeywordController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\UtilizadorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MisturaController;
+
+Route::get('/home/latest', [HomeController::class, 'latest']);
 
 Route::apiResource('espacos', EspacoController::class)
     ->only(['index', 'show']);

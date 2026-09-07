@@ -5,11 +5,6 @@
   background-position: center top;
 }
 
-/* Removes Contacts' background gradient (fixed on navbar) when opening Menu component */
-.dropdown-open .page-contactos {
-  background-image: none;
-}
-
 .contactos-content {
   display: flex;
   gap: clamp(32px, 6vw, 80px);
