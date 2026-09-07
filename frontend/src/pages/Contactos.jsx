@@ -37,7 +37,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="contactos-page container-fluid px-0">
+    <div className="container-fluid px-0">
       <PageTitle>
         CONTACTOS
         <div className="mb-3"></div>

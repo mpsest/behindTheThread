@@ -39,5 +39,3 @@ export default function MisturasSquare({ mistura, index }) {
     </div>
   );
 }
-
-//TODO: pode escolher 1 dos 3 gradientes
