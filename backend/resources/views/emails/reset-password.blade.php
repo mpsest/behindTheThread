@@ -8,16 +8,9 @@
 
     <style>
         @font-face {
-            font-family: "Basteleur";
-            src: url("{{ config('app.url') }}/typography/Basteleur-Bold.woff2")
-                format("woff2");
-            font-weight: 700;
-        }
-
-        @font-face {
-            font-family: "Basteleur";
-            src: url("{{ config('app.url') }}/typography/Basteleur-Moonlight.woff2")
-                format("woff2");
+            font-family: "Slibinas";
+            src: url("{{ config('app.url') }}/typography/Slibinas.otf")
+                format("opentype");
             font-weight: 400;
         }
 
@@ -45,7 +38,7 @@
             }
 
             .brand {
-                font-size: 25px !important;
+                font-size: 24px !important;
             }
 
             .content-cell {
@@ -53,11 +46,16 @@
             }
 
             .page-title {
-                font-size: 34px !important;
+                font-size: 28px !important;
             }
 
             .main-card {
-                box-shadow: 7px 7px 0 #1e1e1e !important;
+                box-shadow: 6px 6px 0 #1e1e1e !important;
+            }
+
+            .cta-button {
+                display: block !important;
+                text-align: center !important;
             }
         }
     </style>
@@ -105,12 +103,12 @@
                 class="email-container"
                 style="
                     width:100%;
-                    max-width:1000px;
+                    max-width:640px;
                 "
             >
 
                 <tr>
-                    <td style="padding:0 0 28px;">
+                    <td style="padding:0 0 24px; border-bottom:2px solid #1e1e1e;">
 
                         <table
                             width="100%"
@@ -120,43 +118,20 @@
                             role="presentation"
                         >
                             <tr>
-
                                 <td
-                                    align="left"
+                                    align="center"
                                     class="brand"
                                     style="
                                         color:#1e1e1e;
-                                        font-family:'Basteleur',
-                                            Georgia,
-                                            'Times New Roman',
-                                            serif;
+                                        font-family:'Slibinas', sans-serif;
                                         font-size:30px;
                                         line-height:1;
-                                        font-weight:700;
-                                        letter-spacing:-1px;
+                                        letter-spacing:-.5px;
+                                        text-transform:uppercase;
                                     "
                                 >
                                     Behind the Thread
                                 </td>
-
-                                <td
-                                    align="right"
-                                    style="
-                                        color:#1e1e1e;
-                                        font-family:'Lexend',
-                                            Arial,
-                                            Helvetica,
-                                            sans-serif;
-                                        font-size:11px;
-                                        line-height:1;
-                                        font-weight:700;
-                                        letter-spacing:1px;
-                                        text-transform:uppercase;
-                                    "
-                                >
-                                    
-                                </td>
-
                             </tr>
                         </table>
 
@@ -164,64 +139,7 @@
                 </tr>
 
                 <tr>
-                    <td>
-
-                        <table
-                            width="100%"
-                            cellpadding="0"
-                            cellspacing="0"
-                            border="0"
-                            role="presentation"
-                            style="
-                                border-top:2px solid #1e1e1e;
-                            "
-                        >
-                            <tr>
-                                <td style="height:1px; line-height:1px;">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                        </table>
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:28px 0 35px;">
-
-                        <table
-                            width="100%"
-                            cellpadding="0"
-                            cellspacing="0"
-                            border="0"
-                            role="presentation"
-                        >
-                            <tr>
-                                <td
-                                    align="left"
-                                    style="
-                                        color:#1e1e1e;
-                                        font-family:'Lexend',
-                                            Arial,
-                                            Helvetica,
-                                            sans-serif;
-                                        font-size:11px;
-                                        line-height:1.4;
-                                        font-weight:700;
-                                        letter-spacing:1.5px;
-                                        text-transform:uppercase;
-                                    "
-                                >
-                                    RECUPERAÇÃO DE PASSWORD
-                                </td>
-                            </tr>
-                        </table>
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
+                    <td style="padding:32px 0 0;">
 
                         <table
                             width="100%"
@@ -249,21 +167,19 @@
                                     <h1
                                         class="page-title"
                                         style="
-                                            margin:0 0 30px;
+                                            margin:0 0 28px;
                                             padding:0;
                                             color:#1e1e1e;
-                                            font-family:'Basteleur',
-                                                Georgia,
-                                                'Times New Roman',
-                                                serif;
-                                            font-size:42px;
-                                            line-height:.95;
-                                            font-weight:700;
-                                            letter-spacing:-1px;
+                                            font-family:'Slibinas', sans-serif;
+                                            font-size:34px;
+                                            line-height:1;
+                                            font-weight:400;
+                                            letter-spacing:0;
+                                            text-align:center;
+                                            text-transform:uppercase;
                                         "
                                     >
-                                        Recuperar<br>
-                                        Password
+                                        Recuperar Password
                                     </h1>
 
                                     <p
@@ -321,6 +237,7 @@
                                     </p>
 
                                     <table
+                                        width="100%"
                                         cellpadding="0"
                                         cellspacing="0"
                                         border="0"
@@ -330,30 +247,37 @@
                                         "
                                     >
                                         <tr>
-                                            <td>
+                                            <td align="center">
 
+                                                <!--[if mso]>
+                                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{ $url }}" style="height:46px;v-text-anchor:middle;width:220px;" arcsize="0%" strokecolor="#1e1e1e" fillcolor="#1e1e1e">
+                                                <w:anchorlock/>
+                                                <center style="color:#fef0cf;font-family:Arial,sans-serif;font-size:15px;font-weight:400;">Repor Password</center>
+                                                </v:roundrect>
+                                                <![endif]-->
+                                                <!--[if !mso]><!-->
                                                 <a
                                                     href="{{ $url }}"
+                                                    class="cta-button"
                                                     style="
                                                         display:inline-block;
-                                                        padding:15px 25px;
+                                                        padding:10px 24px;
                                                         background:#1e1e1e;
                                                         color:#fef0cf;
-                                                        border:2px solid #1e1e1e;
+                                                        border:3px solid #1e1e1e;
                                                         font-family:'Lexend',
                                                             Arial,
                                                             Helvetica,
                                                             sans-serif;
-                                                        font-size:12px;
-                                                        line-height:1;
-                                                        font-weight:700;
+                                                        font-size:15px;
+                                                        line-height:1.4;
+                                                        font-weight:400;
                                                         text-decoration:none;
-                                                        text-transform:uppercase;
-                                                        letter-spacing:.7px;
                                                     "
                                                 >
                                                     Repor Password
                                                 </a>
+                                                <!--<![endif]-->
 
                                             </td>
                                         </tr>
