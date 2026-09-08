@@ -99,11 +99,3 @@ Gerar a build dos assets do Laravel, se necessário:
 cd backend
 npm run build
 ```
-
-
-Correr php artisan queue:work para a queue de envio de newsletters funcionar
-
-```bash
-cd backend
-php artisan queue:work
-```
