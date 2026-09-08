@@ -67,6 +67,22 @@ class AuthController extends Controller
         ], 422);
     }
 
+    public function validateResetToken(Request $request): JsonResponse
+    {
+        $request->validate([
+            'token' => ['required', 'string'],
+            'email' => ['required', 'email'],
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        $valid = $user
+            ? Password::broker()->tokenExists($user, $request->token)
+            : false;
+
+        return response()->json(['valid' => $valid]);
+    }
+
     public function changePassword(Request $request, int $id): JsonResponse
     {
         if ($request->user()->id !== $id) {
