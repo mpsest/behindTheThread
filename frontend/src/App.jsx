@@ -1,4 +1,3 @@
-import "./App.css";
 import RootLayout from "./components/RootLayout.jsx";
 import {
   createBrowserRouter,
