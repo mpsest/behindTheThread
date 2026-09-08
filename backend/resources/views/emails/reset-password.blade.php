@@ -84,11 +84,11 @@
         <td
             align="center"
             class="email-wrapper"
-            background="{{ config('app.url') }}/gradients/email_left_bottom.png.png"
+            background="{{ config('app.url') }}/gradients/email_center-top.png"
             style="
                 padding:55px 20px 70px;
                 background-color:#fef0cf;
-                background-image:url('{{ config('app.url') }}/gradients/email_left_bottom.png.png');
+                background-image:url('{{ config('app.url') }}/gradients/email_center-top.png');
                 background-repeat:no-repeat;
                 background-position:left bottom;
                 background-size:340px auto;
