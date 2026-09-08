@@ -34,8 +34,20 @@
   min-height: clamp(150px, 20vw, 210px);
   border-right: 0;
   border-bottom: 2px solid var(--text-black);
+  background-image: url(/gradientsHome/home-artigos.svg);
 }
 
+.home-section-designers {
+  background-image: url(/gradientsHome/home-designers.svg);
+  background-size: 40vw;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.home-section-base-dados {
+  background-image: url(/gradientsHome/home-basedados.svg);
+  padding: 60px;
+}
 .home-section-artigos .home-headline-panel,
 .home-section-misturas .home-headline-panel {
   padding: 0px 0px 20px;
