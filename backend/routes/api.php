@@ -55,10 +55,6 @@ Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])
     ->name('password.update');
 
-// Route::post('/login', [AuthController::class, 'login']);
-// Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-
-
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/user', fn(Request $request) => $request->user());
@@ -110,7 +106,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/misturas/{id}/lida', [MisturaController::class, 'marcarLida']);
 
     Route::patch('/misturas/{id}/aprovar', [MisturaController::class, 'aprovar']);
-    
+
     Route::apiResource('misturas', MisturaController::class)
         ->only(['update', 'destroy'])
         ->whereNumber('mistura');
