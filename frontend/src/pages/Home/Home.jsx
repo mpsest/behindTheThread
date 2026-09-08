@@ -21,7 +21,7 @@ function ContentCards({ items, sectionKey, route }) {
       to={`/${route}/${item.id}`}
     >
       <img src={item.imagem} alt={item.titulo} />
-      <span>{item.titulo}</span>
+      <span className="home-latest-card-title">{item.titulo}</span>
     </Link>
   ));
 }
@@ -43,15 +43,16 @@ export default function Home() {
 
   return (
     <section className="home-page" aria-label="Homepage">
+      <div>
+        <h1 className="home-title">BEHIND THE THREAD</h1>
+      </div>
       <section className="home-section home-section-dirtyTalks">
         <div className="home-section-hero">
           <div className="home-brand-panel">
             <h2>Dirty Talks</h2>
-            <Link className="home-cta-link" to="/dirtytalks">
-              <SquareButton className="home-cta">
-                Quero ler algo spicy
-              </SquareButton>
-            </Link>
+            <SquareButton as={Link} className="home-cta" to="/dirtytalks">
+              Quero ler algo spicy
+            </SquareButton>
           </div>
           <div className="home-headline-panel">
             <p>Mais depressa se apanha um mentiroso do que um coxo</p>
@@ -83,11 +84,13 @@ export default function Home() {
               <div className="home-headline-panel">
                 <p>no meio e que esta a virtude, já dizia eu há anos</p>
               </div>
-              <Link className="home-cta-link align-self-end" to="/artigos">
-                <SquareButton className="home-cta">
-                  Quero ler artigos
-                </SquareButton>
-              </Link>
+              <SquareButton
+                as={Link}
+                className="home-cta align-self-end"
+                to="/artigos"
+              >
+                Quero ler artigos
+              </SquareButton>
             </div>
           </div>
         </div>
@@ -116,11 +119,13 @@ export default function Home() {
           </div>
           <div className="home-brand-panel">
             <h2>Designers</h2>
-            <Link className="home-cta-link align-self-end" to="/designers">
-              <SquareButton className="home-cta">
-                Qual é o segredo?
-              </SquareButton>
-            </Link>
+            <SquareButton
+              as={Link}
+              className="home-cta align-self-end"
+              to="/designers"
+            >
+              Qual é o segredo?
+            </SquareButton>
           </div>
         </div>
         {error && (
@@ -141,19 +146,19 @@ export default function Home() {
         )}
       </section>
 
-      <section className="home-directory-section home-section-base-dados flex-row">
-        <div className="col-8">
+      <section className="home-directory-section home-section-base-dados">
+        <div className="home-directory-main">
           <h2>Base de Dados</h2>
           <p>
             Queres um lugar onde podes comprar os tecidos mais baratos, aquela
             tipografia grátis que mais ninguém tem ou aqueles filmes para ver ao
             fim de semana?
           </p>
-          <Link className="home-cta-link" to="/basededados">
-            <SquareButton className="home-cta">Encontra aqui</SquareButton>
-          </Link>
+          <SquareButton as={Link} className="home-cta" to="/basededados">
+            Encontra aqui
+          </SquareButton>
         </div>
-        <div className="col-4 home-headline-panel">
+        <div className="home-directory-aside home-headline-panel">
           <p>nem tudo o que vem à rede é peixe</p>
         </div>
       </section>
@@ -166,9 +171,13 @@ export default function Home() {
               <div className="home-headline-panel">
                 <p>Amigos amigos, negócios à parte</p>
               </div>
-              <Link className="home-cta-link align-self-end" to="/misturas">
-                <SquareButton className="home-cta">Ver misturas</SquareButton>
-              </Link>
+              <SquareButton
+                as={Link}
+                className="home-cta align-self-end"
+                to="/misturas"
+              >
+                Ver misturas
+              </SquareButton>
             </div>
           </div>
         </div>

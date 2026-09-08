@@ -1,6 +1,20 @@
 .page-home {
   background-color: var(--bg);
-  background-image: none;
+  background-image:
+    url(/gradientsHome/home-top.svg), url(/gradientsHome/home-bottom.svg);
+  background-position:
+    right top,
+    center bottom;
+  background-size: 50vw;
+  background-repeat: no-repeat;
+}
+
+.page-home .home-title {
+  font-family: "Slibinas";
+  font-size: 50px;
+  text-align: center;
+  padding: 60px 0 45px 0;
+  align-items: center;
 }
 
 .home-page {
@@ -16,6 +30,7 @@
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   min-height: clamp(190px, 27vw, 270px);
+  border-top: 2px solid var(--text-black);
   border-bottom: 2px solid var(--text-black);
 }
 
@@ -46,7 +61,16 @@
 
 .home-section-base-dados {
   background-image: url(/gradientsHome/home-basedados.svg);
-  padding: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.home-section-misturas {
+  background-image: url(/gradientsHome/home-misturas.svg);
+  background-repeat: no-repeat;
+  background-size: 40vw;
+  background-position: top left;
 }
 .home-section-artigos .home-headline-panel,
 .home-section-misturas .home-headline-panel {
@@ -82,13 +106,19 @@
   text-transform: uppercase;
 }
 
-.home-cta-link {
-  align-self: flex-start;
-  text-decoration: none;
-}
-
 .home-cta {
   font-weight: 900;
+}
+
+.home-section .square-btn,
+.home-directory-section .square-btn {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.home-section .square-btn:not(.align-self-end),
+.home-directory-section .square-btn:not(.align-self-end) {
+  align-self: flex-start;
 }
 
 .home-headline-panel {
@@ -117,6 +147,8 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   min-height: clamp(300px, 34vw, 430px);
+  border-bottom: 2px solid black;
+  margin-bottom: 60px;
 }
 
 .home-latest-card,
@@ -129,6 +161,14 @@
 }
 
 .home-latest-card {
+  color: var(--text-black);
+  text-decoration: none;
+}
+
+.home-latest-card:hover,
+.home-latest-card:focus,
+.home-latest-card:visited,
+.home-latest-card:active {
   color: var(--text-black);
   text-decoration: none;
 }
@@ -155,11 +195,12 @@
   aspect-ratio: auto;
 }
 
-.home-latest-card span {
+.home-latest-card-title {
   position: absolute;
   right: clamp(18px, 3vw, 32px);
   bottom: clamp(18px, 3vw, 32px);
-  width: min(70%, 300px);
+  width: fit-content;
+  max-width: min(70%, 300px);
   padding: 12px 13px;
   font-family: "Lexend", system-ui, sans-serif;
   font-size: clamp(12px, 1.2vw, 14px);
@@ -169,10 +210,18 @@
   border: 2px solid var(--text-black);
 }
 
+.home-latest-card:hover .home-latest-card-title,
+.home-latest-card:focus-visible .home-latest-card-title {
+  color: var(--bg);
+  background: var(--text-black);
+  border-color: var(--text-black);
+}
+
 .home-directory-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.8fr);
+  align-items: center;
+  gap: clamp(32px, 8vw, 120px);
   justify-content: center;
   min-height: clamp(220px, 28vw, 340px);
   padding: clamp(32px, 7vw, 90px);
@@ -190,6 +239,21 @@
   font-size: clamp(22px, 3vw, 38px);
   font-weight: 900;
   line-height: 1.16;
+}
+
+.home-directory-main {
+  min-width: 0;
+}
+
+.home-directory-aside {
+  justify-content: flex-start;
+  min-height: 0;
+  padding: 0;
+}
+
+.home-directory-aside p {
+  max-width: 430px;
+  margin: 0;
 }
 
 @media (max-width: 760px) {
@@ -224,9 +288,18 @@
     border-bottom: 0;
   }
 
-  .home-latest-card span {
+  .home-latest-card-title {
     right: 18px;
     bottom: 18px;
-    width: min(78%, 280px);
+    max-width: min(78%, 280px);
+  }
+
+  .home-directory-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .home-directory-aside p {
+    max-width: 100%;
   }
 }

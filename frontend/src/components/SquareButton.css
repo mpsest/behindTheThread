@@ -1,10 +1,15 @@
 .square-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 3px solid #1a1a1a;
   border-radius: 0;
   max-width: 100%;
   padding: clamp(6px, 1vw, 8px) clamp(14px, 2.5vw, 20px);
   font-size: clamp(13px, 1.8vw, 15px);
   font-weight: 400;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   white-space: normal;
   transition:
@@ -12,6 +17,14 @@
     background-color 0.15s ease,
     border-color 0.15s ease,
     color 0.15s ease;
+}
+
+a.square-btn,
+a.square-btn:hover,
+a.square-btn:focus,
+a.square-btn:visited,
+a.square-btn:active {
+  text-decoration: none;
 }
 
 /* TODO: confirmar esta animação */
