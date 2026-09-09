@@ -67,7 +67,7 @@ export default function Dashboard() {
             <SquareButton className="m-2">Mudar Password</SquareButton>
           </Link>
           <Link to="/users">
-            <SquareButton className="m-2">Gestão de Utilizadores</SquareButton>
+            <SquareButton className="m-2">Utilizadores</SquareButton>
           </Link>
         </div>
 

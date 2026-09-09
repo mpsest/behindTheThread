@@ -1,20 +1,29 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext.jsx';
-import SquareButton from '../../components/SquareButton';
-import './Users.css';
-import { useToast } from '../../contexts/ToastContext.jsx';
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
+import SquareButton from "../../components/SquareButton";
+import "./Users.css";
+import { useToast } from "../../contexts/ToastContext.jsx";
 
-const RESOURCE = 'api/utilizadores';
+const RESOURCE = "api/utilizadores";
 
 export default function Users() {
-  const { user: currentUser, isAdmin, logout, makeRequest } = useContext(AuthContext);
+  const {
+    user: currentUser,
+    isAdmin,
+    logout,
+    makeRequest,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [editingId, setEditingId] = useState(null);
   const { showToast } = useToast();
 
@@ -30,7 +39,7 @@ export default function Users() {
       const data = await res.json();
       setUsers(Array.isArray(data) ? data : []);
     } catch (err) {
-      console.error('Erro ao carregar utilizadores:', err);
+      console.error("Erro ao carregar utilizadores:", err);
       setUsers([]);
     } finally {
       setLoading(false);
@@ -43,13 +52,13 @@ export default function Users() {
 
   function startCreate() {
     setEditingId(null);
-    setFormData({ name: '', email: '', password: '' });
+    setFormData({ name: "", email: "", password: "" });
     setShowForm(true);
   }
 
   function startEdit(user) {
     setEditingId(user.id);
-    setFormData({ name: user.name, email: user.email, password: '' });
+    setFormData({ name: user.name, email: user.email, password: "" });
     setShowForm(true);
   }
 
@@ -57,7 +66,7 @@ export default function Users() {
     e.preventDefault();
     const isEditing = editingId !== null;
     const url = isEditing ? `${RESOURCE}/${editingId}` : RESOURCE;
-    const method = isEditing ? 'PUT' : 'POST';
+    const method = isEditing ? "PUT" : "POST";
 
     const payload = { ...formData };
     if (isEditing && !payload.password) {
@@ -69,15 +78,15 @@ export default function Users() {
         method,
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error('Falha ao guardar utilizador');
+      if (!res.ok) throw new Error("Falha ao guardar utilizador");
 
       setShowForm(false);
-      setFormData({ name: '', email: '', password: '' });
+      setFormData({ name: "", email: "", password: "" });
       setEditingId(null);
       loadUsers();
     } catch (err) {
       console.error(err);
-      showToast('Não foi possível guardar o utilizador.', 'error');
+      showToast("Não foi possível guardar o utilizador.", "error");
     }
   }
 
@@ -85,25 +94,25 @@ export default function Users() {
     const isSelf = currentUser?.id === id;
     const confirmDelete = window.confirm(
       isSelf
-        ? 'Tens a certeza que queres apagar a tua conta? A sessão será terminada.'
-        : 'Tens a certeza que queres remover este utilizador?',
+        ? "Tens a certeza que queres apagar a tua conta? A sessão será terminada."
+        : "Tens a certeza que queres remover este utilizador?",
     );
     if (!confirmDelete) return;
 
     try {
-      const res = await makeRequest(`${RESOURCE}/${id}`, { method: 'DELETE' });
+      const res = await makeRequest(`${RESOURCE}/${id}`, { method: "DELETE" });
       if (!res.ok) throw new Error(`Erro ${res.status}`);
 
       if (isSelf) {
         logout();
-        navigate('/');
+        navigate("/");
         return;
       }
 
       loadUsers();
     } catch (err) {
       console.error(err);
-      showToast('Não foi possível remover o utilizador.', 'error');
+      showToast("Não foi possível remover o utilizador.", "error");
     }
   }
 
@@ -138,8 +147,12 @@ export default function Users() {
                   <div className="users-page-actions">
                     {(isAdmin || currentUser?.id === user.id) && (
                       <>
-                        <SquareButton onClick={() => startEdit(user)}>Editar</SquareButton>
-                        <SquareButton onClick={() => handleDelete(user.id)}>Remover</SquareButton>
+                        <SquareButton onClick={() => startEdit(user)}>
+                          Editar
+                        </SquareButton>
+                        <SquareButton onClick={() => handleDelete(user.id)}>
+                          Remover
+                        </SquareButton>
                       </>
                     )}
                   </div>
@@ -156,13 +169,16 @@ export default function Users() {
       )}
 
       {showForm && (
-        <div className="users-page-modal-overlay" onClick={() => setShowForm(false)}>
+        <div
+          className="users-page-modal-overlay"
+          onClick={() => setShowForm(false)}
+        >
           <form
             className="users-page-form"
             onClick={(e) => e.stopPropagation()}
             onSubmit={handleSubmit}
           >
-            <h2>{editingId ? 'Editar Utilizador' : 'Novo Utilizador'}</h2>
+            <h2>{editingId ? "Editar Utilizador" : "Novo Utilizador"}</h2>
 
             <div className="users-page-field">
               <label htmlFor="name">Nome</label>
@@ -192,7 +208,7 @@ export default function Users() {
 
             <div className="users-page-field">
               <label htmlFor="password">
-                {editingId ? 'Nova password (opcional)' : 'Password'}
+                {editingId ? "Nova password (opcional)" : "Password"}
               </label>
               <input
                 id="password"
@@ -209,7 +225,9 @@ export default function Users() {
               <SquareButton variant="dark" onClick={handleSubmit}>
                 Guardar
               </SquareButton>
-              <SquareButton onClick={() => setShowForm(false)}>Cancelar</SquareButton>
+              <SquareButton onClick={() => setShowForm(false)}>
+                Cancelar
+              </SquareButton>
             </div>
           </form>
         </div>
