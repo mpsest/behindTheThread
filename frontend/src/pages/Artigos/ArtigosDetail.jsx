@@ -49,7 +49,7 @@ export default function ArtigosDetail() {
       <h2>{artigo.titulo}</h2>
       <img src={artigo.imagem} alt={artigo.titulo} />
       <div
-        className="artigo-content"
+        className="conteudo-html"
         dangerouslySetInnerHTML={{ __html: artigo.texto }}
       />
     </div>

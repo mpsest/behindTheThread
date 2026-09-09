@@ -1,0 +1,99 @@
+.conteudo-html {
+  text-align: left;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.conteudo-html table {
+  border-collapse: collapse;
+}
+
+.conteudo-html table:not([cellpadding]) td,
+.conteudo-html table:not([cellpadding]) th {
+  padding: 0.4rem;
+}
+
+.conteudo-html table[border]:not([border="0"]):not([style*="border-width"]) td,
+.conteudo-html table[border]:not([border="0"]):not([style*="border-width"]) th {
+  border-width: 1px;
+}
+
+.conteudo-html table[border]:not([border="0"]):not([style*="border-style"]) td,
+.conteudo-html table[border]:not([border="0"]):not([style*="border-style"]) th {
+  border-style: solid;
+}
+
+.conteudo-html table[border]:not([border="0"]):not([style*="border-color"]) td,
+.conteudo-html table[border]:not([border="0"]):not([style*="border-color"]) th {
+  border-color: #ccc;
+}
+
+.conteudo-html figure {
+  display: table;
+  margin: 1rem auto;
+}
+
+.conteudo-html figure figcaption {
+  color: #999;
+  display: block;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+.conteudo-html hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+}
+
+.conteudo-html code {
+  background-color: #e8e8e8;
+  border-radius: 3px;
+  padding: 0.1rem 0.2rem;
+}
+
+.conteudo-html blockquote {
+  border-left: 2px solid #ccc;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+}
+
+.conteudo-html img {
+  height: auto;
+}
+
+.conteudo-html ul,
+.conteudo-html ol {
+  padding-left: 1.5rem;
+}
+
+.conteudo-html .image-left {
+  float: left;
+  margin: 0 16px 16px 0;
+}
+
+.conteudo-html .image-center {
+  display: block;
+  margin: 16px auto;
+}
+
+.conteudo-html .image-right {
+  float: right;
+  margin: 0 0 16px 16px;
+}
+
+.conteudo-html:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.conteudo-html h1,
+.conteudo-html h2,
+.conteudo-html h3,
+.conteudo-html h4,
+.conteudo-html table {
+  clear: both;
+}

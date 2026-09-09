@@ -50,7 +50,7 @@ export default function DirtyTalksDetail() {
       <h2>{dirtyTalk.titulo}</h2>
       <img src={dirtyTalk.imagem} alt={dirtyTalk.titulo} />
       <div
-        className="dirtytalk-content"
+        className="conteudo-html"
         dangerouslySetInnerHTML={{ __html: dirtyTalk.texto }}
       />
     </div>

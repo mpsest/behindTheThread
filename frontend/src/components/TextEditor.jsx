@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import "./TextEditor.css";
+import conteudoCss from "../styles/conteudo-html.css?raw";
 
 import "tinymce/tinymce";
 import "tinymce/models/dom";
@@ -99,11 +100,10 @@ export default function TextEditor({ initialValue, name, value, onChange }) {
             { title: "Center", value: "image-center" },
             { title: "Right", value: "image-right" },
           ],
+          body_class: "conteudo-html",
           content_style:
-            "body { font-family: Lexend, Helvetica, Arial, sans-serif; font-size:14px; margin: 0; } " +
-            ".image-left { float: left; margin: 0 16px 16px 0; } " +
-            ".image-center { display: block; margin: 16px auto; } " +
-            ".image-right { float: right; margin: 0 0 16px 16px; }",
+            "body { font-family: Lexend, Helvetica, Arial, sans-serif; font-size:14px; margin: 16px; } " +
+            conteudoCss,
         }}
       />
     </>

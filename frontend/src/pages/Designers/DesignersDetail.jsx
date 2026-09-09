@@ -50,7 +50,7 @@ export default function DesignersDetail() {
       <h2>{designer.nome}</h2>
       <img src={designer.imagem} alt={designer.nome} />
       <div
-        className="artigos-content"
+        className="conteudo-html"
         dangerouslySetInnerHTML={{ __html: designer.texto }}
       />
     </div>
