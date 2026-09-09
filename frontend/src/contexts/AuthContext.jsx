@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
-const API = "http://localhost:8000";
+const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const USER_TYPE_ADMIN = 1;
 
