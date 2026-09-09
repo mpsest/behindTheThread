@@ -14,15 +14,11 @@ class UtilizadorController extends Controller
         return response()->json(User::where('user_type', User::TYPE_USER)->get());
     }
 
-    public function show(Request $request, int $id): JsonResponse
+    public function show(int $id): JsonResponse
     {
-        $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
-
-        if (($request->user()->id !== $user->id)|| ($request->user()->user_type !== User::TYPE_ADMIN)) {
-            abort(403, 'Só pode ver os dados da sua própria conta.');
-        }
-
-        return response()->json($user);
+        return response()->json(
+            User::where('user_type', User::TYPE_USER)->findOrFail($id)
+        );
     }
 
     public function store(Request $request): JsonResponse
@@ -74,11 +70,15 @@ class UtilizadorController extends Controller
 
     public function destroy(Request $request, int $id): JsonResponse
     {
-        if ($request->user()->user_type !== User::TYPE_ADMIN) {
-            abort(403, 'Apenas o administrador pode apagar utilizadores.');
+        $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
+
+        if (
+            $request->user()->user_type !== User::TYPE_ADMIN
+            && $request->user()->id !== $user->id
+        ) {
+            abort(403, 'Só pode apagar a sua própria conta.');
         }
 
-        $user = User::where('user_type', User::TYPE_USER)->findOrFail($id);
         $user->delete();
         return response()->json(['message' => 'Utilizador apagado com sucesso.']);
     }

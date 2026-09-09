@@ -128,6 +128,11 @@ Route::middleware('auth:sanctum')->group(function () {
         [UtilizadorController::class, 'update']
     );
 
+    Route::delete(
+        '/utilizadores/{id}',
+        [UtilizadorController::class, 'destroy']
+    );
+
     Route::post(
         '/utilizadores/{id}/change-password',
         [AuthController::class, 'changePassword']
@@ -139,11 +144,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post(
             '/utilizadores',
             [UtilizadorController::class, 'store']
-        );
-
-        Route::delete(
-            '/utilizadores/{id}',
-            [UtilizadorController::class, 'destroy']
         );
 
         Route::post(

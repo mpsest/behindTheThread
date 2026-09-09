@@ -4,6 +4,8 @@ export const AuthContext = createContext();
 
 const API = "http://localhost:8000";
 
+const USER_TYPE_ADMIN = 1;
+
 function getCookie(name) {
   const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
   return match ? decodeURIComponent(match[1]) : null;
@@ -89,8 +91,10 @@ async function fetchUser() {
     });
   }
 
+  const isAdmin = user?.user_type === USER_TYPE_ADMIN;
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, makeRequest }}>
+    <AuthContext.Provider value={{ user, isAdmin, login, logout, makeRequest }}>
       {children}
     </AuthContext.Provider>
   );

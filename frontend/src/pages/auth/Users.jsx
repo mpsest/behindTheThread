@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext.jsx';
 import SquareButton from '../../components/SquareButton';
 import './Users.css';
@@ -7,7 +8,8 @@ import { useToast } from '../../contexts/ToastContext.jsx';
 const RESOURCE = 'api/utilizadores';
 
 export default function Users() {
-  const { makeRequest, user: currentUser } = useContext(AuthContext);
+  const { user: currentUser, isAdmin, logout, makeRequest } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -80,11 +82,24 @@ export default function Users() {
   }
 
   async function handleDelete(id) {
-    const confirmDelete = window.confirm('Tens a certeza que queres remover este utilizador?');
+    const isSelf = currentUser?.id === id;
+    const confirmDelete = window.confirm(
+      isSelf
+        ? 'Tens a certeza que queres apagar a tua conta? A sessão será terminada.'
+        : 'Tens a certeza que queres remover este utilizador?',
+    );
     if (!confirmDelete) return;
 
     try {
-      await makeRequest(`${RESOURCE}/${id}`, { method: 'DELETE' });
+      const res = await makeRequest(`${RESOURCE}/${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error(`Erro ${res.status}`);
+
+      if (isSelf) {
+        logout();
+        navigate('/');
+        return;
+      }
+
       loadUsers();
     } catch (err) {
       console.error(err);
@@ -96,7 +111,7 @@ export default function Users() {
     <main className="users-page">
       <div className="users-page-header">
         <h1>Gestão de Utilizadores</h1>
-        {currentUser?.user_type === 1 && (
+        {isAdmin && (
           <SquareButton variant="dark" onClick={startCreate}>
             Novo Utilizador
           </SquareButton>
@@ -111,9 +126,7 @@ export default function Users() {
             <tr>
               <th>Nome</th>
               <th>Email</th>
-              {currentUser?.user_type === 1 && (
               <th>Ações</th>
-              )}
             </tr>
           </thead>
           <tbody>
@@ -121,12 +134,16 @@ export default function Users() {
               <tr key={user.id}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                {currentUser?.user_type === 1 && (
-                  <td className="users-page-actions">
-                    <SquareButton onClick={() => startEdit(user)}>Editar</SquareButton>
-                    <SquareButton onClick={() => handleDelete(user.id)}>Remover</SquareButton>
-                  </td>
-                )}
+                <td>
+                  <div className="users-page-actions">
+                    {(isAdmin || currentUser?.id === user.id) && (
+                      <>
+                        <SquareButton onClick={() => startEdit(user)}>Editar</SquareButton>
+                        <SquareButton onClick={() => handleDelete(user.id)}>Remover</SquareButton>
+                      </>
+                    )}
+                  </div>
+                </td>
               </tr>
             ))}
             {users.length === 0 && (
