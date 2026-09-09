@@ -136,11 +136,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::middleware('admin')->group(function () {
 
-        Route::get(
-            '/utilizadores',
-            [UtilizadorController::class, 'index']
-        );
-
         Route::post(
             '/utilizadores',
             [UtilizadorController::class, 'store']
