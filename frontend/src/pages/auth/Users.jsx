@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext.jsx";
 import SquareButton from "../../components/SquareButton";
 import "./Users.css";
 import { useToast } from "../../contexts/ToastContext.jsx";
+import PageTitle from "../../components/PageTitle.jsx";
 
 const RESOURCE = "api/utilizadores";
 
@@ -117,9 +118,9 @@ export default function Users() {
   }
 
   return (
-    <main className="users-page">
-      <div className="users-page-header">
-        <h1>Gestão de Utilizadores</h1>
+    <div className="users-page">
+      <PageTitle>Utilizadores</PageTitle>
+      <div className="users-page-header pt-4">
         {isAdmin && (
           <SquareButton variant="dark" onClick={startCreate}>
             Novo Utilizador
@@ -218,6 +219,7 @@ export default function Users() {
                 value={formData.password}
                 onChange={handleChange}
                 required={!editingId}
+                placeholder="A password tem de ter um mínimo de 6 caracteres"
               />
             </div>
 
@@ -232,6 +234,6 @@ export default function Users() {
           </form>
         </div>
       )}
-    </main>
+    </div>
   );
 }

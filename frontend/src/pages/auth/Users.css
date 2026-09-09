@@ -1,17 +1,18 @@
 .users-page {
-  padding: 40px 0 40px 0;
+  padding: 8px 0 40px 0;
 }
 
 .users-page-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .users-page-table {
   width: 100%;
   border-collapse: collapse;
+  border-top: 2px solid var(--text-black);
 }
 
 .users-page-table th,
