@@ -71,6 +71,8 @@
   background-repeat: no-repeat;
   background-size: 40vw;
   background-position: top left;
+  border-top: 0px;
+  margin-top: -3px;
 }
 .home-section-artigos .home-headline-panel,
 .home-section-misturas .home-headline-panel {
@@ -148,7 +150,6 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   min-height: clamp(300px, 34vw, 430px);
   border-bottom: 2px solid black;
-  margin-bottom: 60px;
 }
 
 .home-latest-card,

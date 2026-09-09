@@ -3,19 +3,31 @@ import PageTitle from "../components/PageTitle";
 import "./Contactos.css";
 
 const TEAM = [
-  { name: "Bárbara Cruz", role: "Developer", linkedin: "www.linkedin.com/in/barbara-cunha-cruz" },
+  {
+    name: "Bárbara Cruz",
+    role: "Developer",
+    linkedin: "www.linkedin.com/in/barbara-cunha-cruz",
+  },
   {
     name: "Beatriz Miranda",
     role: "Designer",
-    linkedin: "beatrizmiranda2901@gmail.com",
+    linkedin: "https://www.linkedin.com/in/bibiaa",
   },
-  { name: "Filipe Cruz", role: "Developer", linkedin: "https://www.linkedin.com/in/infcruz/" },
+  {
+    name: "Filipe Cruz",
+    role: "Developer",
+    linkedin: "https://www.linkedin.com/in/infcruz/",
+  },
   {
     name: "Francisco Brito",
     role: "Designer",
     linkedin: "www.linkedin.com/in/xiquito",
   },
-  { name: "Paula Esteves", role: "Developer", linkedin: "https://www.linkedin.com/in/paulasesteves/" },
+  {
+    name: "Paula Esteves",
+    role: "Developer",
+    linkedin: "https://www.linkedin.com/in/paulasesteves/",
+  },
 ];
 
 const SOCIALS = [
@@ -29,6 +41,10 @@ const SOCIALS = [
     url: "https://youtube.com/@behindthethread-k4c?si=_9ktsywN39_XD9hW",
   },
 ];
+
+function getExternalUrl(url) {
+  return url.startsWith("http") ? url : `https://${url}`;
+}
 
 export default function ContactPage() {
   function handleSubmit(data) {
@@ -62,10 +78,12 @@ export default function ContactPage() {
               </li>
               {TEAM.map((person) => (
                 <li key={person.linkedin}>
-                  {person.name}, {person.role}
-                  <br />
-                  <a href={person.linkedin} target="_blank" rel="noreferrer">
-                    {person.linkedin}
+                  <a
+                    href={getExternalUrl(person.linkedin)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {person.name}, {person.role}
                   </a>
                 </li>
               ))}
