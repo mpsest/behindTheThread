@@ -7,7 +7,7 @@ import { useToast } from '../../contexts/ToastContext.jsx';
 const RESOURCE = 'api/utilizadores';
 
 export default function Users() {
-  const { makeRequest } = useContext(AuthContext);
+  const { makeRequest, user: currentUser } = useContext(AuthContext);
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -96,9 +96,11 @@ export default function Users() {
     <main className="users-page">
       <div className="users-page-header">
         <h1>Gestão de Utilizadores</h1>
-        <SquareButton variant="dark" onClick={startCreate}>
-          Novo Utilizador
-        </SquareButton>
+        {currentUser?.user_type === 1 && (
+          <SquareButton variant="dark" onClick={startCreate}>
+            Novo Utilizador
+          </SquareButton>
+        )}
       </div>
 
       {loading ? (
@@ -109,7 +111,9 @@ export default function Users() {
             <tr>
               <th>Nome</th>
               <th>Email</th>
+              {currentUser?.user_type === 1 && (
               <th>Ações</th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -117,10 +121,12 @@ export default function Users() {
               <tr key={user.id}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td className="users-page-actions">
-                  <SquareButton onClick={() => startEdit(user)}>Editar</SquareButton>
-                  <SquareButton onClick={() => handleDelete(user.id)}>Remover</SquareButton>
-                </td>
+                {currentUser?.user_type === 1 && (
+                  <td className="users-page-actions">
+                    <SquareButton onClick={() => startEdit(user)}>Editar</SquareButton>
+                    <SquareButton onClick={() => handleDelete(user.id)}>Remover</SquareButton>
+                  </td>
+                )}
               </tr>
             ))}
             {users.length === 0 && (
