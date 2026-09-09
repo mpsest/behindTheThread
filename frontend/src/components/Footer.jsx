@@ -21,7 +21,10 @@ export default function Footer() {
 
       if (!res.ok) throw new Error("Falha ao subscrever");
 
-      showToast("Estás na lista! Caso queiras sair, manda email para behindthethreadd@gmail.com.", "success");
+      showToast(
+        "Estás na lista! Caso queiras sair, manda email para behindthethreadd@gmail.com.",
+        "success",
+      );
       setEmail("");
     } catch (err) {
       console.error(err);
@@ -176,10 +179,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-//TODO: Falta rota no Laravel para a newsletter @FILIPE
-
-//TODO: Se houver tempo, ver o que se passa ao clicar em Newsletter, que muda de sítio depois de fechar o collapse.
-
-
-

@@ -1,7 +1,11 @@
 .page-designers {
   /* Gradientes */
-  background-image: url(/gradients/designers_left-top.svg);
-  background-size: clamp(30%, 70vw, 70%);
+  background-image:
+    url(/gradients/designers_left-top.svg),
+    url(/gradients/designers-center_bottom.svg);
+  background-size: clamp(30%, 70vw, 70%), clamp(30%, 50vw, 70%);
   background-repeat: no-repeat;
-  background-position: left top;
+  background-position:
+    left top,
+    right bottom;
 }

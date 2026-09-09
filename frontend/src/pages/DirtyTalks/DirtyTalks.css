@@ -1,7 +1,11 @@
 .page-dirtytalks {
   /* Gradientes */
-  background-image: url(/gradients/dirtyTalks_center-top.svg);
-  background-size: clamp(10%, 45vw, 120%);
+  background-image:
+    url(/gradients/dirtyTalks_center-top.svg),
+    url(/gradients/dirtytalks_left-bottom.svg);
+  background-size: clamp(10%, 45vw, 120%), clamp(10%, 70vw, 120%);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position:
+    center top,
+    left bottom;
 }

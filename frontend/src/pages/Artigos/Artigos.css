@@ -1,9 +1,13 @@
 .page-artigos {
   /* Gradientes */
-  background-image: url(/gradients/artigos_center-top.svg);
-  background-size: clamp(50%, 50vw, 90%);
+  background-image:
+    url(/gradients/artigos_center-top.svg),
+    url(/gradients/artigos_left-bottom.svg);
+  background-size: clamp(50%, 50vw, 90%), clamp(50%, 50vw, 90%);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position:
+    center top,
+    left bottom;
 }
 
 .page-title.artigos-title {

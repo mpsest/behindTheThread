@@ -74,7 +74,7 @@ export default function Dashboard() {
         <div className="col-3 text-center boxy">
           <PageSubTitle>Newsletter</PageSubTitle>
           <Link to="/newsletter/emails">
-            <SquareButton className="m-2">Lista de subscritores</SquareButton>
+            <SquareButton className="m-2">Subscritores</SquareButton>
           </Link>
         </div>
       </div>
