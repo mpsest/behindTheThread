@@ -2,7 +2,7 @@ import "./MisturasDetail.css";
 import { useContext } from "react";
 import PageTitle from "../../components/PageTitle.jsx";
 import SquareButton from "../../components/SquareButton.jsx";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useMistura } from "../../hooks/useApi.js";
 import { useToast } from "../../contexts/ToastContext.jsx";
@@ -48,12 +48,19 @@ export default function MisturasDetail() {
   return (
     <>
       <PageTitle>MISTURAS</PageTitle>
-      {mistura && user && (
+      <div className="mistura-detail-toolbar">
         <div className="mistura-detail-actions">
-          <SquareButton onClick={handleEdit}>Editar</SquareButton>
-          <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+          {mistura && user && (
+            <>
+              <SquareButton onClick={handleEdit}>Editar</SquareButton>
+              <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+            </>
+          )}
         </div>
-      )}
+        <SquareButton as={Link} to="/misturas" variant="dark">
+          Voltar atrás
+        </SquareButton>
+      </div>
       {mistura && (
         <div className="mistura-detail-div flex-column flex-md-row">
           <div className="mistura-detail-left mistura-img-background">

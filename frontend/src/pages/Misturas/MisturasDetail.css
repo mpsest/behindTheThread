@@ -16,12 +16,19 @@
   border-top: 2px solid var(--text-black);
 }
 
+.mistura-detail-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 24px 15px;
+}
+
 .mistura-detail-actions {
   display: flex;
+  flex: 1;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 15px;
-  margin-top: 15px;
 }
 
 .mistura-detail-left {

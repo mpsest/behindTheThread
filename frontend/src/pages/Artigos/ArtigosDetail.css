@@ -12,9 +12,18 @@
   transform: translate(-50%, -50%);
 }
 
+.conteudo-detail-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 24px;
+  margin: 0 0 16px;
+}
+
 .conteudo-detail-actions {
   display: flex;
+  flex: 1;
   justify-content: center;
   gap: 8px;
-  margin: 16px 0px;
 }

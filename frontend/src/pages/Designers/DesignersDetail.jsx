@@ -1,7 +1,7 @@
 import "../Artigos/Artigos.css";
 import "../Artigos/ArtigosDetail.css";
 import { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import SquareButton from "../../components/SquareButton.jsx";
 import Related from "../../components/Related.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
@@ -42,12 +42,19 @@ export default function DesignersDetail() {
 
   return (
     <div className="container">
-      {user && (
+      <div className="conteudo-detail-toolbar">
         <div className="conteudo-detail-actions">
-          <SquareButton onClick={handleEdit}>Editar</SquareButton>
-          <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+          {user && (
+            <>
+              <SquareButton onClick={handleEdit}>Editar</SquareButton>
+              <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+            </>
+          )}
         </div>
-      )}
+        <SquareButton as={Link} to="/designers" variant="dark">
+          Voltar atrás
+        </SquareButton>
+      </div>
       <h2>{designer.nome}</h2>
       <div
         className="conteudo-html"
