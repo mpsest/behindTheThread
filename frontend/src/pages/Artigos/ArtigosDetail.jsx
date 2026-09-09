@@ -40,26 +40,28 @@ export default function ArtigosDetail() {
   }
 
   return (
-    <div className="container">
-      <div className="conteudo-detail-toolbar">
-        <div className="conteudo-detail-actions">
-          {user && (
-            <>
-              <SquareButton onClick={handleEdit}>Editar</SquareButton>
-              <SquareButton onClick={handleDelete}>Apagar</SquareButton>
-            </>
-          )}
+    <>
+      <div className="container">
+        <div className="conteudo-detail-toolbar">
+          <div className="conteudo-detail-actions">
+            {user && (
+              <>
+                <SquareButton onClick={handleEdit}>Editar</SquareButton>
+                <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+              </>
+            )}
+          </div>
+          <SquareButton as={Link} to="/artigos" variant="dark">
+            Voltar atrás
+          </SquareButton>
         </div>
-        <SquareButton as={Link} to="/artigos" variant="dark">
-          Voltar atrás
-        </SquareButton>
+        <h2>{artigo.titulo}</h2>
+        <div
+          className="conteudo-html"
+          dangerouslySetInnerHTML={{ __html: artigo.texto }}
+        />
       </div>
-      <h2>{artigo.titulo}</h2>
-      <div
-        className="conteudo-html"
-        dangerouslySetInnerHTML={{ __html: artigo.texto }}
-      />
       <Related tipo="artigo" id={artigo.id} />
-    </div>
+    </>
   );
 }

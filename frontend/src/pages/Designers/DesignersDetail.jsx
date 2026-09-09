@@ -41,26 +41,28 @@ export default function DesignersDetail() {
   }
 
   return (
-    <div className="container">
-      <div className="conteudo-detail-toolbar">
-        <div className="conteudo-detail-actions">
-          {user && (
-            <>
-              <SquareButton onClick={handleEdit}>Editar</SquareButton>
-              <SquareButton onClick={handleDelete}>Apagar</SquareButton>
-            </>
-          )}
+    <>
+      <div className="container">
+        <div className="conteudo-detail-toolbar">
+          <div className="conteudo-detail-actions">
+            {user && (
+              <>
+                <SquareButton onClick={handleEdit}>Editar</SquareButton>
+                <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+              </>
+            )}
+          </div>
+          <SquareButton as={Link} to="/designers" variant="dark">
+            Voltar atrás
+          </SquareButton>
         </div>
-        <SquareButton as={Link} to="/designers" variant="dark">
-          Voltar atrás
-        </SquareButton>
+        <h2>{designer.nome}</h2>
+        <div
+          className="conteudo-html"
+          dangerouslySetInnerHTML={{ __html: designer.texto }}
+        />
       </div>
-      <h2>{designer.nome}</h2>
-      <div
-        className="conteudo-html"
-        dangerouslySetInnerHTML={{ __html: designer.texto }}
-      />
       <Related tipo="designer" id={designer.id} />
-    </div>
+    </>
   );
 }

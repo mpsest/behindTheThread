@@ -41,26 +41,28 @@ export default function DirtyTalksDetail() {
   }
 
   return (
-    <div className="container">
-      <div className="conteudo-detail-toolbar">
-        <div className="conteudo-detail-actions">
-          {user && (
-            <>
-              <SquareButton onClick={handleEdit}>Editar</SquareButton>
-              <SquareButton onClick={handleDelete}>Apagar</SquareButton>
-            </>
-          )}
+    <>
+      <div className="container">
+        <div className="conteudo-detail-toolbar">
+          <div className="conteudo-detail-actions">
+            {user && (
+              <>
+                <SquareButton onClick={handleEdit}>Editar</SquareButton>
+                <SquareButton onClick={handleDelete}>Apagar</SquareButton>
+              </>
+            )}
+          </div>
+          <SquareButton as={Link} to="/dirtytalks" variant="dark">
+            Voltar atrás
+          </SquareButton>
         </div>
-        <SquareButton as={Link} to="/dirtytalks" variant="dark">
-          Voltar atrás
-        </SquareButton>
+        <h2>{dirtyTalk.titulo}</h2>
+        <div
+          className="conteudo-html"
+          dangerouslySetInnerHTML={{ __html: dirtyTalk.texto }}
+        />
       </div>
-      <h2>{dirtyTalk.titulo}</h2>
-      <div
-        className="conteudo-html"
-        dangerouslySetInnerHTML={{ __html: dirtyTalk.texto }}
-      />
       <Related tipo="dirty_talk" id={dirtyTalk.id} />
-    </div>
+    </>
   );
 }

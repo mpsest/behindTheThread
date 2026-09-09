@@ -24,11 +24,14 @@ export default function Related({ tipo, id }) {
 
   return (
     <section className="related">
-      <h3 className="related-title">Relacionados</h3>
+      <h3 className="related-title">Artigos Relacionados</h3>
       <div className="related-list">
         {related.map((item) => (
           <article className="related-card" key={`${item.tipo}-${item.id}`}>
-            <Link to={`/${ROTAS[item.tipo]}/${item.id}`} className="related-link">
+            <Link
+              to={`/${ROTAS[item.tipo]}/${item.id}`}
+              className="related-link"
+            >
               <img src={item.imagem} alt={item.titulo} />
               <span className="related-type">{ETIQUETAS[item.tipo]}</span>
               <div className="related-card-title">
