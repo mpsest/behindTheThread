@@ -38,6 +38,9 @@ Route::apiResource('designers', DesignerController::class)
 Route::apiResource('keywords', KeywordController::class)
     ->only(['index', 'show']);
 
+Route::get('/relacionados/{tipo}/{id}', [KeywordController::class, 'relacionados'])
+    ->whereNumber('id');
+
 Route::apiResource('misturas', MisturaController::class)
     ->only(['index', 'show'])
     ->whereNumber('mistura');

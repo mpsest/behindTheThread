@@ -249,3 +249,37 @@ export function useMistura(id) {
 
   return { mistura, loading, error };
 }
+
+export function useRelated(tipo, id) {
+  const [related, setRelated] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { makeRequest } = useContext(AuthContext);
+
+  useEffect(() => {
+    async function fetchRelated() {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await makeRequest(`api/relacionados/${tipo}/${id}`);
+
+        if (!response.ok) {
+          throw new Error("Erro ao carregar conteudos relacionados");
+        }
+
+        const data = await response.json();
+        setRelated(Array.isArray(data) ? data : []);
+      } catch (err) {
+        setError(err.message);
+        setRelated([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchRelated();
+  }, [makeRequest, tipo, id]);
+
+  return { related, loading, error };
+}

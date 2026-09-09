@@ -3,6 +3,7 @@ import "../Artigos/ArtigosDetail.css";
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SquareButton from "../../components/SquareButton.jsx";
+import Related from "../../components/Related.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useDesigner } from "../../hooks/useApi.js";
 import { useToast } from "../../contexts/ToastContext.jsx";
@@ -48,11 +49,11 @@ export default function DesignersDetail() {
         </div>
       )}
       <h2>{designer.nome}</h2>
-      <img src={designer.imagem} alt={designer.nome} />
       <div
         className="conteudo-html"
         dangerouslySetInnerHTML={{ __html: designer.texto }}
       />
+      <Related tipo="designer" id={designer.id} />
     </div>
   );
 }

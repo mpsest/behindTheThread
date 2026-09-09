@@ -2,6 +2,7 @@ import "./ArtigosDetail.css";
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SquareButton from "../../components/SquareButton.jsx";
+import Related from "../../components/Related.jsx";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { useArtigo } from "../../hooks/useApi.js";
 import { useToast } from "../../contexts/ToastContext.jsx";
@@ -47,11 +48,11 @@ export default function ArtigosDetail() {
         </div>
       )}
       <h2>{artigo.titulo}</h2>
-      <img src={artigo.imagem} alt={artigo.titulo} />
       <div
         className="conteudo-html"
         dangerouslySetInnerHTML={{ __html: artigo.texto }}
       />
+      <Related tipo="artigo" id={artigo.id} />
     </div>
   );
 }
