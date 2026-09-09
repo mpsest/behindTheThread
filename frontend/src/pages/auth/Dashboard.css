@@ -31,7 +31,7 @@
   line-height: 1;
 }
 
-.page-dashboard .row {
+.page-dashboard main .row {
   display: flex;
   justify-content: space-evenly;
   width: min(100%, 1080px);
@@ -40,7 +40,7 @@
   padding-bottom: 30px;
 }
 
-.page-dashboard .row > .col-3 {
+.page-dashboard main .row > .col-3 {
   flex: 0 0 250px;
   width: 250px;
   max-width: 250px;
@@ -73,7 +73,7 @@
 }
 
 @media (max-width: 991.98px) {
-  .page-dashboard .row > .col-3 {
+  .page-dashboard main .row > .col-3 {
     flex: 0 0 calc(50% - 24px);
     width: calc(50% - 24px);
     max-width: calc(50% - 24px);
@@ -89,7 +89,7 @@
     flex-direction: column;
   }
 
-  .page-dashboard .row > .col-3 {
+  .page-dashboard main .row > .col-3 {
     flex: 0 0 100%;
     width: 100%;
     max-width: 100%;
