@@ -44,9 +44,12 @@ class MisturaController extends Controller
         );
     }
 
+    // Pagina publica: so mostra misturas ja aprovadas, tal como o index.
     public function show(int $id): JsonResponse
     {
-        return response()->json(Mistura::findOrFail($id));
+        return response()->json(
+            Mistura::where('aprovado', true)->findOrFail($id)
+        );
     }
 
     // --- ADMIN ---

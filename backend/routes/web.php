@@ -30,7 +30,7 @@ Route::post('/login', function (Request $request) {
         'message' => 'Login efetuado com sucesso.',
         'user' => $user,
     ]);
-  })->name('login');
+  })->middleware('throttle:5,1')->name('login');
 
   Route::post('/logout', function (Request $request) {
 
