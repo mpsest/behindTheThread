@@ -1,5 +1,4 @@
 .page-home {
-  background-color: var(--bg);
   background-image:
     url(/gradientsHome/home-top.svg), url(/gradientsHome/home-bottom.svg);
   background-position:
