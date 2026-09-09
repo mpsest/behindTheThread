@@ -21,7 +21,13 @@ export function ToastProvider({ children }) {
       <div className="toast-container">
         {toasts.map((t) => (
           <div key={t.id} className={`toast-item toast-item--${t.type}`}>
-            {t.message}
+            <img
+              className="toast-icon"
+              src="/toast-icon.svg"
+              alt="Icon B do título Behind the Thread."
+              aria-hidden="true"
+            />
+            <span>{t.message}</span>
           </div>
         ))}
       </div>

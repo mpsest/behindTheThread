@@ -12,8 +12,8 @@ export default function NovoConteudo() {
   const [editorContent, setEditorContent] = useState("");
   const [keywordsCount, setKeywordsCount] = useState(1);
   const navigate = useNavigate();
-  const { showToast } = useToast(); 
-  
+  const { showToast } = useToast();
+
   function addKeywordField() {
     setKeywordsCount(keywordsCount + 1);
   }
@@ -70,7 +70,7 @@ export default function NovoConteudo() {
               <label htmlFor="novo-conteudo">
                 Que conteúdo vais criar hoje?
               </label>
-              <select id="novo-conteudo" name="tipo">
+              <select required id="novo-conteudo" name="tipo">
                 <option value=""> Seleciona uma opção </option>
                 <option value="dirty_talk">Dirty Talk</option>
                 <option value="artigo">Artigo</option>
@@ -79,8 +79,8 @@ export default function NovoConteudo() {
             </div>
 
             <div className="novo-artigo-field novo-artigo-field--full">
-              <label htmlFor="titulo">Qual é o título do conteúdo?</label>
-              <input type="text" id="titulo" name="titulo" />
+              <label htmlFor="titulo">Qual é o título do conteúdo?*</label>
+              <input required type="text" id="titulo" name="titulo" />
             </div>
           </div>
         </div>
@@ -106,17 +106,18 @@ export default function NovoConteudo() {
         <div className="novo-artigo-fields novo-artigo-fields--bottom">
           <div className="novo-artigo-field novo-artigo-field--full">
             <label htmlFor="cover-image">
-              Introduz o URL da imagem de capa
+              Introduz o URL da imagem de capa*
             </label>
-            <input type="text" id="cover-image" name="imagem" />
+            <input required type="text" id="cover-image" name="imagem" />
           </div>
 
           <div className="novo-artigo-field novo-artigo-field--full">
-            <label htmlFor="keywords">Introduz as keywords do conteúdo</label>
+            <label htmlFor="keywords">Introduz as keywords do conteúdo*</label>
             <div className="novo-artigo-keywords">
               <div className="novo-artigo-keyword-inputs">
                 {[...Array(keywordsCount)].map((_, index) => (
                   <input
+                    required
                     key={index}
                     id={index === 0 ? "keywords" : undefined}
                     type="text"

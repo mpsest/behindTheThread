@@ -10,6 +10,9 @@
 }
 
 .toast-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background-color: var(--background-toast);
   border: 3px solid var(--text-black);
   padding: 14px 20px;
@@ -18,6 +21,12 @@
   color: var(--text-toast);
   max-width: 320px;
   animation: toast-in 0.2s ease;
+}
+
+.toast-icon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
 }
 
 .toast-item--error {
