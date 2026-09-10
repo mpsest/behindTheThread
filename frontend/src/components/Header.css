@@ -3,21 +3,21 @@
   height: var(--header-height);
   border-bottom: 2px solid black;
   font-family: "Slibinas";
-  padding-top: 17px;
-}
-
-.navbar .container {
-  height: 100%;
+  padding: 17px 30px 8px 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  column-gap: clamp(18px, 3vw, 42px);
+  align-items: center;
 }
 
 /* Title Behind the Thread */
 .navbar h1 {
-  flex: 1;
   color: var(--text-black);
   font-size: clamp(22px, 4vw, 35px);
   margin: 0;
   line-height: 1;
   text-align: center;
+  grid-column: 2;
 }
 
 .navbar h1 a {
@@ -35,8 +35,13 @@
   white-space: nowrap;
 }
 
+.navbar .dropdown {
+  justify-self: start;
+}
+
 .header-contact-link {
   color: var(--text-black);
+  justify-self: end;
   text-decoration: none;
 }
 
@@ -51,6 +56,17 @@
   color: var(--text-black);
 }
 
+@media (max-width: 1199.98px) {
+  .navbar h1 {
+    font-size: clamp(22px, 3vw, 32px);
+  }
+
+  .navbar button,
+  .header-contact-link {
+    font-size: clamp(16px, 2.2vw, 22px);
+  }
+}
+
 @media (max-width: 991.98px) {
   .navbar h1 {
     font-size: clamp(18px, 3vw, 28px);
@@ -58,13 +74,20 @@
 }
 
 @media (max-width: 767.98px) {
+  .navbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
   .navbar h1 {
-    order: 1;
+    grid-column: 1;
+    grid-row: 1;
     text-align: left;
   }
 
   .navbar .dropdown {
-    order: 2;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
   }
 
   .header-contact-link {
