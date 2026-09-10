@@ -119,7 +119,7 @@ export default function Users() {
 
   return (
     <div className="users-page">
-      <PageTitle>Utilizadores</PageTitle>
+      <PageTitle>UTILIZADORES</PageTitle>
       <div className="users-page-header pt-4">
         {isAdmin && (
           <SquareButton variant="dark" onClick={startCreate}>
