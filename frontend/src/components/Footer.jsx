@@ -59,16 +59,16 @@ export default function Footer() {
             id="footerMenuCollapse"
             aria-labelledby="footerMenuButton"
           >
-            <Link className="dropdown-item" to="#">
+            <Link className="dropdown-item" to="/dirtytalks">
               Dirty Talks
             </Link>
-            <Link className="dropdown-item" to="#">
+            <Link className="dropdown-item" to="/artigos">
               Artigos
             </Link>
-            <Link className="dropdown-item" to="#">
+            <Link className="dropdown-item" to="/designers">
               Designers
             </Link>
-            <Link className="dropdown-item" to="#">
+            <Link className="dropdown-item" to="/basededados">
               Base de Dados
             </Link>
             <Link className="dropdown-item" to="/misturas">
