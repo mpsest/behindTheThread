@@ -15,7 +15,6 @@ body.dropdown-open {
 }
 
 .navbar .dropdown-menu {
-  /* TODO: corrigir scroll no menu. Confirmar dropdown (bootstrap). */
   position: fixed;
   top: var(--header-height);
   left: 0px;
@@ -54,7 +53,7 @@ body.dropdown-open {
 }
 
 .dropdown-menu li a:hover {
-  text-decoration: underline; /*TODO: confirmar se querem este underline no hover; coloquei por falta de informação no figma*/
+  text-decoration: underline;
   transition: 0.3s;
   background-color: transparent;
 }

@@ -27,7 +27,6 @@ a.square-btn:active {
   text-decoration: none;
 }
 
-/* TODO: confirmar esta animação */
 .square-btn:active {
   transform: translate(2px, 2px);
 }
